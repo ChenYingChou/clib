@@ -1,0 +1,20 @@
+/*
+ * $Log: C0.H $
+ * Revision 1.0  1996-02-06 23:49:00-0800  YCCHEN
+ * Initial revision
+ *
+**/
+
+#ifndef _C0_H_
+#define _C0_H_
+
+enum	{	NUL,SOH,STX,ETX,EOT,ENQ,ACK,BEL,BS,HT,LF,VT,FF,CR,SO,SI,
+		DLE,DC1,DC2,DC3,DC4,NAK,SYN,ETB,CAN,EM,SUB,ESC,FS,GS,RS,US,
+		TAB=9,SP=32,DEL=127,
+		IND=0x84,NEL,SSA,ESA,HTS,HTJ,VTS,PLD,PLU,RI,SS2,SS3,
+		DCS,PU1,PU2,STS,CCH,MW,SPA,EPA,CSI=0x9b,ST,OSC,PM,APC
+	}	;
+
+#endif	// _C0_H_
+
+
