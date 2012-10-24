@@ -1,22 +1,25 @@
-/* test.c */
+/* testhrt.c */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <dos.h>
 #include <bios.h>
 #include <time.h>
-#include "HRTimer.h"
+#include "hrtimer.h"
 
-void main ( int argc, char *argv[] )
+int main ( int argc, char *argv[] )
 {
 	unsigned	interval = ( argc > 1 ? atoi(argv[1]) : 5000 ) ;
 	clock_t 	x, y	;
 	unsigned long	a, b, c ;
 	int		i	;
 
+	printf("Delay %u milliseconds\n",interval);
+
 	x = clock() ;
 	a = readtimer() ;
 
-	delay(interval);	/* in HRTimer.c */
+	delay(interval);	/* in hrtimer.c */
 
 	b = readtimer() ;
 	y = clock() ;
@@ -29,5 +32,7 @@ void main ( int argc, char *argv[] )
 	a = readtimer() ;
 	for ( i = 1 ; i < 16 ; i++ ) b = readtimer() ;
 	printf("readtimer() = %lu clocks\n",(b-a)>>4) ;
+	
+	return 0;
 }
 

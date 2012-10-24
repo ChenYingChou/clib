@@ -25,7 +25,7 @@
 #include	<dos.h>
 #endif
 
-#include	"HRTimer.h"
+#include	"hrtimer.h"
 
 #define ACTIVE_ON		0x01
 #define ACTIVE_REGISTER 	0x80
@@ -38,7 +38,7 @@
 ..... */
 	#define NOP()		/* nothing */
 
-#   if defined(__386__)
+    #if defined(__386__)
 
 	int os_idle ( );
 	#pragma aux os_idle = \
@@ -104,7 +104,7 @@
 		value [eax]		\
 		modify [edx]		;
 
-#   else	// !defined(__386__)
+    #else	// !defined(__386__)
 
 	int os_idle ( );
 	#pragma aux os_idle = \
@@ -189,7 +189,7 @@
 		value [dx ax]		\
 		modify [cx]		;
 
-#   endif	// if defined(__386__)
+    #endif	// if defined(__386__)
 
 #elif defined(__DJGPP__)
 
@@ -208,7 +208,7 @@
 /* ..	#define NOP()		asm nop 	*/
 	#define NOP()		/* nothing */
 
-	int os_idle ( ) {
+	int os_idle ( void ) {
 		asm {
 			mov	ax,1680h
 			int	2fh
@@ -390,7 +390,7 @@ asm	adc	dx,0
 void delay ( unsigned milliseconds )
 {
 	unsigned long	start = readtimer()	;
-	unsigned long	stop, curr		;
+	unsigned long	stop, curr, elapsed;
 
 /* ...	stop = (unsigned long)milliseconds * TimerResolution_1000 +	*/
 /* ...	       ( ((unsigned long)milliseconds * 11906) >> 16 ) ;	*/
@@ -424,10 +424,16 @@ asm	mov	word ptr stop+2,dx
 #endif
 
 	//while ( readtimer() - start < stop ) ;
-	do {
-		os_idle();
+
+	curr = readtimer();
+	stop -= (3*(curr-start)) / 2;
+	while ((elapsed=curr-start) < stop) {
+		if (stop - elapsed > 50000L) os_idle();
 		curr = readtimer();
-		if (curr < start) curr = start;
-	} while (curr - start < stop);
+		if (curr < start) {
+			curr = readtimer();
+			if (curr < start) curr = start;
+		}
+	}
 }
 

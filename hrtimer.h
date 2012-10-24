@@ -33,7 +33,7 @@ unsigned long elapsedtime ( unsigned long start, unsigned long stop ) ;
 void delay ( unsigned milliseconds ) ;
 
 /* Release Current Virtual Machine's Time Slice: Int 2FH Function 1680H */
-int os_idle ( );
+int os_idle ( void );
 
 #ifdef __cplusplus
 };
