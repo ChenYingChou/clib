@@ -150,4 +150,3 @@ void twin::restore_image ( int dofree )
 	}
 }
 
-

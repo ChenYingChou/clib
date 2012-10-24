@@ -19,4 +19,3 @@ int do_all ( const char *filespec, doallFunc func, unsigned attrib ) ;
 #endif
 
 #endif	// _DOALL_H_
-

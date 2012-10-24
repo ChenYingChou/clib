@@ -130,4 +130,3 @@ void cmos_set_alarm ( int hour, int minute, int second )
 	EXIT
 }
 
-

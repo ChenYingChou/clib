@@ -9,7 +9,6 @@
 #include	"dbase.h"
 #include	"dbase0.h"
 
-
 int DBF::insert ( long recNum )
 {
 	if ( flush_data() == DB_FAILURE ) return DB_FAILURE ;
@@ -94,4 +93,3 @@ int DBF::insert ( long recNum )
 	return _errNo == DB_SUCCESS ? DB_SUCCESS : DB_FAILURE ;
 }
 
-

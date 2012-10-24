@@ -32,4 +32,3 @@ int do_all ( const char *filespec, doallFunc func, unsigned attrib )
 	return 0 ;
 }
 
-

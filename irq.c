@@ -332,4 +332,3 @@ void _remove_irq ( int irq )
 	}
 }
 
-

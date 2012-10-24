@@ -3,15 +3,17 @@
  *
 **/
 
-#include	<stdio.h>
-#include	<stdlib.h>
-#include	<ctype.h>
-#include	<string.h>
-#include	<time.h>
-#include	"dbase.h"
-#include	"dbase0.h"
-#include	"debug.h"
-ASSERTFILE(__FILE__)
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+#include <unistd.h>
+#include <time.h>
+#include "dbase.h"
+#include "dbase0.h"
+#if defined(UNIX)
+    #include "str.h"
+#endif
 
 /******************************************************************************/
 
@@ -22,7 +24,14 @@ int DBF::initial ( void *H )
 	_headSize    = h.headSize ;
 	_recCount    = h.recCount ;
 	_recSize     = h.recSize ;
+#ifdef	PROTECT
 	_protectCode = h.protectCode ;
+#endif
+
+	_updYear     = h.date[0] + 1900;
+	_updMonth    = h.date[1];
+	_updDay      = h.date[2];
+	if (_updYear < 1970) _updYear += 100;
 
 	_fieldCount  = (_headSize >> 5) - 1 ;
 	_recNo	     = -2 ;
@@ -88,8 +97,8 @@ int DBF::initial ( void *H )
 	}
 
 	if ( _cacheSize == 0 ) {
-#if defined(__386__)
-		_cacheSize = 16 * 1024 ;
+#if defined(__386__) || defined(UNIX)
+		_cacheSize = 32 * 1024 ;
 #elif defined(__LARGE__) || defined(__HUGE__) || defined(__COMPACT__)
 		_cacheSize = 8 * 1024 ;
 #else
@@ -131,14 +140,18 @@ DBF::DBF ( const char *file, unsigned cacheSize )
 int DBF::open ( const char *file, unsigned cacheSize )
 {
 	if ( _fd >= 0 ) close() ;
+#if defined(UNIX)
+	_fd = OPEN(makeFileExt(file,".dbf")) ;
+#else
 	_fd = OPEN(file) ;
+#endif
 	if ( _fd < 0 ) {
 		_errNo = DB_OPEN_ERR ;
 		return DB_FAILURE ;
 	}
 
 	HEADER	h	;
-	if ( READ(_fd,&h,sizeof(h)) != sizeof(h) || h.signature != DBF_SIGNATURE ||
+	if ( READ(_fd,&h,sizeof(h)) != sizeof(h) || (h.signature & 0x77) != DBF_SIGNATURE ||
 	     h.headSize > MAX_HEAD_SIZE ) {
 		close() ;
 		_errNo = DB_STRUC_ERR ;
@@ -297,16 +310,22 @@ int DBF::flush ( )
 	time_t	T = time(NULL) ;
 	tm	*t = localtime(&T) ;
 
+	_updYear  = t->tm_year + 1900;
+	_updMonth = t->tm_mon  + 1;
+	_updDay   = t->tm_mday;
+
 	HEADER	x	;
 	memset(&x,0,sizeof(x)) ;
 	x.signature	= DBF_SIGNATURE ;
 	x.date[0]	= t->tm_year ;		// since 1900
-	x.date[1]	= t->tm_mon + 1 ;
-	x.date[2]	= t->tm_mday ;
+	x.date[1]	= _updMonth;
+	x.date[2]	= _updDay;
 	x.recCount	= _recCount ;
 	x.headSize	= _headSize ;
 	x.recSize	= _recSize ;
+#ifdef	PROTECT
 	x.protectCode	= _protectCode ;
+#endif
 
 	lseek(_fd,0L,SEEK_SET) ;
 	_errNo = (WRITE(_fd,&x,sizeof(x))==sizeof(x) ? DB_SUCCESS : DB_WRITE_ERR) ;
@@ -329,7 +348,11 @@ int DBF::field ( const char *name )
 	int	nth	;
 
 	for ( nth = 0 ; nth < fieldCount() ; nth++ ) {
+#if defined(GNUC)
+		if ( strcasecmp(name,_field[nth].name) == 0 )
+#else
 		if ( stricmp(name,_field[nth].name) == 0 )
+#endif
 			return nth ;
 	}
 	_errNo = DB_FIELD_NOT_FOUND ;
@@ -367,8 +390,6 @@ int DBF::fieldDecimal ( const char *name )
 
 char *DBF::gets ( int nth, char *str, int len )
 {
-	ASSERT((unsigned)nth < fieldCount()) ;
-
 	int	l = fieldLength(nth) ;
 
 	if ( l >= len ) l = len - 1 ;
@@ -385,19 +406,30 @@ char *DBF::gets ( const char *name, char *str, int len )
 }
 
 
-int DBF::puts ( int nth, char *str, int len )
+int DBF::puts ( int nth, const char *str, int len )
 {
-	ASSERT((unsigned)nth < fieldCount()) ;
-
 	char	*p = fieldPtr(nth) ;
 	int	l = fieldLength(nth) ;
+	int	isNum = fieldType(nth) == 'N';
 
 	if ( len == 0 ) len = strlen(str) ;
+	if ( isNum ) {
+		while (len > 0 && (*str == '0' || *str == ' ')) {
+			str++; len--;
+		}
+	}
+
 	if ( len >= l ) {
+		/* Allow the first digit overflow represented by A-Z */
+		if ( len == l+1 && isNum && memcmp(str,"35",2) <= 0 ) {
+			*p++ = (str[0]-'1') * 10 + 'A' - '0' + str[1];
+			l--;
+			str += 2;
+		}
 		len = l ;
 	} else {
 		memset(p,' ',l) ;
-		if ( fieldType(nth) == 'N' ) p += l - len ; // 'N': right adjust
+		if ( isNum ) p += l - len ; // 'N': right adjust
 	}
 
 	memcpy(p,str,len) ;
@@ -406,7 +438,7 @@ int DBF::puts ( int nth, char *str, int len )
 }
 
 
-int DBF::puts ( const char *name, char *str, int len )
+int DBF::puts ( const char *name, const char *str, int len )
 {
 	int	nth = field(name) ;
 	return nth < 0 ? -1 : puts(nth,str,len) ;
@@ -415,12 +447,21 @@ int DBF::puts ( const char *name, char *str, int len )
 
 long DBF::getLong ( int nth )
 {
-	ASSERT((unsigned)nth < fieldCount()) ;
-
 	char	*p = fieldPtr(nth) ;
 	int	l = fieldLength(nth) ;
 	long	x = 0;
 	int	isMinus = 0;
+
+	// Skip leading spaces
+	while ( l > 0 && *p <= ' ') {
+		p++; l--;
+	}
+
+	/* Allow the first digit overflow represented by A-Z */
+	while ( l > 0 && isalpha(*p) ) {
+	    x = 10 * x + toupper(*p) - 'A' + 10;
+	    p++; l--;
+	}
 
 	while ( l > 0 ) {
 		if ( isdigit(*p) ) {
@@ -443,8 +484,6 @@ long DBF::getLong ( const char *name )
 
 int DBF::putLong ( int nth, long val )
 {
-	ASSERT((unsigned)nth < fieldCount()) ;
-
 	char	*p = fieldPtr(nth) ;
 	int	ll = fieldLength(nth) ;
 	int	sign = 0 ;
@@ -465,6 +504,12 @@ int DBF::putLong ( int nth, long val )
 	} while ( l > 0 && val != 0 ) ;
 
 	if ( l == 0 ) {
+	    	if ( !sign && (val >= 1  && val <= 3) ) {
+			/* Allow the first digit overflow represented by A-Z */
+			*p += 'A' - '0' + (val-1) * 10;
+			if ( isalpha(*p) ) val = 0;
+		}
+
 		if ( sign || val != 0 ) {	// overflow
 			memset(p,'*',ll) ;
 			_errNo = DB_FIELD_OVERFLOW ;

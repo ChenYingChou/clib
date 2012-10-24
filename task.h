@@ -75,4 +75,3 @@ int	inkey	    ( unsigned long millsec )	/* 1/1024 unit */	;
 
 #endif /* _TASK_H_ */
 
-

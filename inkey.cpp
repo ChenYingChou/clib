@@ -357,4 +357,3 @@ int initial_key ( int doauto )
 	return isEnhanceKey_ ;
 }
 
-

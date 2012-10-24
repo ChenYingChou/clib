@@ -17,4 +17,3 @@ enum	{	NUL,SOH,STX,ETX,EOT,ENQ,ACK,BEL,BS,HT,LF,VT,FF,CR,SO,SI,
 
 #endif	// _C0_H_
 
-

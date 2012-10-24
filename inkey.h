@@ -137,4 +137,3 @@ extern	unsigned char	isEnhanceKey_					;
 
 #endif	/* _INKEY_H_ */
 
-

@@ -95,4 +95,3 @@ void kbd_remove ( void )
 	_remove_irq(1) ;
 }
 
-

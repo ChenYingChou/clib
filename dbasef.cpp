@@ -6,13 +6,9 @@
 #include	<stdlib.h>
 #include	<string.h>
 #include	"dbase.h"
-#include	"debug.h"
-ASSERTFILE(__FILE__)
 
 double DBF::getNumber ( int nth )
 {
-	ASSERT((unsigned)nth < fieldCount()) ;
-
 	if ( fieldType(nth) != 'N' ) {
 		_errNo = DB_FIELD_TYPE_MISSING ;
 		return -1 ;
@@ -32,8 +28,6 @@ double DBF::getNumber ( const char *name )
 
 int DBF::putNumber ( int nth, double val )
 {
-	ASSERT((unsigned)nth < fieldCount()) ;
-
 	char	*p = fieldPtr(nth) ;
 	int	l = fieldLength(nth) ;
 
@@ -63,4 +57,3 @@ int DBF::putNumber ( const char *name, double val )
 	return nth < 0 ? -1 : putNumber(nth,val) ;
 }
 
-

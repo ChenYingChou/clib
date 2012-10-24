@@ -7,9 +7,8 @@
 #define _DBASE0_H_
 
 #include <fcntl.h>
-#include <io.h>
 
-#if defined(__DJGPP__)
+#if defined(__DJGPP__) || defined(UNIX)
 #include <unistd.h>
 #endif
 
@@ -19,6 +18,7 @@
 
 #if defined(MSDOS) || defined(__MSDOS__)
 	#include <dos.h>
+	#include <io.h>
 	#include <share.h>
 
 	#define CLOSE(fd)		_dos_close(fd)
@@ -52,21 +52,25 @@
 		return writeLen ;
 	}
 #else
-	#include < sys/stat.h>
+	#include <sys/stat.h>
 
 	#define OPEN(file)		::open(file,O_RDWR)
-	#define CREAT(file)		::creat(file,S_IRUSR|S_IWUSR)
+	#define CREAT(file)		::open(file,O_RDWR|O_CREAT,S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP)
 	#define CLOSE(fd)		::close(fd)
 	#define READ(fd,buf,sz) 	::read(fd,buf,sz)
 	#define WRITE(fd,buf,sz)	::write(fd,buf,sz)
+    #if defined(FreeBSD)
 	#define FLUSH(fd)		fsync(fd)
+    #else
+	#define FLUSH(fd)		fdatasync(fd)
+    #endif
 #endif
 
 #define DBF_SIGNATURE		0x03
 #define MAX_FIELDS		512
 #define MAX_HEAD_SIZE		(sizeof(HEADER)+MAX_FIELDS*sizeof(FIELD))
 
-#pragma pack(1) ;
+#pragma pack(1)
 
 struct	FIELD	{
 	char	name[10]	;
@@ -81,14 +85,13 @@ struct	FIELD	{
 struct	HEADER	{
 	Byte	signature	;	/* 0x03 			*/
 	Byte	date[3] 	;
-	long	recCount	;
+	Int4	recCount	;
 	Word	headSize	;
 	Word	recSize 	;
 	char	filler1[18]	;
 	Word	protectCode	;	/* protect flag 		*/
 } ;
 
-#pragma pack() ;
+#pragma pack()
 
 #endif
-

@@ -265,4 +265,3 @@ class	Comm	{
 #endif	/* __cplusplus */
 
 #endif	/* _COMM_H_ */
-

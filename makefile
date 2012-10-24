@@ -14,8 +14,10 @@ DOSDRV_O = dosdrv.$(O)
 !endif
 ############################################################################
 newLib		: $(LIBA) $(LIBX)
-all		: test t1 t2 t3 $(DOSDRV)
+all		: dblist test t1 t2 t3 $(DOSDRV)
+dblist		: dblist.exe
 test		: test.exe
+testhrt		: testhrt.exe
 t1		: t1.exe
 t2		: t2.exe t2.msg
 t3		: t3.exe news.msg
@@ -87,9 +89,17 @@ task.$(O)	: task.c task0.h task.h
 	$(CC) -4 $&.c
 !endif
 ############################################################################
+dblist.exe	: dblist.$(O)
+	$(LINK) $** $(LIBA)
+dblist.$(O)     : dblist.cpp dbase.h
+############################################################################
 test.exe	: test.$(O)
 	$(LINK) $** $(LIBA)
 test.$(O)     : test.cpp twin.h inkey.h
+############################################################################
+testhrt.exe	: testhrt.$(O)
+	$(LINK) $** $(LIBA)
+testhrt.$(O)     : testhrt.c HRTimer.h
 ############################################################################
 t1.exe		: t1.$(O)
 	$(LINK) $** $(LIBA)

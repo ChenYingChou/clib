@@ -8,9 +8,6 @@
 #include	<string.h>
 #include	"dbase.h"
 #include	"dbase0.h"
-#include	"debug.h"
-ASSERTFILE(__FILE__)
-
 
 int DBF::pack ( )
 {
@@ -70,7 +67,6 @@ int DBF::pack ( )
 
 			i = q - r ;
 			if ( i > 0 ) {
-				ASSERT(i>=recSize()) ;
 				lseek(_fd,wpos,SEEK_SET) ;
 				if ( WRITE(_fd,r,i) != i )
 					_errNo = DB_WRITE_ERR ;
@@ -90,8 +86,11 @@ int DBF::pack ( )
 	_recCount = (wpos - _headSize) / recSize() ;
 
 	if ( flush() == DB_FAILURE ) return DB_FAILURE ;
+#if defined(UNIX)
+	ftruncate(_fd,wpos) ;
+#else
 	chsize(_fd,wpos) ;
+#endif
 	return recCount() > 0 ? top() : DB_SUCCESS ;
 }
 
-

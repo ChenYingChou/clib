@@ -124,4 +124,3 @@ void Comm::SetFifoRxSize ( int RxSize )
 	comm_fifosize(sio,sio->fifo_size,RxSize) ;
 }
 
-

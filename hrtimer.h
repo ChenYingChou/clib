@@ -32,6 +32,9 @@ unsigned long elapsedtime ( unsigned long start, unsigned long stop ) ;
 /* Replace delay function of TC/BC */
 void delay ( unsigned milliseconds ) ;
 
+/* Release Current Virtual Machine's Time Slice: Int 2FH Function 1680H */
+int os_idle ( );
+
 #ifdef __cplusplus
 };
 #endif

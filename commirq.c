@@ -56,4 +56,3 @@ int comm_irq ( unsigned base )
 	return -1 ;
 }
 
-

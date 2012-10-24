@@ -42,4 +42,3 @@ void timer_remove ( void )
 	_remove_irq(0) ;
 }
 
-

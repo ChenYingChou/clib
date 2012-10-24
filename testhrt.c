@@ -31,4 +31,3 @@ void main ( int argc, char *argv[] )
 	printf("readtimer() = %lu clocks\n",(b-a)>>4) ;
 }
 
-

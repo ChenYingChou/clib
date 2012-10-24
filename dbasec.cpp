@@ -23,7 +23,7 @@ int DBF::create ( const char *file, DBfield field[], int numfield )
 	}
 
 #if defined(UNIX)
-	int	FD = CREAT(Cstrlower(makeFileExt(file,".dbf"))) ;
+	int	FD = CREAT(strlwr(makeFileExt(file,".dbf"))) ;
 #else
 	int	FD = CREAT(file) ;
 #endif
@@ -74,7 +74,7 @@ int DBF::create ( const char *file, DBfield field[], int numfield )
 	FIELD	*f = (FIELD*)F ;
 	for ( i = 0 ; i < numfield ; i++, f++ ) {
 		strcpy(f->name,field[i].name) ;
-		Cstrupper(f->name) ;
+		strupr(f->name) ;
 		f->type     = field[i].type ;
 		f->length   = field[i].length ;
 		f->decimal  = field[i].decimal ;

@@ -26,7 +26,7 @@ tlib bltwin.lib %libs%
 tlib bltwinx.lib %libs%
 del *.obj
 call nobc
-goto skipWC
+:::: goto skipWC
 
 call setwc
 make -DMODULE=s %objs%

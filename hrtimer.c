@@ -40,6 +40,13 @@
 
 #   if defined(__386__)
 
+	int os_idle ( );
+	#pragma aux os_idle = \
+		"mov     ax,1680h     " \
+		"int     2fh          " \
+		"and     eax,00ffh    " \
+		value [eax]		;
+
 	unsigned long _readtimer_ ( void ) ;
 	#pragma aux _readtimer_ = \
 		"pushf                " \
@@ -98,6 +105,14 @@
 		modify [edx]		;
 
 #   else	// !defined(__386__)
+
+	int os_idle ( );
+	#pragma aux os_idle = \
+		"mov     ax,1680h     " \
+		"int     2fh          " \
+		"xor     ah,ah        " \
+		value [ax]		\
+		modify [ax]		;
 
 	unsigned long _readtimer_ ( void ) ;
 	#pragma aux _readtimer_ = \
@@ -180,10 +195,27 @@
 
 	#define NOP()		/* nothing */
 
+	#include <dpmi.h>
+	int os_idle ( ) {
+		__dpmi_regs r;
+		r.x.ax = 0x1680;
+		__dpmi_int(0x2f,&r);
+		return r.h.al;
+	}
+
 #else	/* Borland C */
 
 /* ..	#define NOP()		asm nop 	*/
 	#define NOP()		/* nothing */
+
+	int os_idle ( ) {
+		asm {
+			mov	ax,1680h
+			int	2fh
+			xor	ah,ah
+		}
+		return _AX;
+	}
 
 #endif
 
@@ -358,7 +390,7 @@ asm	adc	dx,0
 void delay ( unsigned milliseconds )
 {
 	unsigned long	start = readtimer()	;
-	unsigned long	stop			;
+	unsigned long	stop, curr		;
 
 /* ...	stop = (unsigned long)milliseconds * TimerResolution_1000 +	*/
 /* ...	       ( ((unsigned long)milliseconds * 11906) >> 16 ) ;	*/
@@ -391,7 +423,11 @@ asm	mov	word ptr stop,ax
 asm	mov	word ptr stop+2,dx
 #endif
 
-	while ( readtimer() - start < stop ) ;
+	//while ( readtimer() - start < stop ) ;
+	do {
+		os_idle();
+		curr = readtimer();
+		if (curr < start) curr = start;
+	} while (curr - start < stop);
 }
 
-

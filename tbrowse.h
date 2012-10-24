@@ -54,4 +54,3 @@ class Tbrowse : public twin {
 }	;
 
 #endif	// _TBROWSE_H_
-

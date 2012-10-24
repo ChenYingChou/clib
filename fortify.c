@@ -916,4 +916,3 @@ static void OutputLastVerifiedPoint()
 
 
 #endif /* FORTIFY */
-
