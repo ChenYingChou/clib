@@ -1,0 +1,6479 @@
+%!PS-Adobe-3.0
+%%BoundingBox: (atend)
+%%Pages: (atend)
+%%PageOrder: (atend)
+%%DocumentFonts: (atend)
+%%Creator: Frame 4.0
+%%DocumentData: Clean7Bit
+%%EndComments
+%%BeginProlog
+%
+% Frame ps_prolog 4.0, for use with Frame 4.0 products
+% This ps_prolog file is Copyright (c) 1986-1993 Frame Technology
+% Corporation.  All rights reserved.  This ps_prolog file may be
+% freely copied and distributed in conjunction with documents created
+% using FrameMaker, FrameBuilder and FrameViewer as long as this 
+% copyright notice is preserved.
+%
+% Frame products normally print colors as their true color on a color printer
+% or as shades of gray, based on luminance, on a black-and white printer. The
+% following flag, if set to True, forces all non-white colors to print as pure
+% black. This has no effect on bitmap images.
+/FMPrintAllColorsAsBlack             false def
+%
+% Frame products can either set their own line screens or use a printer's 
+% default settings. Three flags below control this separately for no 
+% separations, spot separations and process separations. If a flag
+% is true, then the default printer settings will not be changed. If it is
+% false, Frame products will use their own settings from a table based on
+% the printer's resolution.
+/FMUseDefaultNoSeparationScreen      true  def
+/FMUseDefaultSpotSeparationScreen    true  def
+/FMUseDefaultProcessSeparationScreen false def
+%
+% For any given PostScript printer resolution, Frame products have two sets of 
+% screen angles and frequencies for printing process separations, which are 
+% recomended by Adobe. The following variable chooses the higher frequencies
+% when set to true or the lower frequencies when set to false. This is only
+% effective if the appropriate FMUseDefault...SeparationScreen flag is false.
+/FMUseHighFrequencyScreens true def
+%
+% PostScript Level 2 printers contain an "Accurate Screens" feature which can
+% improve process separation rendering at the expense of compute time. This 
+% flag is ignored by PostScript Level 1 printers.
+/FMUseAcccurateScreens true def
+%
+% The following PostScript procedure defines the spot function that Frame
+% products will use for process separations. You may un-comment-out one of
+% the alternative functions below, or use your own.
+%
+% Dot function
+/FMSpotFunction {abs exch abs 2 copy add 1 gt 
+		{1 sub dup mul exch 1 sub dup mul add 1 sub }
+		{dup mul exch dup mul add 1 exch sub }ifelse } def
+%
+% Line function
+% /FMSpotFunction { pop } def
+%
+% Elipse function
+% /FMSpotFunction { dup 5 mul 8 div mul exch dup mul exch add 
+%		sqrt 1 exch sub } def
+%
+%
+/FMversion (4.0) def 
+/FMLevel1 /languagelevel where {pop languagelevel} {1} ifelse 2 lt def
+/FMPColor
+	FMLevel1 {
+		false
+		/colorimage where {pop pop true} if
+	} {
+		true
+	} ifelse
+def
+/FrameDict 400 dict def 
+systemdict /errordict known not {/errordict 10 dict def
+		errordict /rangecheck {stop} put} if
+% The readline in PS 23.0 doesn't recognize cr's as nl's on AppleTalk
+FrameDict /tmprangecheck errordict /rangecheck get put 
+errordict /rangecheck {FrameDict /bug true put} put 
+FrameDict /bug false put 
+mark 
+% Some PS machines read past the CR, so keep the following 3 lines together!
+currentfile 5 string readline
+00
+0000000000
+cleartomark 
+errordict /rangecheck FrameDict /tmprangecheck get put 
+FrameDict /bug get { 
+	/readline {
+		/gstring exch def
+		/gfile exch def
+		/gindex 0 def
+		{
+			gfile read pop 
+			dup 10 eq {exit} if 
+			dup 13 eq {exit} if 
+			gstring exch gindex exch put 
+			/gindex gindex 1 add def 
+		} loop
+		pop 
+		gstring 0 gindex getinterval true 
+		} bind def
+	} if
+/FMshowpage /showpage load def
+/FMquit /quit load def
+/FMFAILURE { 
+	dup = flush 
+	FMshowpage 
+	/Helvetica findfont 12 scalefont setfont
+	72 200 moveto
+	show FMshowpage 
+	FMquit 
+	} def 
+/FMVERSION {
+	FMversion ne {
+		(Frame product version does not match ps_prolog!) FMFAILURE
+		} if
+	} def 
+/FMBADEPSF { 
+	(PostScript Lang. Ref. Man., 2nd Ed., H.2.4 says EPS must not call X              )
+	dup dup (X) search pop exch pop exch pop length 
+	4 -1 roll 
+	putinterval 
+	FMFAILURE
+	} def
+/FMLOCAL {
+	FrameDict begin
+	0 def 
+	end 
+	} def 
+/concatprocs
+	{
+	/proc2 exch cvlit def/proc1 exch cvlit def/newproc proc1 length proc2 length add array def
+	newproc 0 proc1 putinterval newproc proc1 length proc2 putinterval newproc cvx
+}def
+FrameDict begin 
+/FMnone 0 def
+/FMcyan 1 def
+/FMmagenta 2 def
+/FMyellow 3 def
+/FMblack 4 def
+/FMcustom 5 def
+/FrameNegative false def 
+/FrameSepIs FMnone def 
+/FrameSepBlack 0 def
+/FrameSepYellow 0 def
+/FrameSepMagenta 0 def
+/FrameSepCyan 0 def
+/FrameSepRed 1 def
+/FrameSepGreen 1 def
+/FrameSepBlue 1 def
+/FrameCurGray 1 def
+/FrameCurPat null def
+/FrameCurColors [ 0 0 0 1 0 0 0 ] def 
+/FrameColorEpsilon .001 def	
+/eqepsilon {		
+	sub dup 0 lt {neg} if
+	FrameColorEpsilon le
+} bind def
+/FrameCmpColorsCMYK { 
+	2 copy 0 get exch 0 get eqepsilon {
+		2 copy 1 get exch 1 get eqepsilon {
+			2 copy 2 get exch 2 get eqepsilon {
+				3 get exch 3 get eqepsilon
+			} {pop pop false} ifelse
+		}{pop pop false} ifelse
+	} {pop pop false} ifelse
+} bind def
+/FrameCmpColorsRGB { 
+	2 copy 4 get exch 0 get eqepsilon {
+		2 copy 5 get exch 1 get eqepsilon {
+			6 get exch 2 get eqepsilon
+		}{pop pop false} ifelse
+	} {pop pop false} ifelse
+} bind def
+/RGBtoCMYK { 
+	1 exch sub 
+	3 1 roll 
+	1 exch sub 
+	3 1 roll 
+	1 exch sub 
+	3 1 roll 
+	3 copy 
+	2 copy 
+	le { pop } { exch pop } ifelse 
+	2 copy 
+	le { pop } { exch pop } ifelse 
+	dup dup dup 
+	6 1 roll 
+	4 1 roll 
+	7 1 roll 
+	sub 
+	6 1 roll 
+	sub 
+	5 1 roll 
+	sub 
+	4 1 roll 
+} bind def
+/CMYKtoRGB { 
+	dup dup 4 -1 roll add 						  
+	5 1 roll 3 -1 roll add 						  
+	4 1 roll add 								  
+	1 exch sub dup 0 lt {pop 0} if 3 1 roll 	  
+	1 exch sub dup 0 lt {pop 0} if exch 	      
+	1 exch sub dup 0 lt {pop 0} if exch	  		  
+} bind def
+/FrameSepInit {
+	1.0 RealSetgray
+} bind def
+/FrameSetSepColor { 
+	/FrameSepBlue exch def
+	/FrameSepGreen exch def
+	/FrameSepRed exch def
+	/FrameSepBlack exch def
+	/FrameSepYellow exch def
+	/FrameSepMagenta exch def
+	/FrameSepCyan exch def
+	/FrameSepIs FMcustom def
+	setCurrentScreen	
+} bind def
+/FrameSetCyan {
+	/FrameSepBlue 1.0 def
+	/FrameSepGreen 1.0 def
+	/FrameSepRed 0.0 def
+	/FrameSepBlack 0.0 def
+	/FrameSepYellow 0.0 def
+	/FrameSepMagenta 0.0 def
+	/FrameSepCyan 1.0 def
+	/FrameSepIs FMcyan def
+	setCurrentScreen	
+} bind def
+ 
+/FrameSetMagenta {
+	/FrameSepBlue 1.0 def
+	/FrameSepGreen 0.0 def
+	/FrameSepRed 1.0 def
+	/FrameSepBlack 0.0 def
+	/FrameSepYellow 0.0 def
+	/FrameSepMagenta 1.0 def
+	/FrameSepCyan 0.0 def
+	/FrameSepIs FMmagenta def
+	setCurrentScreen
+} bind def
+ 
+/FrameSetYellow {
+	/FrameSepBlue 0.0 def
+	/FrameSepGreen 1.0 def
+	/FrameSepRed 1.0 def
+	/FrameSepBlack 0.0 def
+	/FrameSepYellow 1.0 def
+	/FrameSepMagenta 0.0 def
+	/FrameSepCyan 0.0 def
+	/FrameSepIs FMyellow def
+	setCurrentScreen
+} bind def
+ 
+/FrameSetBlack {
+	/FrameSepBlue 0.0 def
+	/FrameSepGreen 0.0 def
+	/FrameSepRed 0.0 def
+	/FrameSepBlack 1.0 def
+	/FrameSepYellow 0.0 def
+	/FrameSepMagenta 0.0 def
+	/FrameSepCyan 0.0 def
+	/FrameSepIs FMblack def
+	setCurrentScreen
+} bind def
+ 
+/FrameNoSep { 
+	/FrameSepIs FMnone def
+	setCurrentScreen
+} bind def
+/FrameSetSepColors { 
+	FrameDict begin
+	[ exch 1 add 1 roll ]
+	/FrameSepColors  
+	exch def end
+	} bind def
+/FrameColorInSepListCMYK { 
+	FrameSepColors {  
+       		exch dup 3 -1 roll 
+       		FrameCmpColorsCMYK 
+       		{ pop true exit } if
+    	} forall 
+	dup true ne {pop false} if
+	} bind def
+/FrameColorInSepListRGB { 
+	FrameSepColors {  
+       		exch dup 3 -1 roll 
+       		FrameCmpColorsRGB 
+       		{ pop true exit } if
+    	} forall 
+	dup true ne {pop false} if
+	} bind def
+/RealSetgray /setgray load def
+/RealSetrgbcolor /setrgbcolor load def
+/RealSethsbcolor /sethsbcolor load def
+end 
+/setgray { 
+	FrameDict begin
+	FrameSepIs FMnone eq
+		{ RealSetgray } 
+		{ 
+		FrameSepIs FMblack eq 
+			{ RealSetgray } 
+			{ FrameSepIs FMcustom eq 
+			  FrameSepRed 0 eq and
+			  FrameSepGreen 0 eq and
+			  FrameSepBlue 0 eq and {
+			  	RealSetgray
+			  } {
+				1 RealSetgray pop 
+			  } ifelse
+			} ifelse
+		} ifelse
+	end
+} bind def
+/setrgbcolor { 
+	FrameDict begin
+	FrameSepIs FMnone eq
+	{  RealSetrgbcolor }
+	{
+		3 copy [ 4 1 roll ] 
+		FrameColorInSepListRGB
+		{
+				FrameSepBlue eq exch 
+			 	FrameSepGreen eq and exch 
+			 	FrameSepRed eq and
+			 	{ 0 } { 1 } ifelse
+		}
+		{
+			FMPColor {
+				RealSetrgbcolor
+				currentcmykcolor
+			} {
+				RGBtoCMYK
+			} ifelse
+			FrameSepIs FMblack eq
+			{1.0 exch sub 4 1 roll pop pop pop} {
+			FrameSepIs FMyellow eq
+			{pop 1.0 exch sub 3 1 roll pop pop} {
+			FrameSepIs FMmagenta eq
+			{pop pop 1.0 exch sub exch pop } {
+			FrameSepIs FMcyan eq
+			{pop pop pop 1.0 exch sub } 
+			{pop pop pop pop 1} ifelse } ifelse } ifelse } ifelse 
+		} ifelse
+		RealSetgray
+	} 
+	ifelse
+	end
+} bind def
+/sethsbcolor {
+	FrameDict begin
+	FrameSepIs FMnone eq 
+	{ RealSethsbcolor } 
+	{
+		RealSethsbcolor 
+		currentrgbcolor  
+		setrgbcolor 
+	} 
+	ifelse
+	end
+} bind def
+FrameDict begin
+/setcmykcolor where {
+	pop /RealSetcmykcolor /setcmykcolor load def
+} {
+	/RealSetcmykcolor {
+		4 1 roll
+		3 { 3 index add 0 max 1 min 1 exch sub 3 1 roll} repeat 
+		setrgbcolor pop
+	} bind def
+} ifelse
+userdict /setcmykcolor { 
+		FrameDict begin
+		FrameSepIs FMnone eq
+		{ RealSetcmykcolor } 
+		{
+			4 copy [ 5 1 roll ]
+			FrameColorInSepListCMYK
+			{
+				FrameSepBlack eq exch 
+				FrameSepYellow eq and exch 
+				FrameSepMagenta eq and exch 
+				FrameSepCyan eq and 
+				{ 0 } { 1 } ifelse
+			}
+			{
+				FrameSepIs FMblack eq
+				{1.0 exch sub 4 1 roll pop pop pop} {
+				FrameSepIs FMyellow eq
+				{pop 1.0 exch sub 3 1 roll pop pop} {
+				FrameSepIs FMmagenta eq
+				{pop pop 1.0 exch sub exch pop } {
+				FrameSepIs FMcyan eq
+				{pop pop pop 1.0 exch sub } 
+				{pop pop pop pop 1} ifelse } ifelse } ifelse } ifelse 
+			} ifelse
+			RealSetgray
+		}
+		ifelse
+		end
+	} bind put
+FMLevel1 not { 
+	
+	/patProcDict 5 dict dup begin
+		<0f1e3c78f0e1c387> { 3 setlinewidth -1 -1 moveto 9 9 lineto stroke 
+											4 -4 moveto 12 4 lineto stroke
+											-4 4 moveto 4 12 lineto stroke} bind def
+		<0f87c3e1f0783c1e> { 3 setlinewidth -1 9 moveto 9 -1 lineto stroke 
+											-4 4 moveto 4 -4 lineto stroke
+											4 12 moveto 12 4 lineto stroke} bind def
+		<8142241818244281> { 1 setlinewidth -1 9 moveto 9 -1 lineto stroke
+											-1 -1 moveto 9 9 lineto stroke } bind def
+		<03060c183060c081> { 1 setlinewidth -1 -1 moveto 9 9 lineto stroke 
+											4 -4 moveto 12 4 lineto stroke
+											-4 4 moveto 4 12 lineto stroke} bind def
+		<8040201008040201> { 1 setlinewidth -1 9 moveto 9 -1 lineto stroke 
+											-4 4 moveto 4 -4 lineto stroke
+											4 12 moveto 12 4 lineto stroke} bind def
+	end def
+	/patDict 15 dict dup begin
+		/PatternType 1 def		
+		/PaintType 2 def		
+		/TilingType 3 def		
+		/BBox [ 0 0 8 8 ] def 	
+		/XStep 8 def			
+		/YStep 8 def			
+		/PaintProc {
+			begin
+			patProcDict bstring known {
+				patProcDict bstring get exec
+			} {
+				8 8 true [1 0 0 -1 0 8] bstring imagemask
+			} ifelse
+			end
+		} bind def
+	end def
+} if
+/combineColor {
+    FrameSepIs FMnone eq
+	{
+		graymode FMLevel1 or not {
+			
+			[/Pattern [/DeviceCMYK]] setcolorspace
+			FrameCurColors 0 4 getinterval aload pop FrameCurPat setcolor
+		} {
+			FrameCurColors 3 get 1.0 ge {
+				FrameCurGray RealSetgray
+			} {
+				FMPColor graymode and {
+					0 1 3 { 
+						FrameCurColors exch get
+						1 FrameCurGray sub mul
+					} for
+					RealSetcmykcolor
+				} {
+					4 1 6 {
+						FrameCurColors exch get
+						graymode {
+							1 exch sub 1 FrameCurGray sub mul 1 exch sub
+						} {
+							1.0 lt {FrameCurGray} {1} ifelse
+						} ifelse
+					} for
+					RealSetrgbcolor
+				} ifelse
+			} ifelse
+		} ifelse
+	} { 
+		FrameCurColors 0 4 getinterval aload
+		FrameColorInSepListCMYK {
+			FrameSepBlack eq exch 
+			FrameSepYellow eq and exch 
+			FrameSepMagenta eq and exch 
+			FrameSepCyan eq and
+			FrameSepIs FMcustom eq and
+			{ FrameCurGray } { 1 } ifelse
+		} {
+			FrameSepIs FMblack eq
+			{FrameCurGray 1.0 exch sub mul 1.0 exch sub 4 1 roll pop pop pop} {
+			FrameSepIs FMyellow eq
+			{pop FrameCurGray 1.0 exch sub mul 1.0 exch sub 3 1 roll pop pop} {
+			FrameSepIs FMmagenta eq
+			{pop pop FrameCurGray 1.0 exch sub mul 1.0 exch sub exch pop } {
+			FrameSepIs FMcyan eq
+			{pop pop pop FrameCurGray 1.0 exch sub mul 1.0 exch sub } 
+			{pop pop pop pop 1} ifelse } ifelse } ifelse } ifelse 
+		} ifelse
+		graymode FMLevel1 or not {
+			
+			[/Pattern [/DeviceGray]] setcolorspace
+			FrameCurPat setcolor
+		} { 
+			graymode not FMLevel1 and {
+				
+				dup 1 lt {pop FrameCurGray} if
+			} if
+			RealSetgray
+		} ifelse
+	} ifelse
+} bind def
+/savematrix {
+	orgmatrix currentmatrix pop
+	} bind def
+/restorematrix {
+	orgmatrix setmatrix
+	} bind def
+/dmatrix matrix def
+/dpi    72 0 dmatrix defaultmatrix dtransform
+    dup mul exch   dup mul add   sqrt def
+	
+/freq dpi dup 72 div round dup 0 eq {pop 1} if 8 mul div def
+/sangle 1 0 dmatrix defaultmatrix dtransform exch atan def
+/dpiranges   [  2540    2400    1693     1270    1200     635      600      0      ] def
+/CMLowFreqs  [ 100.402  94.8683 89.2289 100.402  94.8683  66.9349  63.2456 47.4342 ] def
+/YLowFreqs   [  95.25   90.0    84.65    95.25   90.0     70.5556  66.6667 50.0    ] def
+/KLowFreqs   [  89.8026 84.8528 79.8088  89.8026 84.8528  74.8355  70.7107 53.033  ] def
+/CLowAngles  [  71.5651 71.5651 71.5651 71.5651  71.5651  71.5651  71.5651 71.5651 ] def
+/MLowAngles  [  18.4349 18.4349 18.4349 18.4349  18.4349  18.4349  18.4349 18.4349 ] def
+/YLowTDot    [  true    true    false    true    true     false    false   false   ] def
+/CMHighFreqs [ 133.87  126.491 133.843  108.503 102.523  100.402   94.8683 63.2456 ] def
+/YHighFreqs  [ 127.0   120.0   126.975  115.455 109.091   95.25    90.0    60.0    ] def
+/KHighFreqs  [ 119.737 113.137 119.713  128.289 121.218   89.8026  84.8528 63.6395 ] def
+/CHighAngles [  71.5651 71.5651 71.5651  70.0169 70.0169  71.5651  71.5651 71.5651 ] def
+/MHighAngles [  18.4349 18.4349 18.4349  19.9831 19.9831  18.4349  18.4349 18.4349 ] def
+/YHighTDot   [  false   false   true     false   false    true     true    false   ] def
+/PatFreq     [	10.5833 10.0     9.4055  10.5833 10.0	  10.5833  10.0	   9.375   ] def
+/screenIndex {
+	0 1 dpiranges length 1 sub { dup dpiranges exch get 1 sub dpi le {exit} {pop} ifelse } for
+} bind def
+/getCyanScreen {
+	FMUseHighFrequencyScreens { CHighAngles CMHighFreqs} {CLowAngles CMLowFreqs} ifelse
+		screenIndex dup 3 1 roll get 3 1 roll get /FMSpotFunction load
+} bind def
+/getMagentaScreen {
+	FMUseHighFrequencyScreens { MHighAngles CMHighFreqs } {MLowAngles CMLowFreqs} ifelse
+		screenIndex dup 3 1 roll get 3 1 roll get /FMSpotFunction load
+} bind def
+/getYellowScreen {
+	FMUseHighFrequencyScreens { YHighTDot YHighFreqs} { YLowTDot YLowFreqs } ifelse
+		screenIndex dup 3 1 roll get 3 1 roll get { 3 div
+			{2 { 1 add 2 div 3 mul dup floor sub 2 mul 1 sub exch} repeat
+			FMSpotFunction } } {/FMSpotFunction load } ifelse
+			0.0 exch
+} bind def
+/getBlackScreen  {
+	FMUseHighFrequencyScreens { KHighFreqs } { KLowFreqs } ifelse
+		screenIndex get 45.0 /FMSpotFunction load 
+} bind def
+/getSpotScreen {
+	getBlackScreen
+} bind def
+/getCompositeScreen {
+	getBlackScreen
+} bind def
+/FMSetScreen 
+	FMLevel1 { /setscreen load 
+	}{ {
+		8 dict begin
+		/HalftoneType 1 def
+		/SpotFunction exch def
+		/Angle exch def
+		/Frequency exch def
+		/AccurateScreens FMUseAcccurateScreens def
+		currentdict end sethalftone
+	} bind } ifelse
+def
+/setDefaultScreen {
+	FMPColor {
+		orgrxfer cvx orggxfer cvx orgbxfer cvx orgxfer cvx setcolortransfer
+	}
+	{
+		orgxfer cvx settransfer
+	} ifelse
+	orgfreq organgle orgproc cvx setscreen
+} bind def
+/setCurrentScreen {
+	FrameSepIs FMnone eq {
+		FMUseDefaultNoSeparationScreen {
+			setDefaultScreen
+		} {
+			getCompositeScreen FMSetScreen
+		} ifelse
+	} {
+		FrameSepIs FMcustom eq {
+			FMUseDefaultSpotSeparationScreen {
+				setDefaultScreen
+			} {
+				getSpotScreen FMSetScreen
+			} ifelse
+		} {
+			FMUseDefaultProcessSeparationScreen {
+				setDefaultScreen
+			} {
+				FrameSepIs FMcyan eq {
+					getCyanScreen FMSetScreen
+				} {
+					FrameSepIs FMmagenta eq {
+						getMagentaScreen FMSetScreen
+					} {
+						FrameSepIs FMyellow eq {
+							getYellowScreen FMSetScreen
+						} {
+							getBlackScreen FMSetScreen
+						} ifelse
+					} ifelse
+				} ifelse
+			} ifelse
+		} ifelse
+	} ifelse 
+} bind def
+end
+	/gstring FMLOCAL
+	/gfile FMLOCAL
+	/gindex FMLOCAL
+	/orgrxfer FMLOCAL
+	/orggxfer FMLOCAL
+	/orgbxfer FMLOCAL
+	/orgxfer FMLOCAL
+	/orgproc FMLOCAL
+	/orgrproc FMLOCAL
+	/orggproc FMLOCAL
+	/orgbproc FMLOCAL
+	/organgle FMLOCAL
+	/orgrangle FMLOCAL
+	/orggangle FMLOCAL
+	/orgbangle FMLOCAL
+	/orgfreq FMLOCAL
+	/orgrfreq FMLOCAL
+	/orggfreq FMLOCAL
+	/orgbfreq FMLOCAL
+	/yscale FMLOCAL
+	/xscale FMLOCAL
+	/edown FMLOCAL
+	/manualfeed FMLOCAL
+	/paperheight FMLOCAL
+	/paperwidth FMLOCAL
+/FMDOCUMENT { 
+	array /FMfonts exch def 
+	/#copies exch def
+	FrameDict begin
+	0 ne /manualfeed exch def
+	/paperheight exch def
+	/paperwidth exch def
+	0 ne /FrameNegative exch def 
+	0 ne /edown exch def 
+	/yscale exch def
+	/xscale exch def
+	FMLevel1 {
+		manualfeed {setmanualfeed} if
+		/FMdicttop countdictstack 1 add def 
+		/FMoptop count def 
+		setpapername 
+		manualfeed {true} {papersize} ifelse 
+		{manualpapersize} {false} ifelse 
+		{desperatepapersize} {false} ifelse 
+		{ (Can't select requested paper size for Frame print job!) FMFAILURE } if
+		count -1 FMoptop {pop pop} for
+		countdictstack -1 FMdicttop {pop end} for 
+		}
+		{{1 dict dup /PageSize [paperwidth paperheight]put setpagedevice}stopped
+		{ (Can't select requested paper size for Frame print job!) FMFAILURE } if
+		 {1 dict dup /ManualFeed manualfeed put setpagedevice } stopped pop }
+	ifelse 
+	
+	FMPColor {
+		currentcolorscreen
+			cvlit /orgproc exch def
+				  /organgle exch def 
+				  /orgfreq exch def
+			cvlit /orgbproc exch def
+				  /orgbangle exch def 
+				  /orgbfreq exch def
+			cvlit /orggproc exch def
+				  /orggangle exch def 
+				  /orggfreq exch def
+			cvlit /orgrproc exch def
+				  /orgrangle exch def 
+				  /orgrfreq exch def
+			currentcolortransfer 
+			FrameNegative {
+				1 1 4 { 
+					pop { 1 exch sub } concatprocs 4 1 roll
+				} for
+				4 copy
+				setcolortransfer
+			} if
+			cvlit /orgxfer exch def
+			cvlit /orgbxfer exch def
+			cvlit /orggxfer exch def
+			cvlit /orgrxfer exch def
+	} {
+		currentscreen 
+			cvlit /orgproc exch def
+				  /organgle exch def 
+				  /orgfreq exch def
+				  
+		currenttransfer 
+		FrameNegative {
+			{ 1 exch sub } concatprocs
+			dup settransfer
+		} if 
+		cvlit /orgxfer exch def
+	} ifelse
+	end 
+} def 
+/pagesave FMLOCAL
+/orgmatrix FMLOCAL
+/landscape FMLOCAL
+/pwid FMLOCAL
+/FMBEGINPAGE { 
+	FrameDict begin 
+	/pagesave save def
+	3.86 setmiterlimit
+	/landscape exch 0 ne def
+	landscape { 
+		90 rotate 0 exch dup /pwid exch def neg translate pop 
+	}{
+		pop /pwid exch def
+	} ifelse
+	edown { [-1 0 0 1 pwid 0] concat } if
+	0 0 moveto paperwidth 0 lineto paperwidth paperheight lineto 
+	0 paperheight lineto 0 0 lineto 1 setgray fill
+	xscale yscale scale
+	/orgmatrix matrix def
+	gsave 
+} def 
+/FMENDPAGE {
+	grestore 
+	pagesave restore
+	end 
+	showpage
+	} def 
+/FMFONTDEFINE { 
+	FrameDict begin
+	findfont 
+	ReEncode 
+	1 index exch 
+	definefont 
+	FMfonts 3 1 roll 
+	put
+	end 
+	} def 
+/FMFILLS {
+	FrameDict begin dup
+	array /fillvals exch def
+	dict /patCache exch def
+	end 
+	} def 
+/FMFILL {
+	FrameDict begin
+	 fillvals 3 1 roll put
+	end 
+	} def 
+/FMNORMALIZEGRAPHICS { 
+	newpath
+	0.0 0.0 moveto
+	1 setlinewidth
+	0 setlinecap
+	0 0 0 sethsbcolor
+	0 setgray 
+	} bind def
+	/fx FMLOCAL
+	/fy FMLOCAL
+	/fh FMLOCAL
+	/fw FMLOCAL
+	/llx FMLOCAL
+	/lly FMLOCAL
+	/urx FMLOCAL
+	/ury FMLOCAL
+/FMBEGINEPSF { 
+	end 
+	/FMEPSF save def 
+	/showpage {} def 
+% See Adobe's "PostScript Language Reference Manual, 2nd Edition", page 714.
+% "...the following operators MUST NOT be used in an EPS file:" (emphasis ours)
+	/banddevice {(banddevice) FMBADEPSF} def
+	/clear {(clear) FMBADEPSF} def
+	/cleardictstack {(cleardictstack) FMBADEPSF} def 
+	/copypage {(copypage) FMBADEPSF} def
+	/erasepage {(erasepage) FMBADEPSF} def
+	/exitserver {(exitserver) FMBADEPSF} def
+	/framedevice {(framedevice) FMBADEPSF} def
+	/grestoreall {(grestoreall) FMBADEPSF} def
+	/initclip {(initclip) FMBADEPSF} def
+	/initgraphics {(initgraphics) FMBADEPSF} def
+	/initmatrix {(initmatrix) FMBADEPSF} def
+	/quit {(quit) FMBADEPSF} def
+	/renderbands {(renderbands) FMBADEPSF} def
+	/setglobal {(setglobal) FMBADEPSF} def
+	/setpagedevice {(setpagedevice) FMBADEPSF} def
+	/setshared {(setshared) FMBADEPSF} def
+	/startjob {(startjob) FMBADEPSF} def
+	/lettertray {(lettertray) FMBADEPSF} def
+	/letter {(letter) FMBADEPSF} def
+	/lettersmall {(lettersmall) FMBADEPSF} def
+	/11x17tray {(11x17tray) FMBADEPSF} def
+	/11x17 {(11x17) FMBADEPSF} def
+	/ledgertray {(ledgertray) FMBADEPSF} def
+	/ledger {(ledger) FMBADEPSF} def
+	/legaltray {(legaltray) FMBADEPSF} def
+	/legal {(legal) FMBADEPSF} def
+	/statementtray {(statementtray) FMBADEPSF} def
+	/statement {(statement) FMBADEPSF} def
+	/executivetray {(executivetray) FMBADEPSF} def
+	/executive {(executive) FMBADEPSF} def
+	/a3tray {(a3tray) FMBADEPSF} def
+	/a3 {(a3) FMBADEPSF} def
+	/a4tray {(a4tray) FMBADEPSF} def
+	/a4 {(a4) FMBADEPSF} def
+	/a4small {(a4small) FMBADEPSF} def
+	/b4tray {(b4tray) FMBADEPSF} def
+	/b4 {(b4) FMBADEPSF} def
+	/b5tray {(b5tray) FMBADEPSF} def
+	/b5 {(b5) FMBADEPSF} def
+	FMNORMALIZEGRAPHICS 
+	[/fy /fx /fh /fw /ury /urx /lly /llx] {exch def} forall 
+	fx fw 2 div add fy fh 2 div add  translate
+	rotate
+	fw 2 div neg fh 2 div neg translate
+	fw urx llx sub div fh ury lly sub div scale 
+	llx neg lly neg translate 
+	/FMdicttop countdictstack 1 add def 
+	/FMoptop count def 
+	} bind def
+/FMENDEPSF {
+	count -1 FMoptop {pop pop} for 
+	countdictstack -1 FMdicttop {pop end} for 
+	FMEPSF restore
+	FrameDict begin 
+	} bind def
+FrameDict begin 
+/setmanualfeed {
+%%BeginFeature *ManualFeed True
+	 statusdict /manualfeed true put
+%%EndFeature
+	} bind def
+/max {2 copy lt {exch} if pop} bind def
+/min {2 copy gt {exch} if pop} bind def
+/inch {72 mul} def
+/pagedimen { 
+	paperheight sub abs 16 lt exch 
+	paperwidth sub abs 16 lt and
+	{/papername exch def} {pop} ifelse
+	} bind def
+	/papersizedict FMLOCAL
+/setpapername { 
+	/papersizedict 14 dict def 
+	papersizedict begin
+	/papername /unknown def 
+		/Letter 8.5 inch 11.0 inch pagedimen
+		/LetterSmall 7.68 inch 10.16 inch pagedimen
+		/Tabloid 11.0 inch 17.0 inch pagedimen
+		/Ledger 17.0 inch 11.0 inch pagedimen
+		/Legal 8.5 inch 14.0 inch pagedimen
+		/Statement 5.5 inch 8.5 inch pagedimen
+		/Executive 7.5 inch 10.0 inch pagedimen
+		/A3 11.69 inch 16.5 inch pagedimen
+		/A4 8.26 inch 11.69 inch pagedimen
+		/A4Small 7.47 inch 10.85 inch pagedimen
+		/B4 10.125 inch 14.33 inch pagedimen
+		/B5 7.16 inch 10.125 inch pagedimen
+	end
+	} bind def
+/papersize {
+	papersizedict begin
+		/Letter {lettertray letter} def
+		/LetterSmall {lettertray lettersmall} def
+		/Tabloid {11x17tray 11x17} def
+		/Ledger {ledgertray ledger} def
+		/Legal {legaltray legal} def
+		/Statement {statementtray statement} def
+		/Executive {executivetray executive} def
+		/A3 {a3tray a3} def
+		/A4 {a4tray a4} def
+		/A4Small {a4tray a4small} def
+		/B4 {b4tray b4} def
+		/B5 {b5tray b5} def
+		/unknown {unknown} def
+	papersizedict dup papername known {papername} {/unknown} ifelse get
+	end
+	statusdict begin stopped end 
+	} bind def
+/manualpapersize {
+	papersizedict begin
+		/Letter {letter} def
+		/LetterSmall {lettersmall} def
+		/Tabloid {11x17} def
+		/Ledger {ledger} def
+		/Legal {legal} def
+		/Statement {statement} def
+		/Executive {executive} def
+		/A3 {a3} def
+		/A4 {a4} def
+		/A4Small {a4small} def
+		/B4 {b4} def
+		/B5 {b5} def
+		/unknown {unknown} def
+	papersizedict dup papername known {papername} {/unknown} ifelse get
+	end
+	stopped 
+	} bind def
+/desperatepapersize {
+	statusdict /setpageparams known
+		{
+		paperwidth paperheight 0 1 
+		statusdict begin
+		{setpageparams} stopped 
+		end
+		} {true} ifelse 
+	} bind def
+/DiacriticEncoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /space /exclam /quotedbl
+/numbersign /dollar /percent /ampersand /quotesingle /parenleft
+/parenright /asterisk /plus /comma /hyphen /period /slash /zero /one
+/two /three /four /five /six /seven /eight /nine /colon /semicolon
+/less /equal /greater /question /at /A /B /C /D /E /F /G /H /I /J /K
+/L /M /N /O /P /Q /R /S /T /U /V /W /X /Y /Z /bracketleft /backslash
+/bracketright /asciicircum /underscore /grave /a /b /c /d /e /f /g /h
+/i /j /k /l /m /n /o /p /q /r /s /t /u /v /w /x /y /z /braceleft /bar
+/braceright /asciitilde /.notdef /Adieresis /Aring /Ccedilla /Eacute
+/Ntilde /Odieresis /Udieresis /aacute /agrave /acircumflex /adieresis
+/atilde /aring /ccedilla /eacute /egrave /ecircumflex /edieresis
+/iacute /igrave /icircumflex /idieresis /ntilde /oacute /ograve
+/ocircumflex /odieresis /otilde /uacute /ugrave /ucircumflex
+/udieresis /dagger /.notdef /cent /sterling /section /bullet
+/paragraph /germandbls /registered /copyright /trademark /acute
+/dieresis /.notdef /AE /Oslash /.notdef /.notdef /.notdef /.notdef
+/yen /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/ordfeminine /ordmasculine /.notdef /ae /oslash /questiondown
+/exclamdown /logicalnot /.notdef /florin /.notdef /.notdef
+/guillemotleft /guillemotright /ellipsis /.notdef /Agrave /Atilde
+/Otilde /OE /oe /endash /emdash /quotedblleft /quotedblright
+/quoteleft /quoteright /.notdef /.notdef /ydieresis /Ydieresis
+/fraction /currency /guilsinglleft /guilsinglright /fi /fl /daggerdbl
+/periodcentered /quotesinglbase /quotedblbase /perthousand
+/Acircumflex /Ecircumflex /Aacute /Edieresis /Egrave /Iacute
+/Icircumflex /Idieresis /Igrave /Oacute /Ocircumflex /.notdef /Ograve
+/Uacute /Ucircumflex /Ugrave /dotlessi /circumflex /tilde /macron
+/breve /dotaccent /ring /cedilla /hungarumlaut /ogonek /caron
+] def
+/ReEncode { 
+	dup 
+	length 
+	dict begin 
+	{
+	1 index /FID ne 
+		{def} 
+		{pop pop} ifelse 
+	} forall 
+	0 eq {/Encoding DiacriticEncoding def} if 
+	currentdict 
+	end 
+	} bind def
+FMPColor 
+	
+	{
+	/BEGINBITMAPCOLOR { 
+		BITMAPCOLOR} def
+	/BEGINBITMAPCOLORc { 
+		BITMAPCOLORc} def
+	/BEGINBITMAPTRUECOLOR { 
+		BITMAPTRUECOLOR } def
+	/BEGINBITMAPTRUECOLORc { 
+		BITMAPTRUECOLORc } def
+	}
+	
+	{
+	/BEGINBITMAPCOLOR { 
+		BITMAPGRAY} def
+	/BEGINBITMAPCOLORc { 
+		BITMAPGRAYc} def
+	/BEGINBITMAPTRUECOLOR { 
+		BITMAPTRUEGRAY } def
+	/BEGINBITMAPTRUECOLORc { 
+		BITMAPTRUEGRAYc } def
+	}
+ifelse
+/K { 
+	FMPrintAllColorsAsBlack {
+		dup 1 eq 2 index 1 eq and 3 index 1 eq and not
+			{7 {pop} repeat 0 0 0 1 0 0 0} if
+	} if 
+	FrameCurColors astore 
+	pop combineColor
+} bind def
+/graymode true def
+	/bwidth FMLOCAL
+	/bpside FMLOCAL
+	/bstring FMLOCAL
+	/onbits FMLOCAL
+	/offbits FMLOCAL
+	/xindex FMLOCAL
+	/yindex FMLOCAL
+	/x FMLOCAL
+	/y FMLOCAL
+/setPatternMode {
+	FMLevel1 {
+		/bwidth  exch def
+		/bpside  exch def
+		/bstring exch def
+		/onbits 0 def  /offbits 0 def
+		freq sangle landscape {90 add} if 
+			{/y exch def
+			 /x exch def
+			 /xindex x 1 add 2 div bpside mul cvi def
+			 /yindex y 1 add 2 div bpside mul cvi def
+			 bstring yindex bwidth mul xindex 8 idiv add get
+			 1 7 xindex 8 mod sub bitshift and 0 ne FrameNegative {not} if
+			 {/onbits  onbits  1 add def 1}
+			 {/offbits offbits 1 add def 0}
+			 ifelse
+			}
+			setscreen
+		offbits offbits onbits add div FrameNegative {1.0 exch sub} if
+		/FrameCurGray exch def
+	} { 
+		pop pop
+		dup patCache exch known {
+			patCache exch get
+		} { 
+			dup
+			patDict /bstring 3 -1 roll put
+			patDict 
+			9 PatFreq screenIndex get div dup matrix scale
+			makepattern
+			dup 
+			patCache 4 -1 roll 3 -1 roll put
+		} ifelse
+		/FrameCurGray 0 def
+		/FrameCurPat exch def
+	} ifelse
+	/graymode false def
+	combineColor
+} bind def
+/setGrayScaleMode {
+	graymode not {
+		/graymode true def
+		FMLevel1 {
+			setCurrentScreen
+		} if
+	} if
+	/FrameCurGray exch def
+	combineColor
+} bind def
+/normalize {
+	transform round exch round exch itransform
+	} bind def
+/dnormalize {
+	dtransform round exch round exch idtransform
+	} bind def
+/lnormalize { 
+	0 dtransform exch cvi 2 idiv 2 mul 1 add exch idtransform pop
+	} bind def
+/H { 
+	lnormalize setlinewidth
+	} bind def
+/Z {
+	setlinecap
+	} bind def
+	
+/PFill {
+	graymode FMLevel1 or not {
+		gsave 1 setgray eofill grestore
+	} if
+} bind def
+/PStroke {
+	graymode FMLevel1 or not {
+		gsave 1 setgray stroke grestore
+	} if
+	stroke
+} bind def
+	/fillvals FMLOCAL
+/X { 
+	fillvals exch get
+	dup type /stringtype eq
+	{8 1 setPatternMode} 
+	{setGrayScaleMode}
+	ifelse
+	} bind def
+/V { 
+	PFill gsave eofill grestore
+	} bind def
+/Vclip {
+	clip
+	} bind def
+/Vstrk {
+	currentlinewidth exch setlinewidth PStroke setlinewidth
+	} bind def
+/N { 
+	PStroke
+	} bind def
+/Nclip {
+	strokepath clip newpath
+	} bind def
+/Nstrk {
+	currentlinewidth exch setlinewidth PStroke setlinewidth
+	} bind def
+/M {newpath moveto} bind def
+/E {lineto} bind def
+/D {curveto} bind def
+/O {closepath} bind def
+	/n FMLOCAL
+/L { 
+ 	/n exch def
+	newpath
+	normalize
+	moveto 
+	2 1 n {pop normalize lineto} for
+	} bind def
+/Y { 
+	L 
+	closepath
+	} bind def
+	/x1 FMLOCAL
+	/x2 FMLOCAL
+	/y1 FMLOCAL
+	/y2 FMLOCAL
+/R { 
+	/y2 exch def
+	/x2 exch def
+	/y1 exch def
+	/x1 exch def
+	x1 y1
+	x2 y1
+	x2 y2
+	x1 y2
+	4 Y 
+	} bind def
+	/rad FMLOCAL
+/rarc 
+	{rad 
+	 arcto
+	} bind def
+/RR { 
+	/rad exch def
+	normalize
+	/y2 exch def
+	/x2 exch def
+	normalize
+	/y1 exch def
+	/x1 exch def
+	mark
+	newpath
+	{
+	x1 y1 rad add moveto
+	x1 y2 x2 y2 rarc
+	x2 y2 x2 y1 rarc
+	x2 y1 x1 y1 rarc
+	x1 y1 x1 y2 rarc
+	closepath
+	} stopped {x1 y1 x2 y2 R} if 
+	cleartomark
+	} bind def
+/RRR { 
+	/rad exch def
+	normalize /y4 exch def /x4 exch def
+	normalize /y3 exch def /x3 exch def
+	normalize /y2 exch def /x2 exch def
+	normalize /y1 exch def /x1 exch def
+	newpath
+	normalize moveto 
+	mark
+	{
+	x2 y2 x3 y3 rarc
+	x3 y3 x4 y4 rarc
+	x4 y4 x1 y1 rarc
+	x1 y1 x2 y2 rarc
+	closepath
+	} stopped
+	 {x1 y1 x2 y2 x3 y3 x4 y4 newpath moveto lineto lineto lineto closepath} if
+	cleartomark
+	} bind def
+/C { 
+	grestore
+	gsave
+	R 
+	clip
+	setCurrentScreen
+} bind def
+/CP { 
+	grestore
+	gsave
+	Y 
+	clip
+	setCurrentScreen
+} bind def
+	/FMpointsize FMLOCAL
+/F { 
+	FMfonts exch get
+	FMpointsize scalefont
+	setfont
+	} bind def
+/Q { 
+	/FMpointsize exch def
+	F 
+	} bind def
+/T { 
+	moveto show
+	} bind def
+/RF { 
+	rotate
+	0 ne {-1 1 scale} if
+	} bind def
+/TF { 
+	gsave
+	moveto 
+	RF
+	show
+	grestore
+	} bind def
+/P { 
+	moveto
+	0 32 3 2 roll widthshow
+	} bind def
+/PF { 
+	gsave
+	moveto 
+	RF
+	0 32 3 2 roll widthshow
+	grestore
+	} bind def
+/S { 
+	moveto
+	0 exch ashow
+	} bind def
+/SF { 
+	gsave
+	moveto
+	RF
+	0 exch ashow
+	grestore
+	} bind def
+/B { 
+	moveto
+	0 32 4 2 roll 0 exch awidthshow
+	} bind def
+/BF { 
+	gsave
+	moveto
+	RF
+	0 32 4 2 roll 0 exch awidthshow
+	grestore
+	} bind def
+/G { 
+	gsave
+	newpath
+	normalize translate 0.0 0.0 moveto 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath 
+	PFill fill
+	grestore
+	} bind def
+/Gstrk {
+	savematrix
+    newpath
+    2 index 2 div add exch 3 index 2 div sub exch 
+    normalize 2 index 2 div sub exch 3 index 2 div add exch 
+    translate
+    scale 
+    0.0 0.0 1.0 5 3 roll arc 
+    restorematrix
+    currentlinewidth exch setlinewidth PStroke setlinewidth
+    } bind def
+/Gclip { 
+	newpath
+	savematrix
+	normalize translate 0.0 0.0 moveto 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath 
+	clip newpath
+	restorematrix
+	} bind def
+/GG { 
+	gsave
+	newpath
+	normalize translate 0.0 0.0 moveto 
+	rotate 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath
+	PFill
+	fill
+	grestore
+	} bind def
+/GGclip { 
+	savematrix
+	newpath
+    normalize translate 0.0 0.0 moveto 
+    rotate 
+    dnormalize scale 
+    0.0 0.0 1.0 5 3 roll arc 
+    closepath
+	clip newpath
+	restorematrix
+	} bind def
+/GGstrk { 
+	savematrix
+    newpath
+    normalize translate 0.0 0.0 moveto 
+    rotate 
+    dnormalize scale 
+    0.0 0.0 1.0 5 3 roll arc 
+    closepath 
+	restorematrix
+    currentlinewidth exch setlinewidth PStroke setlinewidth
+	} bind def
+/A { 
+	gsave
+	savematrix
+	newpath
+	2 index 2 div add exch 3 index 2 div sub exch 
+	normalize 2 index 2 div sub exch 3 index 2 div add exch 
+	translate 
+	scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	restorematrix
+	PStroke
+	grestore
+	} bind def
+/Aclip {
+	newpath
+	savematrix
+	normalize translate 0.0 0.0 moveto 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath 
+	strokepath clip newpath
+	restorematrix
+} bind def
+/Astrk {
+	Gstrk
+} bind def
+/AA { 
+	gsave
+	savematrix
+	newpath
+	
+	3 index 2 div add exch 4 index 2 div sub exch 
+	
+	normalize 3 index 2 div sub exch 4 index 2 div add exch
+	translate 
+	rotate 
+	scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	restorematrix
+	PStroke
+	grestore
+	} bind def
+/AAclip {
+	savematrix
+	newpath
+    normalize translate 0.0 0.0 moveto 
+    rotate 
+    dnormalize scale 
+    0.0 0.0 1.0 5 3 roll arc 
+    closepath
+	strokepath clip newpath
+	restorematrix
+} bind def
+/AAstrk {
+	GGstrk
+} bind def
+	/x FMLOCAL
+	/y FMLOCAL
+	/w FMLOCAL
+	/h FMLOCAL
+	/xx FMLOCAL
+	/yy FMLOCAL
+	/ww FMLOCAL
+	/hh FMLOCAL
+	/FMsaveobject FMLOCAL
+	/FMoptop FMLOCAL
+	/FMdicttop FMLOCAL
+/BEGINPRINTCODE { 
+	/FMdicttop countdictstack 1 add def 
+	/FMoptop count 7 sub def 
+	/FMsaveobject save def
+	userdict begin 
+	/showpage {} def 
+	FMNORMALIZEGRAPHICS 
+	3 index neg 3 index neg translate
+	} bind def
+/ENDPRINTCODE {
+	count -1 FMoptop {pop pop} for 
+	countdictstack -1 FMdicttop {pop end} for 
+	FMsaveobject restore 
+	} bind def
+/gn { 
+	0 
+	{	46 mul 
+		cf read pop 
+		32 sub 
+		dup 46 lt {exit} if 
+		46 sub add 
+		} loop
+	add 
+	} bind def
+	/str FMLOCAL
+/cfs { 
+	/str sl string def 
+	0 1 sl 1 sub {str exch val put} for 
+	str def 
+	} bind def
+/ic [ 
+	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0223
+	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0223
+	0
+	{0 hx} {1 hx} {2 hx} {3 hx} {4 hx} {5 hx} {6 hx} {7 hx} {8 hx} {9 hx}
+	{10 hx} {11 hx} {12 hx} {13 hx} {14 hx} {15 hx} {16 hx} {17 hx} {18 hx}
+	{19 hx} {gn hx} {0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11} {12}
+	{13} {14} {15} {16} {17} {18} {19} {gn} {0 wh} {1 wh} {2 wh} {3 wh}
+	{4 wh} {5 wh} {6 wh} {7 wh} {8 wh} {9 wh} {10 wh} {11 wh} {12 wh}
+	{13 wh} {14 wh} {gn wh} {0 bl} {1 bl} {2 bl} {3 bl} {4 bl} {5 bl} {6 bl}
+	{7 bl} {8 bl} {9 bl} {10 bl} {11 bl} {12 bl} {13 bl} {14 bl} {gn bl}
+	{0 fl} {1 fl} {2 fl} {3 fl} {4 fl} {5 fl} {6 fl} {7 fl} {8 fl} {9 fl}
+	{10 fl} {11 fl} {12 fl} {13 fl} {14 fl} {gn fl}
+	] def
+	/sl FMLOCAL
+	/val FMLOCAL
+	/ws FMLOCAL
+	/im FMLOCAL
+	/bs FMLOCAL
+	/cs FMLOCAL
+	/len FMLOCAL
+	/pos FMLOCAL
+/ms { 
+	/sl exch def 
+	/val 255 def 
+	/ws cfs 
+	/im cfs 
+	/val 0 def 
+	/bs cfs 
+	/cs cfs 
+	} bind def
+400 ms 
+/ip { 
+	is 
+	0 
+	cf cs readline pop 
+	{	ic exch get exec 
+		add 
+		} forall 
+	pop 
+	
+	} bind def
+/rip { 
+	   
+	  
+	  bis ris copy pop 
+      is
+      0
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop 
+	  ris gis copy pop 
+	  dup is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop
+	  gis bis copy pop 
+	  dup add is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+      pop 
+      
+      } bind def
+/wh { 
+	/len exch def 
+	/pos exch def 
+	ws 0 len getinterval im pos len getinterval copy pop
+	pos len 
+	} bind def
+/bl { 
+	/len exch def 
+	/pos exch def 
+	bs 0 len getinterval im pos len getinterval copy pop
+	pos len 
+	} bind def
+/s1 1 string def
+/fl { 
+	/len exch def 
+	/pos exch def 
+	/val cf s1 readhexstring pop 0 get def
+	pos 1 pos len add 1 sub {im exch val put} for
+	pos len 
+	} bind def
+/hx { 
+	3 copy getinterval 
+	cf exch readhexstring pop pop 
+	} bind def
+	/h FMLOCAL
+	/w FMLOCAL
+	/d FMLOCAL
+	/lb FMLOCAL
+	/bitmapsave FMLOCAL
+	/is FMLOCAL
+	/cf FMLOCAL
+/wbytes { 
+      dup dup
+      24 eq { pop pop 3 mul }
+      { 8 eq {pop} {1 eq {7 add 8 idiv} {3 add 4 idiv} ifelse} ifelse } ifelse
+	} bind def
+/BEGINBITMAPBWc { 
+	1 {} COMMONBITMAPc
+	} bind def
+/BEGINBITMAPGRAYc { 
+	8 {} COMMONBITMAPc
+	} bind def
+/BEGINBITMAP2BITc { 
+	2 {} COMMONBITMAPc
+	} bind def
+/COMMONBITMAPc { 
+		 
+	/r exch def
+	/d exch def
+	gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/h exch def /w exch def
+	/lb w d wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+	r                    
+	/is im 0 lb getinterval def 
+	ws 0 lb getinterval is copy pop 
+	/cf currentfile def 
+	w h d [w 0 0 h neg 0 h] 
+	{ip} image 
+	bitmapsave restore 
+	grestore
+	} bind def
+/BEGINBITMAPBW { 
+	1 {} COMMONBITMAP
+	} bind def
+/BEGINBITMAPGRAY { 
+	8 {} COMMONBITMAP
+	} bind def
+/BEGINBITMAP2BIT { 
+	2 {} COMMONBITMAP
+	} bind def
+/COMMONBITMAP { 
+	/r exch def
+	/d exch def
+	gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/h exch def /w exch def
+	/bitmapsave save def 
+	r                    
+	/is w d wbytes string def
+	/cf currentfile def 
+	w h d [w 0 0 h neg 0 h] 
+	{cf is readhexstring pop} image
+	bitmapsave restore 
+	grestore
+	} bind def
+/ngrayt 256 array def
+/nredt 256 array def
+/nbluet 256 array def
+/ngreent 256 array def
+	/gryt FMLOCAL
+	/blut FMLOCAL
+	/grnt FMLOCAL
+	/redt FMLOCAL
+	/indx FMLOCAL
+	/cynu FMLOCAL
+	/magu FMLOCAL
+	/yelu FMLOCAL
+	/k FMLOCAL
+	/u FMLOCAL
+FMLevel1 {
+/colorsetup {
+	currentcolortransfer
+	/gryt exch def
+	/blut exch def
+	/grnt exch def
+	/redt exch def
+	0 1 255 {
+		/indx exch def
+		/cynu 1 red indx get 255 div sub def
+		/magu 1 green indx get 255 div sub def
+		/yelu 1 blue indx get 255 div sub def
+		/k cynu magu min yelu min def
+		/u k currentundercolorremoval exec def
+%		/u 0 def
+		nredt indx 1 0 cynu u sub max sub redt exec put
+		ngreent indx 1 0 magu u sub max sub grnt exec put
+		nbluet indx 1 0 yelu u sub max sub blut exec put
+		ngrayt indx 1 k currentblackgeneration exec sub gryt exec put
+	} for
+	{255 mul cvi nredt exch get}
+	{255 mul cvi ngreent exch get}
+	{255 mul cvi nbluet exch get}
+	{255 mul cvi ngrayt exch get}
+	setcolortransfer
+	{pop 0} setundercolorremoval
+	{} setblackgeneration
+	} bind def
+}
+{
+/colorSetup2 {
+	[ /Indexed /DeviceRGB 255 
+		{dup red exch get 255 div 
+		 exch dup green exch get 255 div 
+		 exch blue exch get 255 div}
+	] setcolorspace
+} bind def
+} ifelse
+	/tran FMLOCAL
+/fakecolorsetup {
+	/tran 256 string def
+	0 1 255 {/indx exch def 
+		tran indx
+		red indx get 77 mul
+		green indx get 151 mul
+		blue indx get 28 mul
+		add add 256 idiv put} for
+	currenttransfer
+	{255 mul cvi tran exch get 255.0 div}
+	exch concatprocs settransfer
+} bind def
+/BITMAPCOLOR { 
+	/d 8 def
+	gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/h exch def /w exch def
+	/bitmapsave save def
+	FMLevel1 {	
+		colorsetup
+		/is w d wbytes string def
+		/cf currentfile def 
+		w h d [w 0 0 h neg 0 h] 
+		{cf is readhexstring pop} {is} {is} true 3 colorimage 
+	} {
+		colorSetup2
+		/is w d wbytes string def
+		/cf currentfile def 
+		7 dict dup begin
+			/ImageType 1 def
+			/Width w def
+			/Height h def
+			/ImageMatrix [w 0 0 h neg 0 h] def
+			/DataSource {cf is readhexstring pop} bind def
+			/BitsPerComponent d def
+			/Decode [0 255] def
+		end image	
+	} ifelse
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPCOLORc { 
+	/d 8 def
+	gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/h exch def /w exch def
+	/lb w d wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+	FMLevel1 {	
+		colorsetup
+		/is im 0 lb getinterval def 
+		ws 0 lb getinterval is copy pop 
+		/cf currentfile def 
+		w h d [w 0 0 h neg 0 h] 
+		{ip} {is} {is} true 3 colorimage
+	} {
+		colorSetup2
+		/is im 0 lb getinterval def 
+		ws 0 lb getinterval is copy pop 
+		/cf currentfile def 
+		7 dict dup begin
+			/ImageType 1 def
+			/Width w def
+			/Height h def
+			/ImageMatrix [w 0 0 h neg 0 h] def
+			/DataSource {ip} bind def
+			/BitsPerComponent d def
+			/Decode [0 255] def
+		end image	
+	} ifelse
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPTRUECOLORc { 
+	/d 24 def
+        gsave
+ 	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/h exch def /w exch def
+	/lb w d wbytes def 
+	sl lb lt {lb ms} if 
+        /bitmapsave save def 
+        
+	/is im 0 lb getinterval def	
+	/ris im 0 w getinterval def	
+	/gis im w w getinterval def	
+	/bis im w 2 mul w getinterval def 
+        
+        ws 0 lb getinterval is copy pop 
+        /cf currentfile def 
+        w h 8 [w 0 0 h neg 0 h] 
+        {w rip pop ris} {gis} {bis} true 3 colorimage
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPTRUECOLOR { 
+        gsave
+		
+		3 index 2 div add exch	
+		4 index 2 div add exch	
+		translate		
+		rotate			
+		1 index 2 div neg	
+		1 index 2 div neg	
+		translate		
+		scale			
+		/h exch def /w exch def
+        /bitmapsave save def 
+        /is w string def
+        /gis w string def
+        /bis w string def
+        /cf currentfile def 
+        w h 8 [w 0 0 h neg 0 h] 
+        { cf is readhexstring pop } 
+        { cf gis readhexstring pop } 
+        { cf bis readhexstring pop } 
+        true 3 colorimage 
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPTRUEGRAYc { 
+	/d 24 def
+        gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/h exch def /w exch def
+	/lb w d wbytes def 
+	sl lb lt {lb ms} if 
+        /bitmapsave save def 
+        
+	/is im 0 lb getinterval def	
+	/ris im 0 w getinterval def	
+	/gis im w w getinterval def	
+	/bis im w 2 mul w getinterval def 
+        ws 0 lb getinterval is copy pop 
+        /cf currentfile def 
+        w h 8 [w 0 0 h neg 0 h] 
+        {w rip pop ris gis bis w gray} image
+        bitmapsave restore 
+        grestore
+        } bind def
+/ww FMLOCAL
+/r FMLOCAL
+/g FMLOCAL
+/b FMLOCAL
+/i FMLOCAL
+/gray { 
+        /ww exch def
+        /b exch def
+        /g exch def
+        /r exch def
+        0 1 ww 1 sub { /i exch def r i get .299 mul g i get .587 mul
+			b i get .114 mul add add r i 3 -1 roll floor cvi put } for
+        r
+        } bind def
+/BITMAPTRUEGRAY { 
+        gsave
+		
+		3 index 2 div add exch	
+		4 index 2 div add exch	
+		translate		
+		rotate			
+		1 index 2 div neg	
+		1 index 2 div neg	
+		translate		
+		scale			
+		/h exch def /w exch def
+        /bitmapsave save def 
+        /is w string def
+        /gis w string def
+        /bis w string def
+        /cf currentfile def 
+        w h 8 [w 0 0 h neg 0 h] 
+        { cf is readhexstring pop 
+          cf gis readhexstring pop 
+          cf bis readhexstring pop w gray}  image
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPGRAY { 
+	8 {fakecolorsetup} COMMONBITMAP
+	} bind def
+/BITMAPGRAYc { 
+	8 {fakecolorsetup} COMMONBITMAPc
+	} bind def
+/ENDBITMAP {
+	} bind def
+end 
+	/ALDsave FMLOCAL
+	/ALDmatrix matrix def ALDmatrix currentmatrix pop
+/StartALD {
+	/ALDsave save def
+	 savematrix
+	 ALDmatrix setmatrix
+	} bind def
+/InALD {
+	 restorematrix
+	} bind def
+/DoneALD {
+	 ALDsave restore
+	} bind def
+/I { setdash } bind def
+/J { [] 0 setdash } bind def
+%%EndProlog
+%%BeginSetup
+(4.0) FMVERSION
+1 1 0 0 612 792 0 1 9 FMDOCUMENT
+0 0 /Times-Roman FMFONTDEFINE
+1 0 /Times-Bold FMFONTDEFINE
+2 0 /Times-Italic FMFONTDEFINE
+3 0 /Courier FMFONTDEFINE
+4 0 /Times-BoldItalic FMFONTDEFINE
+32 FMFILLS
+0 0 FMFILL
+1 0.1 FMFILL
+2 0.3 FMFILL
+3 0.5 FMFILL
+4 0.7 FMFILL
+5 0.9 FMFILL
+6 0.97 FMFILL
+7 1 FMFILL
+8 <0f1e3c78f0e1c387> FMFILL
+9 <0f87c3e1f0783c1e> FMFILL
+10 <cccccccccccccccc> FMFILL
+11 <ffff0000ffff0000> FMFILL
+12 <8142241818244281> FMFILL
+13 <03060c183060c081> FMFILL
+14 <8040201008040201> FMFILL
+16 1 FMFILL
+17 0.9 FMFILL
+18 0.7 FMFILL
+19 0.5 FMFILL
+20 0.3 FMFILL
+21 0.1 FMFILL
+22 0.03 FMFILL
+23 0 FMFILL
+24 <f0e1c3870f1e3c78> FMFILL
+25 <f0783c1e0f87c3e1> FMFILL
+26 <3333333333333333> FMFILL
+27 <0000ffff0000ffff> FMFILL
+28 <7ebddbe7e7dbbd7e> FMFILL
+29 <fcf9f3e7cf9f3f7e> FMFILL
+30 <7fbfdfeff7fbfdfe> FMFILL
+%%EndSetup
+%%Page: "1" 1
+%%BeginPaperSize: Letter
+%%EndPaperSize
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+J
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(1) 534 28.33 T
+72 72 540 720 R
+7 X
+V
+1 18 Q
+0 X
+(String++ V) 226.82 708 T
+(ersion 3.1) 311.18 708 T
+0 12 Q
+(April 15, 1994) 270.83 687 T
+-0.6 (String++ is a String class written for Borland/Turbo C++. It contains a variety of string pro-) 108 658 P
+0.67 (cessing functions such as Insert, Delete, Replace, Find, Justify, and Trim, as well as overloaded) 72 641 P
+-0.08 (operators for assignment, concatenation, and comparison. For AWK programmers, there are stan-) 72 624 P
+-0.58 (dard AWK functions such as sub, substr, index, and split, as well as support for regular expressions) 72 607 P
+(in many functions.) 72 590 T
+(    Some of the ways that strings may be declared or initialized are as follows:) 72 571 T
+(String) 108 552 T
+(str;) 144 552 T
+(// NULL string) 252 552 T
+(str\050'H'\051;) 144 535 T
+(// single character) 252 535 T
+(str\050"Hello World"\051;) 144 518 T
+(// char*) 252 518 T
+(str\050c, 5\051;) 144 501 T
+(// make 5 copies of character c) 252 501 T
+(str\050p, 5\051;) 144 484 T
+(// char* p, begin at p[5]) 252 484 T
+(str\050p, 5, 3\051;) 144 467 T
+(// char* p, begin at p[5], use 3 chars) 252 467 T
+(str\050s\051;) 144 450 T
+(// another string) 252 450 T
+(str\050s, 5\051;) 144 433 T
+(// String s, begin at s[5]) 252 433 T
+(str\050s, 5, 3\051;) 144 416 T
+(// String s, begin at s[5], use 3 chars) 252 416 T
+(str\05045\051;) 144 399 T
+(// convert an int to a string) 252 399 T
+(str\0501.23\051;) 144 382 T
+(// convert a float to a string) 252 382 T
+(str\0501.23, "%6.2f"\051;) 144 365 T
+(// convert a float to a string using a format specifier) 252 365 T
+(str = 'H';) 144 348 T
+(// single character) 252 348 T
+(str = "Hello World";) 144 331 T
+(// char*) 252 331 T
+(str = 1.6e-19) 144 314 T
+(// any number) 252 314 T
+(str = p;) 144 297 T
+(// char* p) 252 297 T
+(str = s;) 144 280 T
+(// another string) 252 280 T
+(str = x;) 144 263 T
+(// any number) 252 263 T
+(The following operators are available:) 72 244 T
+(=) 108 225 T
+(assignment - see above) 144 225 T
+(\050\051) 108 208 T
+(str\050\051 returns the char* of the string) 144 208 T
+(char) 108 191 T
+(cast operator: str returns the first char of the string) 144 191 T
+(char*) 108 174 T
+(cast operator: str returns the char* of the string) 144 174 T
+(*) 108 157 T
+(*str returns str[0]) 144 157 T
+([]) 108 140 T
+(str[i] returns the ith character of str; [] can also assign) 144 140 T
+(the ith character of a string) 404.27 140 T
+(.) 72 123 T
+(+  +=) 108 123 T
+(concatenates) 144 123 T
+(<<) 108 106 T
+(concatenates) 144 106 T
+(*  *=) 108 89 T
+(multiple duplicates) 144 89 T
+FMENDPAGE
+%%EndPage: "1" 1
+%%Page: "2" 2
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(2) 534 28.33 T
+72 72 540 720 R
+7 X
+V
+0 X
+(== !=) 108 712 T
+(comparisons) 144 712 T
+(<  >) 108 695 T
+(comparisons) 144 695 T
+(<= >=) 108 678 T
+(comparisons) 144 678 T
+-0.57 (Some binary operators are declared as friend functions. This allows them to accept char, char*, and) 72 659 P
+1.18 (String as valid arguments on either side of the operator. Therefore, each of these statements is) 72 642 P
+(valid:) 72 625 T
+(s1 = "Hello" + s2;) 108 606 T
+(s1 = s2 + "World";) 108 589 T
+(s1 = "Hello" + s2 + "World";) 108 572 T
+(if\050s1 == "Hello World"\051 ...) 108 555 T
+(if\050"Hello World" == s1\051 ...) 108 538 T
+(However,) 72 519 T
+(s1 = "Hello " + "World";) 108 500 T
+0.25 (is not legal because a String object) 72 481 P
+2 F
+0.25 (must) 243.37 481 P
+0 F
+0.25 ( appear on one side of the operator. A more flexible way) 266.03 481 P
+(to assign the contents of a string is to use the << operator:) 72 464 T
+(char c;) 108 445 T
+(String s1, s2;) 108 428 T
+(...) 108 411 T
+(int n = index\050s1, c\051;) 108 394 T
+(s2 << "The location of " << c << " in " << s1 << " is " << n;) 108 377 T
+(The << operator is overloaded to accept char, char*, String, int, long, float, and double.) 72 358 T
+0.01 (The following functions are supported. Refer to the reference section of this document for) 108 339 P
+(function syntax and examples.) 72 322 T
+(Copy) 108 303 T
+(Copy a string to a char*) 216 303 T
+(Delete) 108 286 T
+(Delete a substring) 216 286 T
+(FindFirst) 108 269 T
+(Find the first occurrence of a substring) 216 269 T
+(FindLast) 108 252 T
+(Find the last occurrence of a substring) 216 252 T
+(FindNext) 108 235 T
+(Find the next occurrence of a substring) 216 235 T
+(FindPrev) 108 218 T
+(Find the previous occurrence of a substring) 216 218 T
+(gsub) 108 201 T
+(Global substring substitution) 216 201 T
+(Index, index) 108 184 T
+(Position of a substring) 216 184 T
+(Insert) 108 167 T
+(Insert a substring) 216 167 T
+(Justify) 108 150 T
+(Justify the string) 216 150 T
+(Left, left) 108 133 T
+(Leftmost substring) 216 133 T
+(Len) 108 116 T
+(Length of the string) 216 116 T
+(Length, length) 108 99 T
+(Length of the string) 216 99 T
+(match) 108 82 T
+(Match a regular expression) 216 82 T
+FMENDPAGE
+%%EndPage: "2" 2
+%%Page: "3" 3
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(3) 534 28.33 T
+72 72 540 720 R
+7 X
+V
+0 X
+(Mid, mid) 108 712 T
+(Middle substring) 216 712 T
+(Minimize) 108 695 T
+(Minimize the buffer space) 216 695 T
+(ptr) 108 678 T
+(Return the char* of a string) 216 678 T
+(Replace) 108 661 T
+(Replace a substring) 216 661 T
+(Right) 108 644 T
+(Rightmost substring) 216 644 T
+(SetCaseSensitivity) 108 627 T
+(Set the case sensitivity for comparisons) 216 627 T
+(SetCompare) 108 610 T
+(Set the comparison function pointer) 216 610 T
+(SetFloatFormat) 108 593 T
+(Set the floating point format specifier) 216 593 T
+(SetIncLength) 108 576 T
+(Set the buffer increment length) 216 576 T
+(SetMinLength) 108 559 T
+(Set the buffer minimum length) 216 559 T
+(SetSize) 108 542 T
+(Set the buffer size) 216 542 T
+(SetToLower) 108 525 T
+(Set the toLower function pointer) 216 525 T
+(SetToUpper) 108 508 T
+(Set the toUpper function pointer) 216 508 T
+(Split, split) 108 491 T
+(Split a string on a field separator) 216 491 T
+(Sub, sub) 108 474 T
+(Leftmost substitution) 216 474 T
+(SubStr, substr) 108 457 T
+(Random substring) 216 457 T
+(toLower, tolower) 108 440 T
+(Case conversion) 216 440 T
+(toUpper, toupper) 108 423 T
+(Case conversion) 216 423 T
+(Trim, trim) 108 406 T
+(Remove outer whitespace) 216 406 T
+(Value) 108 389 T
+(Numeric value of a numeric string) 216 389 T
+1 14 Q
+(String Buffers) 72 355.67 T
+0 12 Q
+0.09 (The contents of a string is stored in a character array. Although the size of the array could) 108 336 P
+-0.01 (be just large enough to hold the string, the array would have to be reallocated if a single character) 72 319 P
+0.65 (is added to the string. To improve speed, this class utilizes a minimum string buffer size and an) 72 302 P
+(incremental size.) 72 285 T
+0.05 (The minimum buffer size is the minimum amount of memory that is initially allocated for) 108 266 P
+-0.13 (the character array. The default size is 16 characters. Each newly created string will automatically) 72 249 P
+-0.44 (have a buffer size equal to this minimum size, plus one extra byte for the NULL terminator. There-) 72 232 P
+(fore,) 72 215 T
+(String s1;) 108 196 T
+(String s2 = "Hello";) 108 179 T
+0.32 (will both have 17 bytes of memory allocated even though not all 17 bytes are used. If the strings) 72 160 P
+-0.52 (are appended to then the memory does not have to be reallocated provided that the new length does) 72 143 P
+(not exceed 17 bytes:) 72 126 T
+(s1 = s2;) 108 107 T
+(s2 += ", World";) 108 90 T
+FMENDPAGE
+%%EndPage: "3" 3
+%%Page: "4" 4
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(4) 534 28.33 T
+72 72 540 720 R
+7 X
+V
+0 X
+0.27 (The minimum buffer length is stored in the private variable) 72 712 P
+1 F
+0.27 (strMinLength) 362.7 712 P
+0 F
+0.27 (. You can set this to a) 434.7 712 P
+(new value with the) 72 695 T
+1 F
+(SetMinLength\050\051) 165.98 695 T
+0 F
+( function:) 247.98 695 T
+(String::SetMinLength\05024\051;) 108 676 T
+1.23 (This example sets the minimum buffer length to 24 bytes \050plus 1\051 for all subsequently created) 72 657 P
+0.31 (strings. Note that the String class is used in calling this function even though any String instance) 72 640 P
+(could be used.) 72 623 T
+-0.71 (A second variable is used in determining how a string buffer will grow. The private variable) 108 604 P
+1 F
+0.29 (strIncLength) 72 587 P
+0 F
+0.29 ( specifies the minimum number of bytes that is added to the buffer when the string) 139.33 587 P
+0.52 (exceeds the current buffer size. The default value is 8 bytes. Whenever a string needs additional) 72 570 P
+0.45 (space, it receives it in multiples of 8 bytes. In the example above, s2 contains "Hello, World". If) 72 553 P
+(we add some more:) 72 536 T
+(s2 += ", How are you?";) 108 517 T
+-0.07 (then s2 will exceed 17 bytes and additional memory must be allocated. In this case, s2 will need a) 72 498 P
+0.71 (total of 27 bytes \050including the NULL terminator\051. The original 17 bytes plus the incremental 8) 72 481 P
+-0.25 (bytes is not enough, so another incremental 8 bytes is added for a total of 33 bytes. This procedure) 72 464 P
+(also works for newly created strings that exceed strMinLength:) 72 447 T
+(String s3 = "This is a very long string.";) 108 428 T
+0.09 (s3 requires 28 bytes, so again it will receive 33 bytes \05017+8+8\051. strIncLength can be set using the) 72 409 P
+1 F
+(SetIncLength\050\051) 72 392 T
+0 F
+( function:) 149.33 392 T
+(String::SetIncLength\05016\051;) 108 373 T
+-0.42 (The reason for using minimum and incremental lengths is to reduce the number of memory) 108 354 P
+-0.46 (allocations, which are time consuming. The drawback is that each string will waste a small amount) 72 337 P
+-0.05 (of memory; for a moderate size string this will typically be strIncLength/2. Making strMinLength) 72 320 P
+0.76 (and strIncLength larger will waste more memory but require fewer memory allocations. Setting) 72 303 P
+-0.16 (them equal to 1 will waste no memory but each appendage operation will need to reallocate mem-) 72 286 P
+(ory. This is how older versions of this class worked \0502.12 and prior\051.) 72 269 T
+1 14 Q
+(T) 72 245.67 T
+(emporary Strings) 80.05 245.67 T
+0 12 Q
+0.01 (When using strings, you should be aware that temporary string objects are sometimes cre-) 108 221 P
+(ated and destroyed, and that they can degrade program performance. For example,) 72 204 T
+(s1 = s2 + "World";) 108 185 T
+-0.46 (creates a temporary string that is the combination of s2 and "World". It is this temporary string that) 72 166 P
+-0.65 (is assigned to s1 via the = operator. The reason for this is because the + operator is defined to accept) 72 149 P
+-0.35 (two const objects \050in this case a String and a char*\051 and returns a newly created string. The = oper-) 72 132 P
+-0.41 (ator is defined to accept a String&, which in this case is the string that results from the + operation.) 72 115 P
+-0.06 (The compiler knows that this string is temporary and will automatically delete it when the assign-) 72 98 P
+(ment to s1 is done.) 72 81 T
+FMENDPAGE
+%%EndPage: "4" 4
+%%Page: "5" 5
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(5) 534 28.33 T
+72 72 540 720 R
+7 X
+V
+0 X
+0.42 (Functions that accept String objects as arguments can also accept char and char* objects,) 108 712 P
+-0.29 (as well as other data types that are supported by String constructors. For example, even though the) 72 695 P
+(index\050\051 function is defined to accept two String arguments, this is legal:) 72 678 T
+(i = index\050s1, "a"\051;) 108 659 T
+-0.61 (The "a" argument will be converted to a String object by the compiler because there is a String con-) 72 640 P
+-0.11 (structor that is defined for char*. Like the operator example above, this String object is temporary) 72 623 P
+(and is destroyed when the function returns.) 72 606 T
+0.98 (Based on the above example, is it necessary for the String class to overload the various) 108 587 P
+-0.43 (operators to accept data types that are already supported by constructors? The answer is no, but the) 72 570 P
+0.75 (overloaded operators will reduce the number of temporary strings that are created and therefore) 72 553 P
+1 (improve performance. In the example above, if the + operator were only defined to accept two) 72 536 P
+-0.4 (strings, then the "World" argument would cause the creation of a second temporary string. Most of) 72 519 P
+0.26 (the string functions are not overloaded because they typically do not see the kind of repeated use) 72 502 P
+-0.31 (the operators get. If there is a string function that will get heavy repeated use with non-string argu-) 72 485 P
+2.58 (ments \050such as the index example above\051 then you might see some speed improvement by) 72 468 P
+(overloading the function.) 72 451 T
+1 14 Q
+(Regular Expr) 72 417.67 T
+(essions) 153.8 417.67 T
+0 12 Q
+0.56 (Regular expressions are text patterns that are used for string matching. Normally, strings) 108 398 P
+0.47 (are compared to other strings \050or substrings\051 and we look for an absolute match. However, there) 72 381 P
+0.27 (are times when we want to test a string in a more general way. For example, suppose we want to) 72 364 P
+0.14 (see if a string contains any digits. Using absolute string matching, we would have to run 10 com-) 72 347 P
+0.32 (parisons, one for each digit. Using regular expressions, we can create a character class and make) 72 330 P
+(one comparison:) 72 313 T
+3 F
+(String s1;) 108 290 T
+(Regexp re = "[0-9]";) 108 276 T
+(...) 108 262 T
+(if\050s1 == re\051) 108 248 T
+(  do_something\050\051;) 108 234 T
+0 F
+0.04 (In the example above, the regular expression contains "[0-9]". The "[]" brackets enclose the char-) 72 214 P
+-0.58 (acter class) 72 197 P
+2 F
+-0.58 (0-9) 123.49 197 P
+0 F
+-0.58 ( which matches any single digit. Therefore, if) 139.48 197 P
+2 F
+-0.58 (s1) 356.15 197 P
+0 F
+-0.58 ( contains a digit then the comparison) 366.82 197 P
+(with) 72 180 T
+2 F
+(re) 96.34 180 T
+0 F
+( will be true.) 106.33 180 T
+-0.33 (Before a regular expression can be used it must first be declared. For example, this will not) 108 161 P
+(work:) 72 144 T
+3 F
+(if\050s1 == "[0-9]"\051) 108 121 T
+(  do_something\050\051;) 108 107 T
+0 F
+(because the == operator will compare s1 with the literal string "[0-9]". However, this will work:) 72 87 T
+FMENDPAGE
+%%EndPage: "5" 5
+%%Page: "6" 6
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(6) 534 28.33 T
+72 72 540 720 R
+7 X
+V
+3 F
+0 X
+(if\050s1 == Regexp\050"[0-9]"\051\051) 108 712 T
+(  do_something\050\051;) 108 698 T
+0 F
+-0.47 (Several string functions include support for regular expressions. Like the other AWK func-) 108 678 P
+1.93 (tions included with the String class, the) 72 661 P
+1 F
+1.93 (match) 277.51 661 P
+0 F
+1.93 ( function returns the position of the matching) 309.5 661 P
+0.52 (substring using C\325s zero-based array offset, and -1 if the match failed. Because the ~ operator is) 72 644 P
+-0.44 (unary in C++, it could not be overloaded to provide the same functionality as in AWK. Instead, the) 72 627 P
+(== operator and the != operator have been overloaded to use regular expressions.) 72 610 T
+0.08 (For more information concerning the use of regular expressions, consult a text on Unix or) 108 591 P
+3.42 (the AWK language \050such as) 72 574 P
+2 F
+3.42 (The AWK Programming Language) 226.74 574 P
+0 F
+3.42 (, by Aho, Kernighan, and) 404.67 574 P
+(Weinberger\051.) 72 557 T
+1 14 Q
+(Using the String Class) 72 523.67 T
+0 12 Q
+-0.18 (Before using the String class, you need to set it up for the version of Borland C++ that you) 108 504 P
+0.47 (are using. In 3.x, Borland used a class named) 72 487 P
+2 F
+0.47 (String) 296.23 487 P
+0 F
+0.47 ( in  the Container Class Library.  Therefore,) 325.58 487 P
+0.32 (you cannot have another  class named) 72 470 P
+2 F
+0.32 (String) 259.19 470 P
+0 F
+0.32 (.  In 4.x,  Borland used an entirely new class named) 288.53 470 P
+2 F
+(string) 72 453 T
+0 F
+(, so another) 100.01 453 T
+2 F
+(string) 158.66 453 T
+0 F
+( class would be illegal.  In str.h there are two  typedef statements:) 186.67 453 T
+3 F
+(typedef StrPP String) 108 430 T
+(typedef StrPP string) 108 410 T
+0 F
+0.21 (These  basically define alternate names for the class StrPP,  which is  referred  to throughout this) 72 390 P
+-0.13 (document as "the String class". If you are using BC++ 3.x comment out the String typedef,  and if) 72 373 P
+0.37 (you are using 4.x  comment out the string typedef.  If you want to derive your own custom class) 72 356 P
+(named) 72 339 T
+2 F
+(string) 106.99 339 T
+0 F
+( or) 135 339 T
+2 F
+(String) 151 339 T
+0 F
+(, comment out the appropriate typedef, or both.) 180.34 339 T
+-0.1 (    There  are  several ways to add the String class to your  program. You could  simply copy all of) 72 320 P
+-0.23 (the files to your project directory and  add  the) 72 303 P
+2 F
+-0.23 (cpp) 295.09 303 P
+0 F
+-0.23 ( files to the project list, and) 312.42 303 P
+1 F
+-0.23 (#include "str.h") 444.8 303 P
+0 F
+-0.23 ( in) 527.89 303 P
+-0.28 (any module that uses a string.  You could also compile the) 72 286 P
+2 F
+-0.28 (cpp) 352.28 286 P
+0 F
+-0.28 ( files to object format and  place the) 369.61 286 P
+0.39 (object  files  in  Borland's LIB directory and  the  header  files  in Borland's  H  directory.  Then) 72 269 P
+0.27 (add the) 72 252 P
+2 F
+0.27 (obj) 110.54 252 P
+0 F
+0.27 ( files to the  project  list  and) 125.87 252 P
+1 F
+0.27 (#include <str.h>) 268.59 252 P
+0 F
+0.27 (.  Finally,  you could split the) 352.55 252 P
+2 F
+0.27 (cpp) 498.74 252 P
+0 F
+0.27 ( files) 516.06 252 P
+-0.13 (into  individual function  files and use them to create a more efficient) 72 235 P
+2 F
+-0.13 (lib) 405.47 235 P
+0 F
+-0.13 ( file which  can be placed) 418.15 235 P
+0.19 (in Borland's LIB directory and added to the project list.  To use regular expressions you will also) 72 218 P
+(need to) 72 201 T
+1 F
+(#include regexp.h) 109.99 201 T
+0 F
+( in modules that use them.) 200.66 201 T
+FMENDPAGE
+%%EndPage: "6" 6
+%%Page: "7" 7
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(7) 534 28.33 T
+72 72 540 720 R
+7 X
+V
+1 18 Q
+0 X
+(Class Operators) 72 708 T
+72 684.99 540 695 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 684.99 540 695 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 693.99 541.01 693.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(operator =) 72 675.66 T
+1 12 Q
+(Syntax:) 72 650.99 T
+0 F
+(String& operator=\050char) 117 650.99 T
+2 F
+(c) 233.08 650.99 T
+0 F
+(\051;) 238.4 650.99 T
+(String& operator=\050char*) 117 633.99 T
+2 F
+(p) 239.08 633.99 T
+0 F
+(\051;) 245.08 633.99 T
+(String& operator=\050String&) 117 616.99 T
+2 F
+(s) 251.1 616.99 T
+0 F
+(\051;) 255.77 616.99 T
+(String& operator=\050int) 117 599.99 T
+2 F
+(n) 225.1 599.99 T
+0 F
+(\051;) 231.1 599.99 T
+(String& operator=\050unsigned int) 117 582.99 T
+2 F
+(n) 271.43 582.99 T
+0 F
+(\051;) 277.43 582.99 T
+(String& operator=\050long) 117 565.99 T
+2 F
+(n) 233.76 565.99 T
+0 F
+(\051;) 239.76 565.99 T
+(String& operator=\050unsigned long) 117 548.99 T
+2 F
+(n) 280.09 548.99 T
+0 F
+(\051;) 286.09 548.99 T
+(String& operator=\050float) 117 531.99 T
+2 F
+(n) 234.42 531.99 T
+0 F
+(\051;) 240.42 531.99 T
+(String& operator=\050double) 117 514.99 T
+2 F
+(n) 245.09 514.99 T
+0 F
+(\051;) 251.09 514.99 T
+0.38 (Assigns contents to the string. In the case of float and double, the string format is determined by) 72 495.99 P
+0.97 (the format specifier) 72 478.99 P
+1 F
+0.97 (fpFormat) 171.87 478.99 P
+0 F
+0.97 (, which is a private member of the String class. It may be set by) 221.19 478.99 P
+(either a previous constructor call or by an explicit call to) 72 461.99 T
+1 F
+(SetFloatFormat\050\051) 346.28 461.99 T
+0 F
+(.) 435.59 461.99 T
+72 437.98 540 447.99 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 437.98 540 447.99 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 446.98 541.01 446.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(operator +) 72 428.65 T
+1 12 Q
+(Syntax:) 72 403.98 T
+0 F
+(String operator+\050String&) 117 403.98 T
+2 F
+(s1) 241.76 403.98 T
+0 F
+(, char*) 252.43 403.98 T
+2 F
+(s2) 288.08 403.98 T
+0 F
+(\051;) 298.75 403.98 T
+(String operator+\050char*) 117 386.98 T
+2 F
+(s1) 229.74 386.98 T
+0 F
+(, String&) 240.41 386.98 T
+2 F
+(s2) 288.08 386.98 T
+0 F
+(\051;) 298.75 386.98 T
+(String operator+\050String&) 117 369.98 T
+2 F
+(s1) 241.76 369.98 T
+0 F
+(, String&) 252.43 369.98 T
+2 F
+(s2) 300.11 369.98 T
+0 F
+(\051;) 310.78 369.98 T
+(Creates a new string by concatenating) 72 350.98 T
+2 F
+(s2) 257.29 350.98 T
+0 F
+(to) 270.96 350.98 T
+2 F
+(s1) 283.3 350.98 T
+0 F
+(.) 293.96 350.98 T
+72 326.98 540 336.98 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 326.98 540 336.98 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 335.98 541.01 335.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(operator +=) 72 317.64 T
+1 12 Q
+(Syntax:) 72 292.98 T
+0 F
+(String& operator+=\050char) 117 292.98 T
+2 F
+(c) 239.84 292.98 T
+0 F
+(\051;) 245.17 292.98 T
+(String& operator+=\050char*) 117 275.98 T
+2 F
+(p) 245.84 275.98 T
+0 F
+(\051;) 251.84 275.98 T
+(String& operator+=\050String&) 117 258.98 T
+2 F
+(s) 257.87 258.98 T
+0 F
+(\051;) 262.54 258.98 T
+(Concatenates the argument to the string.) 72 239.98 T
+72 215.97 540 225.98 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 215.97 540 225.98 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 224.97 541.01 224.97 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(operator <<) 72 206.64 T
+1 12 Q
+(Syntax:) 72 181.97 T
+0 F
+(String& operator<<\050char) 117 181.97 T
+2 F
+(c) 239.84 181.97 T
+0 F
+(\051;) 245.17 181.97 T
+(String& operator<<\050char*) 117 164.97 T
+2 F
+(p) 245.84 164.97 T
+0 F
+(\051;) 251.84 164.97 T
+(String& operator<<\050String&) 117 147.97 T
+2 F
+(s) 257.87 147.97 T
+0 F
+(\051;) 262.54 147.97 T
+(String& operator<<\050int) 117 130.97 T
+2 F
+(n) 231.86 130.97 T
+0 F
+(\051;) 237.86 130.97 T
+(String& operator<<\050unsigned int) 117 113.97 T
+2 F
+(n) 278.2 113.97 T
+0 F
+(\051;) 284.2 113.97 T
+(String& operator<<\050long) 117 96.97 T
+2 F
+(n) 240.53 96.97 T
+0 F
+(\051;) 246.53 96.97 T
+(String& operator<<\050unsigned long) 117 79.97 T
+2 F
+(n) 286.86 79.97 T
+0 F
+(\051;) 292.86 79.97 T
+FMENDPAGE
+%%EndPage: "7" 7
+%%Page: "8" 8
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(8) 534 28.33 T
+72 72 540 720 R
+7 X
+V
+0 X
+(String& operator<<\050float) 117 712 T
+2 F
+(n) 241.19 712 T
+0 F
+(\051;) 247.19 712 T
+(String& operator<<\050double) 117 695 T
+2 F
+(n) 251.86 695 T
+0 F
+(\051;) 257.86 695 T
+-0.09 (Concatenates the argument to the string. In the case of float and double, the string format is deter-) 72 676 P
+-0.01 (mined by the format specifier) 72 659 P
+1 F
+-0.01 (fpFormat) 216.9 659 P
+0 F
+-0.01 (, which is a private member of the String class. It may be) 266.22 659 P
+(set by either a previous constructor call or by an explicit call to) 72 642 T
+1 F
+(SetFloatFormat\050\051) 377.62 642 T
+0 F
+(.) 466.92 642 T
+72 617.99 540 628 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 617.99 540 628 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 626.99 541.01 626.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(operator *) 72 608.66 T
+1 12 Q
+(Syntax:) 72 583.99 T
+0 F
+(String operator*\050String&) 117 583.99 T
+2 F
+(s) 241 583.99 T
+0 F
+(, int) 245.66 583.99 T
+2 F
+(n) 267.34 583.99 T
+0 F
+(\051;) 273.34 583.99 T
+(String operator*\050int) 117 566.99 T
+2 F
+(n) 214.99 566.99 T
+0 F
+(, String&) 220.99 566.99 T
+2 F
+(s) 268.67 566.99 T
+0 F
+(\051;) 273.34 566.99 T
+(Creates a new string with) 72 547.99 T
+2 F
+(n) 196.98 547.99 T
+0 F
+( duplications of String) 202.98 547.99 T
+2 F
+(s) 312.98 547.99 T
+0 F
+(.) 317.65 547.99 T
+72 523.98 540 533.99 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 523.98 540 533.99 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 532.98 541.01 532.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(operator *=) 72 514.65 T
+1 12 Q
+(Syntax:) 72 489.98 T
+0 F
+(String& operator*=\050int) 117 489.98 T
+2 F
+(n) 231.1 489.98 T
+0 F
+(\051;) 237.1 489.98 T
+(Adds) 72 470.98 T
+2 F
+(n) 100.33 470.98 T
+0 F
+(-1 duplications of the string to itself.) 106.33 470.98 T
+72 446.98 540 456.98 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 446.98 540 456.98 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 455.98 541.01 455.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(operator ==) 72 437.64 T
+(operator !=) 72 421.64 T
+(operator <) 72 405.64 T
+(operator >) 72 389.64 T
+(operator <=) 72 373.64 T
+(operator >=) 72 357.64 T
+1 12 Q
+(Syntax:) 72 332.98 T
+0 F
+(int operator??\050String&) 117 332.98 T
+2 F
+(s1) 228.98 332.98 T
+0 F
+(, String&) 239.65 332.98 T
+2 F
+(s2) 287.33 332.98 T
+0 F
+(\051;) 298 332.98 T
+(int operator??\050String&) 117 315.98 T
+2 F
+(s1) 228.98 315.98 T
+0 F
+(, char*) 239.65 315.98 T
+2 F
+(s2) 275.3 315.98 T
+0 F
+(\051;) 285.97 315.98 T
+(int operator??\050char*) 117 298.98 T
+2 F
+(s1) 216.96 298.98 T
+0 F
+(, String&) 227.63 298.98 T
+2 F
+(s2) 275.3 298.98 T
+0 F
+(\051;) 285.97 298.98 T
+(int operator??\050String&) 117 281.98 T
+2 F
+(s1) 228.98 281.98 T
+0 F
+(, char) 239.65 281.98 T
+2 F
+(c) 269.3 281.98 T
+0 F
+(\051;) 274.63 281.98 T
+0.09 (Compares) 72 262.98 P
+2 F
+0.09 (s1) 123.75 262.98 P
+0 F
+0.09 ( to) 134.42 262.98 P
+2 F
+0.09 (s2) 149.93 262.98 P
+0 F
+0.09 ( and returns 1 if the operation is true, 0 otherwise. In the special case of char) 160.6 262.98 P
+2 F
+0.09 (c) 531.67 262.98 P
+0 F
+0.09 (,) 537 262.98 P
+(the operator compares) 72 245.98 T
+2 F
+(s1) 181.63 245.98 T
+0 F
+([0] to) 192.3 245.98 T
+2 F
+(c) 221.63 245.98 T
+0 F
+(.) 226.96 245.98 T
+72 221.97 540 231.98 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 221.97 540 231.98 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 230.97 541.01 230.97 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(operator \050\051) 72 212.64 T
+1 12 Q
+(Syntax:) 72 187.97 T
+0 F
+(const char* operator\050\051\050\051;) 117 187.97 T
+(const char* operator\050\051\050int) 117 170.97 T
+2 F
+(pos) 242.63 170.97 T
+0 F
+(\051;) 259.3 170.97 T
+(String operator\050\051\050int) 117 153.97 T
+2 F
+(pos) 216.98 153.97 T
+0 F
+(, int) 233.65 153.97 T
+2 F
+(len) 255.32 153.97 T
+0 F
+(\051;) 269.99 153.97 T
+1.24 (The first case returns the contents of the string \050) 72 134.97 P
+1 F
+1.24 (strPtr) 312.74 134.97 P
+0 F
+1.24 (\051 via a const char*. The second method) 343.39 134.97 P
+-0.55 (returns) 72 117.97 P
+1 F
+-0.55 (strPtr) 107.77 117.97 P
+0 F
+-0.55 (+) 138.42 117.97 P
+2 F
+-0.55 (pos) 145.19 117.97 P
+0 F
+-0.55 (. The third method creates a new string using the substring beginning at position) 161.86 117.97 P
+2 F
+-0.54 (pos) 72 100.97 P
+0 F
+-0.54 ( with length) 88.67 100.97 P
+2 F
+-0.54 (len) 147.37 100.97 P
+0 F
+-0.54 ( of String) 162.04 100.97 P
+2 F
+-0.54 (*this) 208.74 100.97 P
+0 F
+-0.54 (. The first two methods are considered safe ways to access) 232.08 100.97 P
+1 F
+-0.54 (strPtr) 509.35 100.97 P
+0 F
+0.98 (because the const modifier protects) 72 83.97 P
+1 F
+0.98 (strPtr) 249.2 83.97 P
+0 F
+0.98 ( from modification. In using these methods to pass a) 279.85 83.97 P
+FMENDPAGE
+%%EndPage: "8" 8
+%%Page: "9" 9
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(9) 534 28.33 T
+72 72 540 720 R
+7 X
+V
+0 X
+0.88 (char* representation of a string to a function, be aware that many functions expect a char*, not) 72 712 P
+(const char*. In this case, the safest thing to do is use the) 72 695 T
+1 F
+(Copy\050\051) 343.63 695 T
+0 F
+( function.) 378.96 695 T
+72 670.99 540 681 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 670.99 540 681 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 679.99 541.01 679.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(operator char operator char*) 72 661.66 T
+1 12 Q
+(Syntax:) 72 636.99 T
+0 F
+(operator const char\050\051;) 117 636.99 T
+(operator const char*\050\051;) 117 619.99 T
+0.09 (These are cast operators that are automatically called when a String object is passed where a char) 72 600.99 P
+-0.6 (or char* is expected. The const modifier prevents the contents of the String object from being unin-) 72 583.99 P
+(tentionally modified.) 72 566.99 T
+72 542.98 540 552.99 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 542.98 540 552.99 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 551.98 541.01 551.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(operator *) 72 533.65 T
+1 12 Q
+(Syntax:) 72 508.98 T
+0 F
+(const char operator *\050\051;) 117 508.98 T
+(Returns the first character in the string.) 72 489.98 T
+72 465.98 540 475.98 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 465.98 540 475.98 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 474.98 541.01 474.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(operator []) 72 456.64 T
+1 12 Q
+(Syntax:) 72 431.98 T
+0 F
+(char& operator []\050int) 117 431.98 T
+2 F
+(i) 220.63 431.98 T
+0 F
+(\051;) 223.97 431.98 T
+(Returns the) 72 412.98 T
+2 F
+(i) 130 412.98 T
+0 9.6 Q
+(th) 133.33 417.78 T
+0 12 Q
+( character in the string, or assigns the) 140.8 412.98 T
+2 F
+(i) 322.43 412.98 T
+0 9.6 Q
+(th) 325.77 417.78 T
+0 12 Q
+( character.) 333.24 412.98 T
+FMENDPAGE
+%%EndPage: "9" 9
+%%Page: "10" 10
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(10) 528 28.33 T
+72 72 540 720 R
+7 X
+V
+1 18 Q
+0 X
+(Class Functions) 72 708 T
+72 684.99 540 695 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 684.99 540 695 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 693.99 541.01 693.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(Copy) 72 675.66 T
+1 12 Q
+(Syntax:) 72 650.99 T
+0 F
+(char* Copy\050char *) 117 650.99 T
+2 F
+(p) 206.3 650.99 T
+0 F
+(\051;) 212.3 650.99 T
+-0.57 (Copies the string contents to a non-const character pointer. Copy\050\051 will allocate the memory for the) 72 631.99 P
+0.04 (pointer - it is up to you to free \050delete\051 it. Normally, the contents of a string are extracted with the) 72 614.99 P
+0.53 (\050\051 operator or the char* cast operator. However, these return a const char* that must be cast to a) 72 597.99 P
+1.84 (non-const char* for some C-style functions \050most Borland library functions will accept const) 72 580.99 P
+-0.54 (char*\051. Although you could also use the ptr\050\051 method to return a non-const char*, this is considered) 72 563.99 P
+(unsafe as it completely strips the inherent protection that the String class offers.) 72 546.99 T
+1 F
+(Example:) 72 527.99 T
+3 10 Q
+(char *ptr;) 108 507.33 T
+(String s1 = "lowercase";) 108 495.33 T
+(strupr\050s1\050\051\051;) 108 478.33 T
+(// won't work- strupr\050\051 expects) 324 478.33 T
+(//   a non-const char*) 324 466.33 T
+(strupr\050\050char*\051s1\050\051\051;) 108 454.33 T
+(// cast to char* - this works) 324 454.33 T
+(s1.Copy\050ptr\051;) 108 437.33 T
+(// copy s1 to char *ptr) 324 437.33 T
+(strupr\050ptr\051;) 108 420.33 T
+(// normal C-style) 324 420.33 T
+1 12 Q
+(See Also: ptr, operator char*, operator \050\051) 72 401.99 T
+72 377.98 540 387.99 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 377.98 540 387.99 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 386.98 541.01 386.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(Delete) 72 368.65 T
+1 12 Q
+(Syntax:) 72 343.98 T
+0 F
+(String& Delete\050int) 117 343.98 T
+2 F
+(pos) 209.66 343.98 T
+0 F
+(, int) 226.33 343.98 T
+2 F
+(len) 248 343.98 T
+0 F
+( = 1\051;) 262.67 343.98 T
+0.31 (Deletes a substring beginning at position) 72 324.98 P
+2 F
+0.31 (pos) 272.52 324.98 P
+0 F
+0.31 ( with length 'len'. If) 289.19 324.98 P
+2 F
+0.31 (len) 387.05 324.98 P
+0 F
+0.31 ( = 0, then the substring from) 401.71 324.98 P
+2 F
+(pos) 72 307.98 T
+0 F
+( to the end of the string is deleted.) 88.67 307.98 T
+1 F
+(Example:) 72 288.98 T
+3 10 Q
+(String s1 = "This is a test";) 108 268.32 T
+(s1.Delete\0505, 3\051;) 108 256.32 T
+(// s1 = "This a test") 324 256.32 T
+1 12 Q
+(See Also: gsub, Replace, sub, Sub, trim, Trim) 72 237.98 T
+72 213.98 540 223.98 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 213.98 540 223.98 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 222.98 541.01 222.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(Find...) 72 204.64 T
+1 12 Q
+(Syntax:) 72 179.98 T
+0 F
+(int FindFirst\050String&) 117 179.98 T
+2 F
+(s) 222.36 179.98 T
+0 F
+(\051;) 227.03 179.98 T
+(int FindNext\050void\051) 117 162.98 T
+(int FindLast\050String&) 117 145.98 T
+2 F
+(s) 221.02 145.98 T
+0 F
+(\051) 225.68 145.98 T
+(int FindPrev\050void\051) 117 128.98 T
+-0.2 (Finds the substring) 72 109.98 P
+2 F
+-0.2 (s) 165.75 109.98 P
+0 F
+-0.2 ( in a string. FindFirst\050\051 finds the first occurrence, and FindNext\050\051 finds subse-) 170.42 109.98 P
+4.88 (quent occurrences. FindLast\050\051 finds the last occurrence, and FindPrev\050\051 finds preceding) 72 92.98 P
+FMENDPAGE
+%%EndPage: "10" 10
+%%Page: "11" 11
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(11) 528 28.33 T
+72 72 540 720 R
+7 X
+V
+0 X
+-0.31 (occurrences. Note that FindNext\050\051 and FindPrev\050\051 will continue to use the substring) 72 712 P
+2 F
+-0.31 (s) 472.59 712 P
+0 F
+-0.31 ( from the ini-) 477.26 712 P
+(tial call to FindFirst\050\051 or FindLast\050\051.) 72 695 T
+1 F
+(Example:) 72 676 T
+3 10 Q
+(String s1 = "This is a test";) 108 655.33 T
+(i = s1.FindFirst\050" "\051;) 108 638.33 T
+(while\050i != -1\051) 108 626.33 T
+({) 108 614.33 T
+(  s1.Delete\050i, 1\051;) 108 602.33 T
+(  i = s1.FindNext\050\051;) 108 590.33 T
+(}) 108 578.33 T
+(// s1 = "Thisisatest") 324 578.33 T
+1 12 Q
+(See Also: index, Index, match) 72 560 T
+72 535.99 540 546 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 535.99 540 546 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 544.99 541.01 544.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(Index) 72 526.66 T
+1 12 Q
+(Syntax:) 72 501.99 T
+0 F
+(int Index\050String&) 117 501.99 T
+2 F
+(t) 205.67 501.99 T
+0 F
+(\051;) 209 501.99 T
+(int index\050Regexp&) 117 484.99 T
+2 F
+(t) 212.33 484.99 T
+0 F
+(\051;) 215.66 484.99 T
+0.36 (Returns the position of) 72 465.99 P
+2 F
+0.36 (t) 186.12 465.99 P
+0 F
+0.36 ( in the string if it exists, or -1 if it does not.) 189.45 465.99 P
+2 F
+0.36 (t) 403.17 465.99 P
+0 F
+0.36 ( can be a string or a regular) 406.51 465.99 P
+(expression.) 72 448.99 T
+1 F
+(Example:) 72 429.99 T
+3 10 Q
+(int i;) 108 409.33 T
+(String s1 = "d:\134\134prog\134\134str";) 108 397.33 T
+(i = s1.Index\050":"\051;) 108 380.33 T
+(// i = 1) 324 380.33 T
+1 12 Q
+(See Also: FindFirst, FindNext, FindLast, FindPrev, index, match) 72 361.99 T
+72 337.98 540 347.99 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 337.98 540 347.99 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 346.98 541.01 346.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(Insert) 72 328.65 T
+1 12 Q
+(Syntax:) 72 303.98 T
+0 F
+(String& Insert\050int) 117 303.98 T
+2 F
+(pos) 205.67 303.98 T
+0 F
+(, String&) 222.34 303.98 T
+2 F
+(s) 270.01 303.98 T
+0 F
+(\051;) 274.68 303.98 T
+(Inserts substring) 72 284.98 T
+2 F
+(s) 154 284.98 T
+0 F
+( at position) 158.66 284.98 T
+2 F
+(pos) 215 284.98 T
+0 F
+(.) 231.67 284.98 T
+1 F
+(Example:) 72 265.98 T
+3 10 Q
+(String s1 = "This a test";) 108 245.32 T
+(s1.Insert\0505, "is "\051;) 108 228.32 T
+(// s1 = "This is a test") 324 228.32 T
+1 12 Q
+(See Also: Delete, gsub, justify, Justify, Replace, sub, Sub, trim, Trim) 72 209.98 T
+72 185.98 540 195.98 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 185.98 540 195.98 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 194.98 541.01 194.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(Justify) 72 176.64 T
+1 12 Q
+(Syntax:) 72 151.98 T
+0 F
+(String& Justify\050int) 117 151.98 T
+2 F
+(type) 210.35 151.98 T
+0 F
+(, int) 230.34 151.98 T
+2 F
+(len) 252.01 151.98 T
+0 F
+(, int) 266.68 151.98 T
+2 F
+(mode) 288.35 151.98 T
+0 F
+( =) 314.34 151.98 T
+1 F
+( String::CLIP) 324.11 151.98 T
+0 F
+(|) 395.77 151.98 T
+1 F
+(String::TRIM) 398.17 151.98 T
+0 F
+(\051;) 470.83 151.98 T
+1.53 (Justifies the string by padding it with spaces until it is) 72 132.98 P
+2 F
+1.53 (len) 349.85 132.98 P
+0 F
+1.53 ( long. The justification) 364.51 132.98 P
+2 F
+1.53 (type) 482.96 132.98 P
+0 F
+1.53 ( can be) 502.95 132.98 P
+1 F
+1.03 (String::LEFT) 72 115.98 P
+0 F
+1.03 (,) 143.34 115.98 P
+1 F
+1.03 (String::CENTER) 150.37 115.98 P
+0 F
+1.03 (, or) 240.37 115.98 P
+1 F
+1.03 (String::RIGHT) 261.43 115.98 P
+0 F
+1.03 (. If the string has any leading or trailing) 341.44 115.98 P
+0.42 (whitespaces \050spaces or tabs\051 then they are first removed if) 72 98.98 P
+2 F
+0.42 (mode) 357.49 98.98 P
+0 F
+0.42 (|=) 383.48 98.98 P
+1 F
+0.42 (String::TRIM) 392.65 98.98 P
+0 F
+0.42 (. If the string is) 465.31 98.98 P
+3.8 (longer than) 72 81.98 P
+2 F
+3.8 (len) 136.91 81.98 P
+0 F
+3.8 ( \050after the optional removal of white spaces\051 then it is clipped to len if) 151.58 81.98 P
+FMENDPAGE
+%%EndPage: "11" 11
+%%Page: "12" 12
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(12) 528 28.33 T
+72 72 540 720 R
+7 X
+V
+2 F
+0 X
+(mode) 72 712 T
+0 F
+(|=) 97.99 712 T
+1 F
+(String::CLIP) 107.16 712 T
+0 F
+(.) 175.82 712 T
+1 F
+(Example:) 72 693 T
+3 10 Q
+(String s1 = s2 = s3 = "Hello World";) 108 672.33 T
+(s1.Justify\050String::LEFT, 20\051;) 108 655.33 T
+(// s1 = "Hello World         ") 324 655.33 T
+(s2.Justify\050String::CENTER, 20\051;) 108 643.33 T
+(// s2 = "    Hello World     ") 324 643.33 T
+(s3.Justify\050String::RIGHT, 20\051;) 108 631.33 T
+(// s3 = "         Hello World") 324 631.33 T
+1 12 Q
+(See Also: Insert, justify, trim, Trim) 72 613 T
+72 588.99 540 599 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 588.99 540 599 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 597.99 541.01 597.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(Left) 72 579.66 T
+1 12 Q
+(Syntax:) 72 554.99 T
+0 F
+(String& Left\050int) 117 554.99 T
+2 F
+(len) 198.34 554.99 T
+0 F
+(\051;) 213 554.99 T
+(Reduces the string to the leftmost) 72 535.99 T
+2 F
+(len) 235.99 535.99 T
+0 F
+( characters.) 250.66 535.99 T
+1 F
+(Example:) 72 516.99 T
+3 10 Q
+(String s1 = s2 = s3 = "This is a test";) 108 496.33 T
+(s1.Left\0504\051;) 108 479.33 T
+(// s1 = "This") 324 479.33 T
+(s2.Mid\0505, 4\051;) 108 467.33 T
+(// s2 = "is a") 324 467.33 T
+(s3.Right\0504\051;) 108 455.33 T
+(// s3 = "test") 324 455.33 T
+1 12 Q
+(See Also: left, mid, Mid, right, Right, substr, SubStr) 72 436.99 T
+72 412.98 540 422.99 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 412.98 540 422.99 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 421.98 541.01 421.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(Len, Length) 72 403.65 T
+1 12 Q
+(Syntax:) 72 378.98 T
+0 F
+(int Len\050void\051;) 117 378.98 T
+(int Length\050void\051;) 117 361.98 T
+(Returns the length of the string:) 72 342.98 T
+1 F
+(Example:) 72 323.98 T
+3 10 Q
+(int i;) 108 303.32 T
+(String s1 = "Hello World";) 108 291.32 T
+(i = s1.Length\050\051;) 108 274.32 T
+(// i = 11) 324 274.32 T
+1 12 Q
+(See Also: length) 72 255.98 T
+72 231.98 540 241.98 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 231.98 540 241.98 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 240.98 541.01 240.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(Mid) 72 222.64 T
+1 12 Q
+(Syntax:) 72 197.98 T
+0 F
+(String& Mid\050int) 117 197.98 T
+2 F
+(pos) 198.35 197.98 T
+0 F
+(, int) 215.02 197.98 T
+2 F
+(len) 236.69 197.98 T
+0 F
+(\051;) 251.35 197.98 T
+(Reduces the string to the substring beginning at position) 72 178.98 T
+2 F
+(pos) 345 178.98 T
+0 F
+( with length) 361.67 178.98 T
+2 F
+(len) 422 178.98 T
+0 F
+(.) 436.67 178.98 T
+1 F
+(Example:) 72 159.98 T
+3 10 Q
+(String s1 = s2 = s3 = "This is a test";) 108 139.31 T
+(s1.Left\0504\051;) 108 122.31 T
+(// s1 = "This") 324 122.31 T
+(s2.Mid\0505, 4\051;) 108 110.31 T
+(// s2 = "is a") 324 110.31 T
+(s3.Right\0504\051;) 108 98.31 T
+(// s3 = "test") 324 98.31 T
+1 12 Q
+(See Also: left, Left, mid, right, Right, substr, SubStr) 72 79.98 T
+FMENDPAGE
+%%EndPage: "12" 12
+%%Page: "13" 13
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(13) 528 28.33 T
+72 72 540 720 R
+7 X
+V
+72 709.99 540 720 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 709.99 540 720 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 718.99 541.01 718.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(Minimize) 72 700.66 T
+1 12 Q
+(Syntax:) 72 675.99 T
+0 F
+(void Minimize\050void\051;) 117 675.99 T
+-0.12 (Minimizes the allocated buffer space for the string. Normally, strings are allocated memory based) 72 656.99 P
+1.55 (on) 72 639.99 P
+1 F
+1.55 (strMinLength) 88.55 639.99 P
+0 F
+1.55 ( and) 160.55 639.99 P
+1 F
+1.55 (strIncLength) 186.98 639.99 P
+0 F
+1.55 (, which are the minimum and incremental buffer lengths.) 254.31 639.99 P
+(Therefore, a string could be allocated more memory than it is using.) 72 622.99 T
+1 F
+(Example:) 72 603.99 T
+3 10 Q
+(String s1 = "Hello World";) 108 583.33 T
+(// by default, s1 is allocated) 324 583.33 T
+(//   17 bytes of memory) 324 571.33 T
+(s1.Minimize\050\051;) 108 559.33 T
+(// now s1 uses 12 bytes) 324 559.33 T
+1 12 Q
+(See Also: SetIncLength, SetMinLength, SetSize) 72 540.99 T
+72 516.98 540 526.99 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 516.98 540 526.99 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 525.98 541.01 525.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(ptr) 72 507.65 T
+1 12 Q
+(Syntax:) 72 482.98 T
+0 F
+(char* ptr\050void\051;) 117 482.98 T
+0.84 (Returns a non-const char* to the contents of the string. This is considered extremely dangerous) 72 463.98 P
+-0.68 (because it bypasses the protection offered by the String class. However, there are some cases where) 72 446.98 P
+0.4 (a non-const char* must be used. A safer mechanism for passing a non-const pointer is to use the) 72 429.98 P
+1 F
+(Copy\050\051) 72 412.98 T
+0 F
+( function to create a new char*.) 107.33 412.98 T
+1 F
+(Example:) 72 393.98 T
+3 10 Q
+(s1 = "lowercase";) 108 373.32 T
+(strupr\050s1\050\051\051;) 108 356.32 T
+(// won't work - strupr\050\051) 324 356.32 T
+(//   expects char*) 324 344.32 T
+(strupr\050s1.ptr\050\051\051;) 108 332.32 T
+(// this works) 324 332.32 T
+1 12 Q
+(See Also: Copy, operator char*, operator \050\051) 72 313.98 T
+72 289.98 540 299.98 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 289.98 540 299.98 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 298.98 541.01 298.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(Replace) 72 280.64 T
+1 12 Q
+(Syntax:) 72 255.98 T
+0 F
+(String& Replace\050int) 117 255.98 T
+2 F
+(pos) 217 255.98 T
+0 F
+(, int) 233.66 255.98 T
+2 F
+(len) 255.34 255.98 T
+0 F
+(, String&) 270 255.98 T
+2 F
+(to) 317.68 255.98 T
+0 F
+(\051;) 327.01 255.98 T
+(int          Replace\050String&) 117 238.98 T
+2 F
+(from) 244 238.98 T
+0 F
+(, String&) 266.66 238.98 T
+2 F
+(to) 314.34 238.98 T
+0 F
+(, int) 323.68 238.98 T
+2 F
+(count) 345.35 238.98 T
+0 F
+(= 32767\051;) 375.01 238.98 T
+(int          Replace\050Regexp&) 117 221.98 T
+2 F
+(from) 251.32 221.98 T
+0 F
+(, String&) 273.98 221.98 T
+2 F
+(to) 321.66 221.98 T
+0 F
+(, int) 331 221.98 T
+2 F
+(count) 352.67 221.98 T
+0 F
+( = 32767\051;) 379.33 221.98 T
+0.48 (The first case replaces the substring beginning at position) 72 202.98 P
+2 F
+0.48 (pos) 355.3 202.98 P
+0 F
+0.48 ( and length) 371.96 202.98 P
+2 F
+0.48 (len) 429.74 202.98 P
+0 F
+0.48 ( with String) 444.4 202.98 P
+2 F
+0.48 (to) 505.52 202.98 P
+0 F
+0.48 (. The) 514.86 202.98 P
+-0.06 (other cases replace substring) 72 185.98 P
+2 F
+-0.06 (from) 212.4 185.98 P
+0 F
+-0.06 ( with String) 235.07 185.98 P
+2 F
+-0.06 (to) 294.58 185.98 P
+0 F
+-0.06 ( up to) 303.92 185.98 P
+2 F
+-0.06 (count) 334.09 185.98 P
+0 F
+-0.06 ( times and returns the number of sub-) 360.75 185.98 P
+(stitutions.) 72 168.98 T
+2 F
+(from) 122.02 168.98 T
+0 F
+( can be a string or a regular expression.) 144.68 168.98 T
+1 F
+(Example:) 72 149.98 T
+3 10 Q
+(int i;) 108 129.31 T
+(String s1 = "d:\134\134prog\134\134str";) 150 129.31 T
+(i = s1.Replace\050"\134\134", "/"\051;) 108 112.31 T
+(// i = 2) 324 112.31 T
+(// s1 = "d:/prog/str") 324 100.31 T
+1 12 Q
+(See Also: gsub, sub, Sub) 72 81.98 T
+FMENDPAGE
+%%EndPage: "13" 13
+%%Page: "14" 14
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(14) 528 28.33 T
+72 72 540 720 R
+7 X
+V
+72 709.99 540 720 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 709.99 540 720 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 718.99 541.01 718.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(Right) 72 700.66 T
+1 12 Q
+(Syntax:) 72 675.99 T
+0 F
+(String& Right\050int) 117 675.99 T
+2 F
+(len) 205.02 675.99 T
+0 F
+(\051;) 219.68 675.99 T
+(Reduces the string to the rightmost) 72 656.99 T
+2 F
+(len) 242.66 656.99 T
+0 F
+( characters.) 257.33 656.99 T
+1 F
+(Example:) 72 637.99 T
+3 10 Q
+(String s1 = s2 = s3 = "This is a test";) 108 617.33 T
+(s1.Left\0504\051;) 108 600.33 T
+(// s1 = "This") 324 600.33 T
+(s2.Mid\0505, 4\051;) 108 588.33 T
+(// s2 = "is a") 324 588.33 T
+(s3.Right\0504\051;) 108 576.33 T
+(// s3 = "test") 324 576.33 T
+1 12 Q
+(See Also: left, Left, mid, Mid, right, substr, SubStr) 72 557.99 T
+72 533.98 540 543.99 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 533.98 540 543.99 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 542.98 541.01 542.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(SetCaseSensitivity) 72 524.65 T
+1 12 Q
+(Syntax:) 72 499.98 T
+0 F
+( void SetCaseSensitivity\050int) 111.34 499.98 T
+2 F
+(cs) 248.35 499.98 T
+0 F
+(\051;) 258.35 499.98 T
+0.44 (Sets the case sensitivity when comparing strings. An argument of 1 \050or  no argument\051 will make) 72 480.98 P
+(comparisons case sensitive. An argument of 0 will make comparisons case insensitive.) 72 463.98 T
+1 F
+(Example:) 72 444.98 T
+3 10 Q
+(String s1 = "Hello World";) 108 424.32 T
+(String s2 = "HELLO WORLD";) 108 412.32 T
+(String::SetCaseSensitivity\0500\051;) 108 395.32 T
+(// turn off case sensitivity) 324 395.32 T
+(if\050s1 == s2\051...) 108 378.32 T
+(// this will be true) 324 378.32 T
+1 12 Q
+(See Also: SetCompare) 72 359.98 T
+72 335.98 540 345.98 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 335.98 540 345.98 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 344.98 541.01 344.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(SetCompar) 72 326.64 T
+(e) 140.18 326.64 T
+1 12 Q
+(Syntax:) 72 301.98 T
+0 F
+(void SetCompare\050int \050*) 117 301.98 T
+2 F
+(fp) 230.33 301.98 T
+0 F
+(\051\050const char*, const char*\051\051;) 239.66 301.98 T
+2.03 (The String class contains a static pointer to a function that performs the string comparisons.) 72 282.98 P
+1 F
+-0.1 (SetCaseSensitivity\050) 72 265.98 P
+4 F
+-0.1 (cs) 169.99 265.98 P
+1 F
+-0.1 (\051) 179.99 265.98 P
+0 F
+-0.1 (will set the pointer to strcmp\050\051 \050) 186.88 265.98 P
+2 F
+-0.1 (cs) 338.94 265.98 P
+0 F
+-0.1 ( = 1\051 or to stricmp \050) 348.93 265.98 P
+2 F
+-0.1 (cs) 442.42 265.98 P
+0 F
+-0.1 ( = 0\051. You can use) 452.42 265.98 P
+-0.71 (SetCompare\050\051 to make it point to a custom comparison function. The function should have the form) 72 248.98 P
+3 F
+(int my_strcmp\050const char*, const char*\051) 108 229.98 T
+1 F
+(Example:) 72 210.98 T
+3 10 Q
+(String s1 = "Hello World";) 108 190.31 T
+(String s2 = "HELLO WORLD";) 108 178.31 T
+(String::SetCompare\050my_strcmp\051;) 108 161.31 T
+(// use a custom comparison function) 324 161.31 T
+(if\050s1 == s2\051...) 108 149.31 T
+(// maybe it's true, maybe it's not) 324 149.31 T
+1 12 Q
+(See Also: SetCaseSensitivity) 72 130.98 T
+FMENDPAGE
+%%EndPage: "14" 14
+%%Page: "15" 15
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(15) 528 28.33 T
+72 72 540 720 R
+7 X
+V
+72 709.99 540 720 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 709.99 540 720 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 718.99 541.01 718.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(SetFloatFormat) 72 700.66 T
+1 12 Q
+(Syntax:) 72 675.99 T
+0 F
+(void SetFloatFormat\050char*) 117 675.99 T
+2 F
+(format) 249.66 675.99 T
+0 F
+( = "%10.4f"\051;) 281.66 675.99 T
+0.05 (Sets the floating point format specifier) 72 656.99 P
+1 F
+0.05 (fpFormat) 260.31 656.99 P
+0 F
+0.05 ( to) 309.63 656.99 P
+2 F
+0.05 (format) 325.07 656.99 P
+0 F
+0.05 (, which determines how floating point) 357.08 656.99 P
+1.19 (numbers will be converted to strings. The default specifier is "%10.4f". Note that the specifier) 72 639.99 P
+4.18 (fpFormat is a static member of the String class and therefore it will affect all strings.) 72 622.99 P
+1.11 (SetFloatFormat\050\051 is also static and can be called with or without a String instance. Consult the) 72 605.99 P
+(standard C function printf\050\051 for information concerning floating point format specifiers.) 72 588.99 T
+1 F
+(Example:) 72 569.99 T
+3 10 Q
+(String s1 = 1.23;) 108 549.33 T
+(// s1 = "    1.2300") 324 549.33 T
+(String::SetFloatFormat\050"%1.2f"\051;) 108 537.33 T
+(// set fpFormat to "%1.2f") 324 537.33 T
+(s1 = 1.23;) 108 525.33 T
+(// s1 = "1.23") 324 525.33 T
+72 504.98 540 514.99 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 504.98 540 514.99 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 513.98 541.01 513.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(SetIncLength) 72 495.65 T
+1 12 Q
+(Syntax:) 72 470.98 T
+0 F
+(void SetIncLength\050int) 117 470.98 T
+2 F
+(len) 225.66 470.98 T
+0 F
+(\051;) 240.32 470.98 T
+0.55 (Sets the buffer increment size to) 72 451.98 P
+2 F
+0.55 (len) 233.29 451.98 P
+0 F
+0.55 (. Strings are allocated memory based on) 247.95 451.98 P
+1 F
+0.55 (strMinLength) 447.12 451.98 P
+0 F
+0.55 ( and) 519.12 451.98 P
+1 F
+-0.48 (strIncLength) 72 434.98 P
+0 F
+-0.48 (, which are the minimum and incremental buffer lengths. A newly created string will) 139.33 434.98 P
+0.09 (have a minimum buffer size of strMinLength+1, and strings that are assigned or appended to will) 72 417.98 P
+0.36 (grow incrementally by strIncLength. The default values are strMinLength = 16 and strIncLength) 72 400.98 P
+0.39 (= 8. Note that both variables are static members of the String class and therefore they will affect) 72 383.98 P
+(all strings. SetIncLength\050\051 is also static and can be called with or without a String instance.) 72 366.98 T
+1 F
+(Example:) 72 347.98 T
+3 10 Q
+(String s1 = "Hello World";) 108 327.32 T
+(// s1 is initially allocated 17) 324 327.32 T
+(//   bytes of memory) 324 315.32 T
+(s1 += ",how are you";) 108 303.32 T
+(// buffer grows to 17+8 bytes) 324 303.32 T
+(String::SetIncLength\05016\051;) 108 291.32 T
+(// now all Strings will grow) 324 291.32 T
+(//   incrementally by 16 bytes) 324 279.32 T
+1 12 Q
+(See Also: Minimize, SetMinLength, SetSize) 72 260.98 T
+72 236.98 540 246.98 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 236.98 540 246.98 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 245.98 541.01 245.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(SetMinLength) 72 227.64 T
+1 12 Q
+(Syntax:) 72 202.98 T
+0 F
+(void SetMinLength\050int) 117 202.98 T
+2 F
+(len) 230.34 202.98 T
+0 F
+(\051;) 245 202.98 T
+0.65 (Sets the minimum buffer size to) 72 183.98 P
+2 F
+0.65 (len) 232.54 183.98 P
+0 F
+0.65 (. Strings are allocated memory based on) 247.2 183.98 P
+1 F
+0.65 (strMinLength) 447.02 183.98 P
+0 F
+0.65 ( and) 519.03 183.98 P
+1 F
+-0.48 (strIncLength) 72 166.98 P
+0 F
+-0.48 (, which are the minimum and incremental buffer lengths. A newly created string will) 139.33 166.98 P
+0.09 (have a minimum buffer size of strMinLength+1, and strings that are assigned or appended to will) 72 149.98 P
+0.36 (grow incrementally by strIncLength. The default values are strMinLength = 16 and strIncLength) 72 132.98 P
+0.39 (= 8. Note that both variables are static members of the String class and therefore they will affect) 72 115.98 P
+(all strings. SetMinLength\050\051 is also static and can be called with or without a String instance.) 72 98.98 T
+FMENDPAGE
+%%EndPage: "15" 15
+%%Page: "16" 16
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(16) 528 28.33 T
+72 72 540 720 R
+7 X
+V
+1 F
+0 X
+(Example:) 72 712 T
+3 10 Q
+(String s1 = "Hi";) 108 691.33 T
+(// s1 is initially allocated 17) 324 691.33 T
+(//   bytes of memory) 324 679.33 T
+(String::SetMinLength\0508\051;) 108 667.33 T
+(// now all Strings will begin) 324 667.33 T
+(//   with a minimum of 9 bytes) 324 655.33 T
+1 12 Q
+(See Also: Minimize, SetIncLength, SetSize) 72 637 T
+72 612.99 540 623 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 612.99 540 623 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 621.99 541.01 621.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(SetSize) 72 603.66 T
+1 12 Q
+(Syntax:) 72 578.99 T
+0 F
+(int SetSize\050int) 117 578.99 T
+2 F
+(len) 188.34 578.99 T
+0 F
+(\051;) 203 578.99 T
+0.49 (Sets the string's buffer size to) 72 559.99 P
+2 F
+0.49 (len) 219.08 559.99 P
+0 F
+0.49 (+1. If) 233.74 559.99 P
+2 F
+0.49 (len) 264.48 559.99 P
+0 F
+0.49 ( is less than the length of the string, then the buffer is) 279.15 559.99 P
+(simply minimized.) 72 542.99 T
+1 F
+(Example:) 72 523.99 T
+3 10 Q
+(String s1 = "Hi";) 108 503.33 T
+(// s1 is initially allocated 17) 324 503.33 T
+(//   bytes of memory) 324 491.33 T
+(s1.SetSize\0508\051;) 108 479.33 T
+(// now s1 uses 9 bytes) 324 479.33 T
+1 12 Q
+(See Also: Minimize, SetMinLength, SetIncLength) 72 460.99 T
+72 436.98 540 446.99 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 436.98 540 446.99 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 445.98 541.01 445.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(SetT) 72 427.65 T
+(oLower) 98.71 427.65 T
+1 12 Q
+(Syntax:) 72 402.98 T
+0 F
+(void SetToLower\050int \050*) 114.34 402.98 T
+2 F
+(fp) 228.32 402.98 T
+0 F
+(\051\050int\051\051;) 237.66 402.98 T
+-0.48 (The String class contains static pointers to the functions that perform case conversion. You can use) 72 383.98 P
+0.26 (SetToLower\050\051 to make the) 72 366.98 P
+1 F
+0.26 (strToLower) 203.02 366.98 P
+0 F
+0.26 ( function pointer point to a custom tolower function. The) 264.34 366.98 P
+(default is the standard C library function tolower\050\051. The function should have the form) 72 349.98 T
+3 F
+(int my_tolower\050int\051) 108 330.98 T
+1 F
+(Example:) 72 311.98 T
+3 10 Q
+(String s1 = "HELLO WORLD";) 108 291.32 T
+(String::SetToLower\050my_tolower\051;) 108 274.32 T
+(// use a custom tolower function) 324 274.32 T
+(s1.toLower) 108 262.32 T
+1 12 Q
+(See Also: SetToUpper, tolower, toLower, toupper, toUpper) 72 243.98 T
+72 219.98 540 229.98 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 219.98 540 229.98 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 228.98 541.01 228.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(SetT) 72 210.64 T
+(oUpper) 98.71 210.64 T
+1 12 Q
+(Syntax:) 72 185.98 T
+0 F
+(void SetToUpper\050int \050*) 114.34 185.98 T
+2 F
+(fp) 226.99 185.98 T
+0 F
+(\051\050int\051\051;) 236.33 185.98 T
+-0.48 (The String class contains static pointers to the functions that perform case conversion. You can use) 72 166.98 P
+0.41 (SetToUpper\050\051 to make the) 72 149.98 P
+1 F
+0.41 (strToUpper) 202.3 149.98 P
+0 F
+0.41 ( function pointer point to a custom toupper function. The) 262.96 149.98 P
+(default is the standard C library function toupper\050\051. The function should have the form) 72 132.98 T
+3 F
+(int my_toupper\050int\051) 108 113.98 T
+FMENDPAGE
+%%EndPage: "16" 16
+%%Page: "17" 17
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(17) 528 28.33 T
+72 72 540 720 R
+7 X
+V
+1 F
+0 X
+(Example:) 72 712 T
+3 10 Q
+(String s1 = "HELLO WORLD";) 108 691.33 T
+(String::SetToUpper\050my_toupper\051;) 108 674.33 T
+(// use a custom toupper function) 324 674.33 T
+(s1.toUpper) 108 662.33 T
+1 12 Q
+(See Also: SetToLower, tolower, toLower, toupper, toUpper) 72 644 T
+72 619.99 540 630 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 619.99 540 630 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 628.99 541.01 628.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(Split) 72 610.66 T
+1 12 Q
+(Syntax:) 72 585.99 T
+0 F
+(int Split\050String*&) 117 585.99 T
+2 F
+(a) 207.02 585.99 T
+0 F
+(, String&) 213.02 585.99 T
+2 F
+(fs) 260.7 585.99 T
+0 F
+(\051;) 268.7 585.99 T
+(int Split\050String*&) 117 568.99 T
+2 F
+(a) 207.02 568.99 T
+0 F
+(, Regexp&) 213.02 568.99 T
+2 F
+(fs) 268.02 568.99 T
+0 F
+(\051;) 276.02 568.99 T
+0.06 (Splits the string into String array) 72 549.99 P
+2 F
+0.06 (a) 232.36 549.99 P
+0 F
+0.06 ( on field separator) 238.36 549.99 P
+2 F
+0.06 (fs) 328.57 549.99 P
+0 F
+0.06 (. Array) 336.58 549.99 P
+2 F
+0.06 (a) 373.68 549.99 P
+0 F
+0.06 ( is normally declared as an unini-) 379.68 549.99 P
+-0.39 (tialized pointer in the calling function and a reference to the pointer is passed to Split\050\051. Split\050\051 will) 72 532.99 P
+0.28 (then allocate memory for the correct array size and return the number of fields.) 72 515.99 P
+2 F
+0.28 (fs) 458.21 515.99 P
+0 F
+0.28 ( can be a string) 466.21 515.99 P
+(or a regular expression. String) 72 498.99 T
+2 F
+(*this) 219.97 498.99 T
+0 F
+( remains unmodified.) 243.31 498.99 T
+1 F
+(Example:) 72 479.99 T
+3 10 Q
+(int i;) 108 459.33 T
+(String *array;) 108 447.33 T
+(// do not initialize) 324 447.33 T
+(String s1 = "d:\134\134prog\134\134str";) 108 435.33 T
+(i = s1.Split\050array, "\134\134"\051;) 108 418.33 T
+(// i = 3) 324 418.33 T
+(// array[0] = "d:") 324 406.33 T
+(// array[1] = "prog") 324 394.33 T
+(// array[2] = "str") 324 382.33 T
+1 12 Q
+(See Also: split) 72 363.99 T
+72 339.98 540 349.99 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 339.98 540 349.99 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 348.98 541.01 348.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(Sub) 72 330.65 T
+1 12 Q
+(Syntax:) 72 305.98 T
+0 F
+(int Sub\050String&) 117 305.98 T
+2 F
+(from) 197.02 305.98 T
+0 F
+(, String&) 219.68 305.98 T
+2 F
+(to) 267.36 305.98 T
+0 F
+(, int) 276.7 305.98 T
+2 F
+(count) 298.37 305.98 T
+0 F
+( = 32767\051;) 325.03 305.98 T
+(int Sub\050Regexp&) 117 288.98 T
+2 F
+(from) 204.34 288.98 T
+0 F
+(, String&) 227 288.98 T
+2 F
+(to) 274.68 288.98 T
+0 F
+(, int) 284.02 288.98 T
+2 F
+(count) 305.69 288.98 T
+0 F
+( = 32767\051;) 332.35 288.98 T
+0.12 (Substitutes String) 72 269.98 P
+2 F
+0.12 (to) 160.26 269.98 P
+0 F
+0.12 ( for each substring that is matched by) 169.59 269.98 P
+2 F
+0.12 (from) 353.18 269.98 P
+0 F
+0.12 (, up to) 375.85 269.98 P
+2 F
+0.12 (count) 409.54 269.98 P
+0 F
+0.12 (times and returns the) 439.32 269.98 P
+(number of substitutions.) 72 252.98 T
+2 F
+(from) 191.34 252.98 T
+0 F
+( can be a string or a regular expression.) 214.01 252.98 T
+1 F
+(Example:) 72 233.98 T
+3 10 Q
+(int i;) 108 213.32 T
+(String s1 = "d:\134\134prog\134\134str";) 108 201.32 T
+(i = s1.Sub\050"\134\134", "/"\051;) 108 184.32 T
+(// i = 2) 324 184.32 T
+(// s1 = "d:/prog/str") 324 172.32 T
+1 12 Q
+(See Also: gsub, Replace, sub) 72 153.98 T
+72 129.98 540 139.98 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 129.98 540 139.98 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 138.98 541.01 138.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(SubStr) 72 120.64 T
+1 12 Q
+(Syntax:) 72 95.98 T
+0 F
+(String substr\050int) 117 95.98 T
+2 F
+(pos) 197.68 95.98 T
+0 F
+(, int) 214.34 95.98 T
+2 F
+(len) 236.02 95.98 T
+0 F
+( = 32767\051;) 250.68 95.98 T
+(Creates a new string that is the substring of String) 72 76.98 T
+2 F
+(*this) 314.65 76.98 T
+0 F
+( beginning at position) 337.99 76.98 T
+2 F
+(pos) 445.33 76.98 T
+0 F
+( with length) 462 76.98 T
+2 F
+(len) 522.34 76.98 T
+0 F
+(.) 537 76.98 T
+FMENDPAGE
+%%EndPage: "17" 17
+%%Page: "18" 18
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(18) 528 28.33 T
+72 72 540 720 R
+7 X
+V
+0 X
+(String) 72 712 T
+2 F
+(*this) 104.34 712 T
+0 F
+( remains unmodified.) 127.68 712 T
+1 F
+(Example:) 72 693 T
+3 10 Q
+(String s1 = "Don't just stand there...";) 108 672.33 T
+(String s1a;) 108 660.33 T
+(s1a = s1.SubStr\05011, 5\051;) 108 643.33 T
+(// s1a = "stand") 324 643.33 T
+1 12 Q
+(See Also: left, Left, mid, Mid, right, Right, substr) 72 625 T
+72 600.99 540 611 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 600.99 540 611 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 609.99 541.01 609.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(toLower) 72 591.66 T
+1 12 Q
+(Syntax:) 72 566.99 T
+0 F
+(String& toLower\050void\051;) 117 566.99 T
+(Converts the string to lower case, and also returns the converted string.) 72 547.99 T
+1 F
+(Example:) 72 528.99 T
+3 10 Q
+(String s1 = "LOWERCASE";) 108 508.33 T
+(s1.toLower\050\051;) 108 491.33 T
+(// s1 is now "lowercase") 324 491.33 T
+1 12 Q
+(See Also: SetToLower, SetToUpper, toLower, toupper, toUpper) 72 472.99 T
+72 448.98 540 458.99 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 448.98 540 458.99 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 457.98 541.01 457.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(toUpper) 72 439.65 T
+1 12 Q
+(Syntax:) 72 414.98 T
+0 F
+(String& toUpper\050void\051;) 117 414.98 T
+(Converts the string to upper case, and also returns the converted string.) 72 395.98 T
+1 F
+(Example:) 72 376.98 T
+3 10 Q
+(String s1 = "uppercase";) 108 356.32 T
+(s1.toUpper\050\051;) 108 339.32 T
+(// s1 is now "UPPERCASE") 324 339.32 T
+1 12 Q
+(See Also: SetToLower, SetToUpper, tolower, toLower, toupper) 72 320.98 T
+72 296.98 540 306.98 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 296.98 540 306.98 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 305.98 541.01 305.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(T) 72 287.64 T
+(rim) 80.3 287.64 T
+1 12 Q
+(Syntax:) 72 262.98 T
+0 F
+(String& Trim\050int) 117 262.98 T
+2 F
+(mode) 202.34 262.98 T
+0 F
+( =) 228.34 262.98 T
+1 F
+(String::CENTER) 241.1 262.98 T
+0 F
+(, char) 331.1 262.98 T
+2 F
+(ch) 360.76 262.98 T
+0 F
+( =) 372.08 262.98 T
+1 F
+(String::WHITESPACE) 384.85 262.98 T
+0 F
+(\051;) 506.2 262.98 T
+5.42 (Trims leading or trailing characters from a string. The trimmed character defaults to) 72 243.98 P
+1 F
+(String::WHITESPACE) 72 226.98 T
+0 F
+( \050spaces & tabs\051 and can be user-defined.) 193.34 226.98 T
+1 F
+(Example:) 72 207.98 T
+3 10 Q
+(String s1 = s2 = s3 = "    Spaces    ";) 108 187.31 T
+(s1.Trim\050String::LEFT\051;) 108 170.31 T
+(// s1 = "Spaces    ") 324 170.31 T
+(s2.Trim\050String::RIGHT\051;) 108 158.31 T
+(// s2 = "    Spaces") 324 158.31 T
+(s3.Trim\050\051;) 108 146.31 T
+(// s3 = "Spaces") 324 146.31 T
+1 12 Q
+(See Also: trim, Delete) 72 127.98 T
+FMENDPAGE
+%%EndPage: "18" 18
+%%Page: "19" 19
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(19) 528 28.33 T
+72 72 540 720 R
+7 X
+V
+72 709.99 540 720 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 709.99 540 720 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 718.99 541.01 718.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(V) 72 700.66 T
+(alue) 80.82 700.66 T
+1 12 Q
+(Syntax:) 72 675.99 T
+0 F
+(int&) 117 675.99 T
+(Value\050int&) 198 675.99 T
+2 F
+(n) 255.66 675.99 T
+0 F
+(\051;) 261.66 675.99 T
+(unsigned int&) 117 658.99 T
+(Value\050unsigned int&) 198 658.99 T
+2 F
+(n) 301.99 658.99 T
+0 F
+(\051;) 307.99 658.99 T
+(long&) 117 641.99 T
+(Value\050long&) 198 641.99 T
+2 F
+(n) 264.32 641.99 T
+0 F
+(\051;) 270.32 641.99 T
+(unsigned long&) 117 624.99 T
+(Value\050unsigned long&) 198 624.99 T
+2 F
+(n) 310.66 624.99 T
+0 F
+(\051;) 316.66 624.99 T
+(float&) 117 607.99 T
+(Value\050float&) 198 607.99 T
+2 F
+(n) 264.98 607.99 T
+0 F
+(\051;) 270.98 607.99 T
+(double&) 117 590.99 T
+(Value\050double&) 198 590.99 T
+2 F
+(n) 275.65 590.99 T
+0 F
+(\051;) 281.65 590.99 T
+(Returns the value of a numeric string.) 72 571.99 T
+1 F
+(Example:) 72 552.99 T
+3 10 Q
+(int n1;) 108 532.33 T
+(String s1 = "12345";) 108 520.33 T
+(s1.Value\050n1\051;) 108 503.33 T
+(// n1 is now 12345) 324 503.33 T
+FMENDPAGE
+%%EndPage: "19" 19
+%%Page: "20" 20
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(20) 528 28.33 T
+72 72 540 720 R
+7 X
+V
+1 18 Q
+0 X
+(A) 72 708 T
+(WK Functions) 83 708 T
+0 12 Q
+-0.63 (Note: AWK begins array indexing at 1, whereas C/C++ begins array indexing at 0. Therefore, most) 72 687 P
+0.41 (of the implemented AWK functions return values that correspond to C-style indexing. An AWK) 72 670 P
+(function that might normally return a 0 as a failure indicator will return a -1 here.) 72 653 T
+72 628.99 540 639 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 628.99 540 639 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 637.99 541.01 637.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(gsub) 72 619.66 T
+1 12 Q
+(Syntax:) 72 594.99 T
+0 F
+(int gsub\050String&) 117 594.99 T
+2 F
+(from) 201.01 594.99 T
+0 F
+(, String&) 223.68 594.99 T
+2 F
+(to) 271.36 594.99 T
+0 F
+(, String& s, int) 280.69 594.99 T
+2 F
+(count) 354.71 594.99 T
+0 F
+(= 32767\051;) 384.37 594.99 T
+(int gsub\050Regexp&) 117 577.99 T
+2 F
+(from) 208.33 577.99 T
+0 F
+(, String&) 231 577.99 T
+2 F
+(to) 278.68 577.99 T
+0 F
+(, String& s, int) 288.01 577.99 T
+2 F
+(count) 362.03 577.99 T
+0 F
+( = 32767\051;) 388.69 577.99 T
+1.24 (Substitutes String) 72 558.99 P
+2 F
+1.24 (to) 162.49 558.99 P
+0 F
+1.24 ( for each substring in String) 171.82 558.99 P
+2 F
+1.24 (s) 315.89 558.99 P
+0 F
+1.24 ( that is matched by) 320.56 558.99 P
+2 F
+1.24 (from) 420.39 558.99 P
+0 F
+1.24 (, up to) 443.06 558.99 P
+2 F
+1.24 (count) 480.1 558.99 P
+0 F
+1.24 ( times.) 506.76 558.99 P
+(Returns the number of substitutions.) 72 541.99 T
+2 F
+(from) 249.34 541.99 T
+0 F
+( can be a string or a regular expression.) 272 541.99 T
+1 F
+(Example:) 72 522.99 T
+3 10 Q
+(int i;) 108 502.33 T
+(String s1 = "d:\134\134prog\134\134str";) 108 490.33 T
+(i = gsub\050"\134\134", "/", s1\051;) 108 473.33 T
+(// i = 2) 324 473.33 T
+(// s1 = "d:/prog/str") 324 461.33 T
+1 12 Q
+(See Also: Replace, sub, Sub) 72 442.99 T
+72 418.98 540 428.99 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 418.98 540 428.99 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 427.98 541.01 427.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(index) 72 409.65 T
+1 12 Q
+(Syntax:) 72 384.98 T
+0 F
+(int index\050String&) 117 384.98 T
+2 F
+(s) 205.01 384.98 T
+0 F
+(, String&) 209.68 384.98 T
+2 F
+(t) 257.35 384.98 T
+0 F
+(\051;) 260.69 384.98 T
+(int index\050String&) 117 367.98 T
+2 F
+(s) 205.01 367.98 T
+0 F
+(, Regexp&) 209.68 367.98 T
+2 F
+(t) 264.67 367.98 T
+0 F
+(\051;) 268.01 367.98 T
+0.69 (Returns the position of) 72 348.98 P
+2 F
+0.69 (t) 187.45 348.98 P
+0 F
+0.69 ( in String) 190.79 348.98 P
+2 F
+0.69 (s) 240.55 348.98 P
+0 F
+0.69 ( if it exists, or -1 if it does not.) 245.22 348.98 P
+2 F
+0.69 (t) 400.84 348.98 P
+0 F
+0.69 ( can be a string or a regular) 404.17 348.98 P
+(expression.) 72 331.98 T
+1 F
+(Example:) 72 312.98 T
+3 10 Q
+(int i;) 108 292.32 T
+(String s1 = "d:\134\134prog\134\134str";) 108 280.32 T
+(i = index\050s1, ":"\051;) 108 263.32 T
+(// i = 1) 324 263.32 T
+1 12 Q
+(See Also: FindFirst, FindNext, FindLast, FindPrev, Index) 72 244.98 T
+72 220.98 540 230.98 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 220.98 540 230.98 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 229.98 541.01 229.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(length) 72 211.64 T
+1 12 Q
+(Syntax:) 72 186.98 T
+0 F
+(int length\050String&) 117 186.98 T
+2 F
+(s) 208.34 186.98 T
+0 F
+(\051;) 213.01 186.98 T
+(Returns the length of String) 72 167.98 T
+2 F
+(s) 208.33 167.98 T
+0 F
+(.) 213 167.98 T
+1 F
+(Example:) 72 148.98 T
+3 10 Q
+(int i;) 108 128.31 T
+(String s1 = "Hello World";) 108 116.31 T
+(i = length\050s1\051;) 108 99.31 T
+(// i = 11) 324 99.31 T
+1 12 Q
+(See Also: Len, Length) 72 80.98 T
+FMENDPAGE
+%%EndPage: "20" 20
+%%Page: "21" 21
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(21) 528 28.33 T
+72 72 540 720 R
+7 X
+V
+72 709.99 540 720 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 709.99 540 720 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 718.99 541.01 718.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(match) 72 700.66 T
+1 12 Q
+(Syntax:) 72 675.99 T
+0 F
+(int match\050String&) 117 675.99 T
+2 F
+(s) 207.67 675.99 T
+0 F
+(, Regexp) 212.34 675.99 T
+2 F
+(re) 258 675.99 T
+0 F
+(\051;) 268 675.99 T
+0.13 (Returns the position of the leftmost longest substring of) 72 656.99 P
+2 F
+0.13 (s) 343.48 656.99 P
+0 F
+0.13 ( matched by the regular expression) 348.15 656.99 P
+2 F
+0.13 (re) 519.54 656.99 P
+0 F
+0.13 ( if) 529.54 656.99 P
+0.14 (it exists, or -1 if it does not. Also sets the global variables) 72 639.99 P
+1 F
+0.14 (RSTART) 352.88 639.99 P
+0 F
+0.14 ( and) 401.55 639.99 P
+1 F
+0.14 (RLENGTH) 425.17 639.99 P
+0 F
+0.14 (.) 485.18 639.99 P
+1 F
+0.14 (RSTART) 491.33 639.99 P
+0 F
+(is the starting position of the matching substring and) 72 622.99 T
+1 F
+(RLENGTH) 327 622.99 T
+0 F
+( is the substring length.) 387.01 622.99 T
+1 F
+(Example:) 72 603.99 T
+3 10 Q
+(int i;) 108 583.33 T
+(String s1 = "banana";) 108 571.33 T
+(Regexp r1 = "a[a-z]*a") 108 559.33 T
+(i = match\050s1, r1\051;) 108 542.33 T
+(// matched substring is "anana",) 324 542.33 T
+(//   so i=1, RSTART=1, RLENGTH=5) 324 530.33 T
+1 12 Q
+(See Also: substr) 72 511.99 T
+72 487.98 540 497.99 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 487.98 540 497.99 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 496.98 541.01 496.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(split) 72 478.65 T
+1 12 Q
+(Syntax:) 72 453.98 T
+0 F
+(int split\050String&) 117 453.98 T
+2 F
+(s) 199.02 453.98 T
+0 F
+(, String*&) 203.69 453.98 T
+2 F
+(a) 257.36 453.98 T
+0 F
+(, String&) 263.36 453.98 T
+2 F
+(fs) 311.04 453.98 T
+0 F
+(\051;) 319.04 453.98 T
+(int split\050String&) 117 436.98 T
+2 F
+(s) 199.02 436.98 T
+0 F
+(, String*&) 203.69 436.98 T
+2 F
+(a) 257.36 436.98 T
+0 F
+(, Regexp&) 263.36 436.98 T
+2 F
+(fs) 318.36 436.98 T
+0 F
+(\051;) 326.36 436.98 T
+-0.35 (Splits String) 72 417.98 P
+2 F
+-0.35 (s) 133.99 417.98 P
+0 F
+-0.35 ( into String array) 138.66 417.98 P
+2 F
+-0.35 (a) 221.92 417.98 P
+0 F
+-0.35 ( on field separator) 227.92 417.98 P
+2 F
+-0.35 (fs) 316.5 417.98 P
+0 F
+-0.35 (. Array) 324.5 417.98 P
+2 F
+-0.35 (a) 360.79 417.98 P
+0 F
+-0.35 ( is normally declared as an uninitial-) 366.79 417.98 P
+-0.61 (ized pointer in the calling function and a reference to the pointer is passed to split\050\051. split\050\051 will then) 72 400.98 P
+0.39 (allocate memory for the correct array size and return the number of fields.) 72 383.98 P
+2 F
+0.39 (fs) 435.67 383.98 P
+0 F
+0.39 ( can be a string or a) 443.67 383.98 P
+(regular expression. String) 72 366.98 T
+2 F
+(s) 198.65 366.98 T
+0 F
+( remains unmodified.) 203.32 366.98 T
+1 F
+(Example:) 72 347.98 T
+3 10 Q
+(int i;) 108 327.32 T
+(String *array;) 108 315.32 T
+(String s1 = "d:\134\134prog\134\134str";) 108 303.32 T
+(i = split\050s1, array, "\134\134"\051;) 108 286.32 T
+(// i = 3) 324 286.32 T
+(// array[0] = "d:") 324 274.32 T
+(// array[1] = "prog") 324 262.32 T
+(// array[2] = "str") 324 250.32 T
+1 12 Q
+(See Also: Split) 72 231.98 T
+72 207.98 540 217.98 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 207.98 540 217.98 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 216.98 541.01 216.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(sub) 72 198.64 T
+1 12 Q
+(Syntax:) 72 173.98 T
+0 F
+(int sub\050String&) 117 173.98 T
+2 F
+(from) 195.01 173.98 T
+0 F
+(, String&) 217.68 173.98 T
+2 F
+(to) 265.36 173.98 T
+0 F
+(, String&) 274.69 173.98 T
+2 F
+(s) 322.37 173.98 T
+0 F
+(\051;) 327.04 173.98 T
+(int sub\050Regexp&) 117 156.98 T
+2 F
+(from) 202.33 156.98 T
+0 F
+(, String&) 225 156.98 T
+2 F
+(to) 272.68 156.98 T
+0 F
+(, String&) 282.01 156.98 T
+2 F
+(s) 329.69 156.98 T
+0 F
+(\051;) 334.36 156.98 T
+-0.23 (Substitutes String) 72 137.98 P
+2 F
+-0.23 (to) 159.55 137.98 P
+0 F
+-0.23 ( for the leftmost substring of) 168.89 137.98 P
+2 F
+-0.23 (s) 307.47 137.98 P
+0 F
+-0.23 ( that is matched by) 312.14 137.98 P
+2 F
+-0.23 (from) 404.62 137.98 P
+0 F
+-0.23 (. Returns the number of) 427.29 137.98 P
+(substitutions \0500 or 1\051.) 72 120.98 T
+2 F
+(from) 177.67 120.98 T
+0 F
+( can be a string or a regular expression.) 200.34 120.98 T
+FMENDPAGE
+%%EndPage: "21" 21
+%%Page: "22" 22
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(22) 528 28.33 T
+72 72 540 720 R
+7 X
+V
+1 F
+0 X
+(Example:) 72 712 T
+3 10 Q
+(int i;) 108 691.33 T
+(String s1 = "d:\134\134prog\134\134str";) 108 679.33 T
+(i = sub\050"\134\134", "/", s1\051;) 108 662.33 T
+(// i = 1) 324 662.33 T
+(// s1 = "d:/prog\134str") 324 650.33 T
+1 12 Q
+(See Also: gsub, Replace, Sub) 72 632 T
+72 607.99 540 618 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 607.99 540 618 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 616.99 541.01 616.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(substr) 72 598.66 T
+1 12 Q
+(Syntax:) 72 573.99 T
+0 F
+(String substr\050String&) 117 573.99 T
+2 F
+(s) 223.68 573.99 T
+0 F
+(, int) 228.35 573.99 T
+2 F
+(pos) 250.02 573.99 T
+0 F
+(, int) 266.69 573.99 T
+2 F
+(len) 288.36 573.99 T
+0 F
+(= 32767\051;) 306.02 573.99 T
+1.1 (Creates a new string that is the substring of String) 72 554.99 P
+2 F
+1.1 (s) 325.64 554.99 P
+0 F
+1.1 ( beginning at position) 330.3 554.99 P
+2 F
+1.1 (pos) 442.04 554.99 P
+0 F
+1.1 ( with length) 458.7 554.99 P
+2 F
+1.1 (len) 522.34 554.99 P
+0 F
+1.1 (.) 537 554.99 P
+(String) 72 537.99 T
+2 F
+(s) 104.34 537.99 T
+0 F
+( remains unmodified.) 109.01 537.99 T
+1 F
+(Example:) 72 518.99 T
+3 10 Q
+(String s1 = "Don't just stand there...";) 108 498.33 T
+(String s1a;) 108 486.33 T
+(s1a = substr\050s1, 11, 5\051;) 108 469.33 T
+(// s1a = "stand") 324 469.33 T
+1 12 Q
+(See Also: left, Left, mid, Mid, right, Right, SubStr) 72 450.99 T
+FMENDPAGE
+%%EndPage: "22" 22
+%%Page: "23" 23
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(23) 528 28.33 T
+72 72 540 720 R
+7 X
+V
+1 18 Q
+0 X
+(C-Style Functions) 72 708 T
+72 684.99 540 695 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 684.99 540 695 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 693.99 541.01 693.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(left) 72 675.66 T
+1 12 Q
+(Syntax:) 72 650.99 T
+0 F
+(String left\050char*) 117 650.99 T
+2 F
+(p) 198.98 650.99 T
+0 F
+(, int) 204.98 650.99 T
+2 F
+(len) 226.66 650.99 T
+0 F
+(\051;) 241.32 650.99 T
+(Creates a new string that is the leftmost substring of) 72 631.99 T
+2 F
+(p) 324.65 631.99 T
+0 F
+( with length) 330.65 631.99 T
+2 F
+(len) 390.98 631.99 T
+0 F
+(.) 405.65 631.99 T
+2 F
+(p) 411.65 631.99 T
+0 F
+( remains unmodified.) 417.65 631.99 T
+1 F
+(Example:) 72 612.99 T
+3 10 Q
+(char* p1 = "This is a test";) 108 592.33 T
+(String s1a, s1b, s1c;) 108 580.33 T
+(s1a = left\050p1, 4\051;) 108 563.33 T
+(// s1a = "This") 324 563.33 T
+(s1b = mid\050p1, 5, 4\051;) 108 551.33 T
+(// s1b = "is a") 324 551.33 T
+(s1c = right\050p1, 4\051;) 108 539.33 T
+(// s1c = "test") 324 539.33 T
+1 12 Q
+(See Also: Left, mid, Mid, right, Right, substr, SubStr) 72 520.99 T
+72 496.98 540 506.99 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 496.98 540 506.99 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 505.98 541.01 505.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(justify) 72 487.65 T
+1 12 Q
+(Syntax:) 72 462.98 T
+0 F
+(String justify\050char*) 117 462.98 T
+2 F
+(p) 213.66 462.98 T
+0 F
+(, int) 219.66 462.98 T
+2 F
+(type) 241.33 462.98 T
+0 F
+(, int) 261.32 462.98 T
+2 F
+(len) 283 462.98 T
+0 F
+(, int) 297.66 462.98 T
+2 F
+(mode) 319.33 462.98 T
+0 F
+(  =) 345.32 462.98 T
+1 F
+(String::CLIP) 361.09 462.98 T
+0 F
+(|) 429.76 462.98 T
+1 F
+(String::TRIM) 432.16 462.98 T
+0 F
+(\051;) 504.82 462.98 T
+-0.05 (Creates a new string from) 72 443.98 P
+2 F
+-0.05 (p) 198.73 443.98 P
+0 F
+-0.05 ( and justifies it by padding it with spaces until it is) 204.73 443.98 P
+2 F
+-0.05 (len) 448.82 443.98 P
+0 F
+-0.05 ( long. The justi-) 463.48 443.98 P
+0.25 (fication) 72 426.98 P
+2 F
+0.25 (type) 111.91 426.98 P
+0 F
+0.25 ( can be) 131.91 426.98 P
+1 F
+0.25 (String::LEFT) 169.65 426.98 P
+0 F
+0.25 (,) 240.99 426.98 P
+1 F
+0.25 (String::CENTER) 247.25 426.98 P
+0 F
+0.25 (, or) 337.25 426.98 P
+1 F
+0.25 (String::RIGHT) 356.75 426.98 P
+0 F
+0.25 (. If) 436.75 426.98 P
+2 F
+0.25 (p) 454.25 426.98 P
+0 F
+0.25 ( had any leading) 460.25 426.98 P
+-0.24 (or trailing whitespaces \050spaces or tabs\051 then they are first removed if) 72 409.98 P
+2 F
+-0.24 (mode) 401.01 409.98 P
+0 F
+-0.24 (|=) 427 409.98 P
+1 F
+-0.24 (String::TRIM) 436.17 409.98 P
+0 F
+-0.24 (. If the) 508.83 409.98 P
+-0.19 (new string is longer than) 72 392.98 P
+2 F
+-0.19 (len) 192.71 392.98 P
+0 F
+-0.19 ( \050after the optional removal of white spaces\051 then it is clipped to) 207.37 392.98 P
+2 F
+-0.19 (len) 515.19 392.98 P
+0 F
+-0.19 ( if) 529.86 392.98 P
+2 F
+(mode) 72 375.98 T
+0 F
+(|=) 97.99 375.98 T
+1 F
+(String::CLIP) 107.16 375.98 T
+0 F
+(, otherwise the trimmed string is returned.) 175.82 375.98 T
+2 F
+(p) 380.14 375.98 T
+0 F
+( remains unmodified.) 386.14 375.98 T
+1 F
+(Example:) 72 356.98 T
+3 10 Q
+(char* p1 = "Hello World";) 108 336.32 T
+(String s1a, s1b, s1c;) 108 324.32 T
+(s1a = justify\050p1, String::LEFT, 20\051;) 108 307.32 T
+-0.46 (// s1a = "Hello World         ") 360 307.32 P
+(s1b = justify\050p1, String::CENTER, 20\051;) 108 295.32 T
+-0.46 (// s1b = "    Hello World     ") 360 295.32 P
+(s1c = justify\050p1, String::RIGHT, 20\051;) 108 283.32 T
+-0.46 (// s1c = "         Hello World") 360 283.32 P
+1 12 Q
+(See Also: Justify, trim, Trim) 72 264.98 T
+72 240.98 540 250.98 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 240.98 540 250.98 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 249.98 541.01 249.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(mid) 72 231.64 T
+1 12 Q
+(Syntax:) 72 206.98 T
+0 F
+(String mid\050char*) 117 206.98 T
+2 F
+(p) 201.66 206.98 T
+0 F
+(, int) 207.66 206.98 T
+2 F
+(pos) 229.33 206.98 T
+0 F
+(, int) 246 206.98 T
+2 F
+(len) 267.67 206.98 T
+0 F
+(\051;) 282.34 206.98 T
+-0.02 (Creates a new string that is the substring of) 72 187.98 P
+2 F
+-0.02 (p) 282.16 187.98 P
+0 F
+-0.02 ( beginning at position) 288.16 187.98 P
+2 F
+-0.02 (pos) 395.43 187.98 P
+0 F
+-0.02 ( with length) 412.09 187.98 P
+2 F
+-0.02 (len) 472.38 187.98 P
+0 F
+-0.02 (.) 487.04 187.98 P
+2 F
+-0.02 (p) 493.02 187.98 P
+0 F
+-0.02 ( remains) 499.02 187.98 P
+(unmodified.) 72 170.98 T
+1 F
+(Example:) 72 151.98 T
+3 10 Q
+(char* p1 = "This is a test";) 108 131.31 T
+(String s1a, s1b, s1c;) 108 119.31 T
+(s1a = left\050p1, 4\051;) 108 102.31 T
+(// s1a = "This") 324 102.31 T
+(s1b = mid\050p1, 5, 4\051;) 108 90.31 T
+(// s1b = "is a") 324 90.31 T
+(s1c = right\050p1, 4\051;) 108 78.31 T
+(// s1c = "test") 324 78.31 T
+FMENDPAGE
+%%EndPage: "23" 23
+%%Page: "24" 24
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(24) 528 28.33 T
+72 72 540 720 R
+7 X
+V
+1 F
+0 X
+(See Also: left, Left, Mid, right, Right, substr, SubStr) 72 712 T
+72 687.99 540 698 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 687.99 540 698 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 696.99 541.01 696.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(right) 72 678.66 T
+1 12 Q
+(Syntax:) 72 653.99 T
+0 F
+(String right\050char* p, int) 117 653.99 T
+2 F
+(len) 233.33 653.99 T
+0 F
+(\051;) 247.99 653.99 T
+(Creates a new string that is the rightmost substring of) 72 634.99 T
+2 F
+(p) 331.32 634.99 T
+0 F
+( with length) 337.32 634.99 T
+2 F
+(len) 397.66 634.99 T
+0 F
+(.) 412.32 634.99 T
+2 F
+(p) 418.32 634.99 T
+0 F
+( remains unmodified.) 424.32 634.99 T
+1 F
+(Example:) 72 615.99 T
+3 10 Q
+(char* p1 = "This is a test";) 108 595.33 T
+(String s1a, s1b, s1c;) 108 583.33 T
+(s1a = left\050p1, 4\051;) 108 566.33 T
+(// s1a = "This") 324 566.33 T
+(s1b = mid\050p1, 5, 4\051;) 108 554.33 T
+(// s1b = "is a") 324 554.33 T
+(s1c = right\050p1, 4\051;) 108 542.33 T
+(// s1c = "test") 324 542.33 T
+1 12 Q
+(See Also: left, Left, mid, Mid, Right, substr, SubStr) 72 523.99 T
+72 499.98 540 509.99 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 499.98 540 509.99 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 508.98 541.01 508.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(tolower) 72 490.65 T
+1 12 Q
+(Syntax:) 72 465.98 T
+0 F
+(String tolower\050String&) 117 465.98 T
+2 F
+(s) 231.67 465.98 T
+0 F
+(\051;) 236.34 465.98 T
+(Creates a lowercase version of String) 72 446.98 T
+2 F
+(s) 253.96 446.98 T
+0 F
+(. String) 258.62 446.98 T
+2 F
+(s) 296.96 446.98 T
+0 F
+( remains unmodified.) 301.63 446.98 T
+1 F
+(Example:) 72 427.98 T
+3 10 Q
+(String s1 = "LOWERCASE";) 108 407.32 T
+(String s1a;) 108 395.32 T
+(s1a = tolower\050s1\051;) 108 378.32 T
+(// s1a = "lowercase") 324 378.32 T
+1 12 Q
+(See Also: SetToLower, SetToUpper, toLower, toupper, toUpper) 72 359.98 T
+72 335.98 540 345.98 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 335.98 540 345.98 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 344.98 541.01 344.98 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(toupper) 72 326.64 T
+1 12 Q
+(Syntax:) 72 301.98 T
+0 F
+(String toupper\050String&) 117 301.98 T
+2 F
+(s) 231.67 301.98 T
+0 F
+(\051;) 236.34 301.98 T
+(Creates an uppercase version of String) 72 282.98 T
+2 F
+(s) 259.96 282.98 T
+0 F
+(. String) 264.62 282.98 T
+2 F
+(s) 302.96 282.98 T
+0 F
+( remains unmodified.) 307.63 282.98 T
+1 F
+(Example:) 72 263.98 T
+3 10 Q
+(String s1 = "uppercase";) 108 243.31 T
+(String s1a;) 108 231.31 T
+(s1a = toupper\050s1\051;) 108 214.31 T
+(// s1a = "UPPERCASE") 324 214.31 T
+1 12 Q
+(See Also: SetToLower, SetToUpper, tolower, toLower, toUpper) 72 195.98 T
+72 171.97 540 181.98 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 171.97 540 181.98 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 180.97 541.01 180.97 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+1 14 Q
+0 X
+0 0 0 1 0 0 0 K
+(trim) 72 162.64 T
+1 12 Q
+(Syntax:) 72 137.97 T
+0 F
+(String trim\050char* p, int) 117 137.97 T
+2 F
+(mode) 230.66 137.97 T
+0 F
+(=) 256.66 137.97 T
+1 F
+(String::CENTER) 263.42 137.97 T
+0 F
+(, char) 353.42 137.97 T
+2 F
+(ch) 383.08 137.97 T
+0 F
+( =) 394.4 137.97 T
+1 F
+(String::WHITESPACE) 407.17 137.97 T
+0 F
+(\051;) 528.52 137.97 T
+-0.68 (Creates a new string from) 72 118.97 P
+2 F
+-0.68 (p) 195.56 118.97 P
+0 F
+-0.68 ( with leading and/or trailing characters trimmed. The trimmed character) 201.56 118.97 P
+2 F
+0.62 (ch) 72 101.97 P
+0 F
+0.62 ( defaults to) 83.33 101.97 P
+1 F
+0.62 (String::WHITESPACE) 141.52 101.97 P
+0 F
+0.62 ( \050spaces & tabs\051 and can be user-defined. The trim) 262.86 101.97 P
+2 F
+0.62 (mode) 514.01 101.97 P
+0 F
+2.24 (defaults to) 72 84.97 P
+1 F
+2.24 (String::CENTER) 129.82 84.97 P
+0 F
+2.24 ( and can also be) 219.82 84.97 P
+1 F
+2.24 (String::RIGHT) 310.69 84.97 P
+0 F
+2.24 ( or) 390.69 84.97 P
+1 F
+2.24 (String::LEFT) 411.18 84.97 P
+0 F
+2.24 (.) 482.52 84.97 P
+2 F
+2.24 (p) 490.76 84.97 P
+0 F
+2.24 ( remains) 496.76 84.97 P
+FMENDPAGE
+%%EndPage: "24" 24
+%%Page: "25" 25
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 746 540 756 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 18 540 45 R
+V
+72 34.99 540 45 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 34.99 540 45 R
+7 X
+0 0 0 1 0 0 0 K
+V
+72 43.99 541.01 43.99 2 L
+V
+1 H
+2 Z
+0 X
+N
+0 0 612 792 C
+0 12 Q
+0 X
+0 0 0 1 0 0 0 K
+(String++ Version 3.1) 255.07 28.33 T
+(25) 528 28.33 T
+72 72 540 720 R
+7 X
+V
+0 X
+(unmodified.) 72 712 T
+1 F
+(Example:) 72 693 T
+3 10 Q
+(char* p1 = "    Spaces    ";) 108 672.33 T
+(String s1a, s1b, s1c;) 108 660.33 T
+(s1a = trim\050p1, String::LEFT\051;) 108 643.33 T
+(// s1a = "Spaces    ") 324 643.33 T
+(s1b = trim\050p1, String::RIGHT\051;) 108 631.33 T
+(// s1b = "    Spaces") 324 631.33 T
+(s1c = trim\050p1\051;) 108 619.33 T
+(// s1c = "Spaces") 324 619.33 T
+1 12 Q
+(See Also: Delete, justify, Justify, Trim) 72 601 T
+FMENDPAGE
+%%EndPage: "25" 25
+%%Trailer
+%%BoundingBox: 0 0 612 792
+%%PageOrder: Ascend
+%%Pages: 25
+%%DocumentFonts: Times-Roman
+%%+ Times-Bold
+%%+ Times-Italic
+%%+ Courier
+%%+ Times-BoldItalic
+%%EOF

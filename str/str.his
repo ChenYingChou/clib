@@ -1,0 +1,345 @@
+
+                       String++ Revision History
+
+-----------------------------------------------------------------------
+
+Version 3.1
+-----------
+Bug Fixes:
+
+- In some cases the FindNext() function could have a starting position
+  beyond the end of the String. This has been fixed.
+
+- Split() would incorrectly return a String array of size 1 for a NULL
+  argument. It now returns 0.
+
+- Bug in SetStr(String&, int, int) fixed.
+
+New Features:
+
+- Case-sensitivity is supported in comparison operators. Set the com-
+  parisons to case-insensitive by first calling SetCaseSensitivity(0),
+  or to case-sensitive by calling SetCaseSensitivity(1). This function
+  sets an internal function pointer to stricmp() or strcmp(), respec-
+  tively. You can also use a custom comparison function by calling
+  SetCompare(fname) where fname has the form int fname(char*, char*).
+  The default comparison function is strcmp().
+
+- toUpper() and toLower() now use static pointers to their respective
+  functions. You can set these pointers to user-defined case-conversion
+  functions, such as to support diacritic characters, by calling
+  SetToLower(fname) or SetToUpper(fname) where fname has the form
+  int fname(int). The default functions are tolower() and toupper().
+
+- Added unsigned int & unsigned long constructors and Value functions.
+
+- New functions:
+
+  SetCaseSensitivity()
+  SetCompare()
+  SetToLower()
+  SetToUpper()
+
+Other Changes:
+
+- The String class has been renamed to StrPP and typedefs are provided
+  to use either String or string. This makes compatibility with BC++
+  3.x and 4.x easier, and also allows you to use StrPP as a base class
+  for your own custom string class and still name it String or string.
+
+- Modifications have been made for BC++ 4.0 compatibility. Most nota-
+  ble is the fact that you can no longer use a quoted string for a
+  regular expression argument. Where this used to work:
+
+	sub("/^.*=/", "", arg);
+
+  you must now say
+
+	sub(Regexp("/^.*=/"), "", arg);
+
+  or
+	Regexp re1 = "/^.*=/";
+	sub(re1, "", arg);
+
+- This version has excluded the str.lib file which was for the large
+  memory model only. You will need to compile the cpp files for what-
+  ever model you want to use and include it in your project list.
+  Replacement files for BC++ 3.x's String class have also been exclu-
+  ded. Unless there is significant demand for these they will be
+  dropped completely.
+
+- SetMinLength(), SetIncLength(), and SetFloatFormat() are now static
+  functions so you can call them without a String object.
+
+- The global mode variables used in Trim() & Justify() are now static
+  members of the String class. Therefore, this:
+
+	s1.Justify(LEFT, 80, CLIP);
+
+  needs to be changed to:
+
+	s1.Justify(String::LEFT, 80, String::CLIP);
+
+- The C-style functions right(), left(), mid(), justify(), & trim()
+  now accept char* instead of String& which should prevent temporaries
+  from being created.
+
+- Most functions are now virtual so they can be redefined in derived
+  classes.
+
+-----------------------------------------------------------------------
+
+Version 3.0
+
+- Support for Borland's container class library (BCCL). There is a BCCL
+  compatible version of String++ in strng.*. You can completely replace
+  the String module in the class library and get all the functionality
+  of String++. See strng.doc for instructions.
+
+- The class has been renamed "String" instead of "string" for compati-
+  bility with Borland's container class library. The old class name is
+  still supported via a typedef.
+
+- Support for regular expressions. There is a new class named RegExp
+  that is used to declare a regular expression, and a match() function
+  for comparisons. For example, if you want to see if a filename has a
+  .BAK extension, you can do this:
+
+	String FileName = GetFileName();
+	Regexp expr = "\.BAK$";
+
+	if(match(FileName, expr) != -1)
+	  do_something();
+
+  You could also use the == operator, which is a substitute for the ~
+  operator used in AWK:
+
+	if(FileName == expr)
+	  do_something();
+
+  A number of string functions have been overloaded to accept regular
+  expressions. Like the other AWK functions included with String++, the
+  match function returns the substring's position using C's 0-based
+  array position instead of AWK's 1-based array position. Therefore, a
+  return value of -1 is used to signify no match. For more information
+  regarding regular expressions, consult a book on Unix or AWK (such as
+  _The AWK Programming Language_ by Aho, Weinberger, and Kernighan).
+
+- There are two other new classes included with String++: FileString
+  and ParseString. FileString takes a string that represents a file
+  name and decomposes it into separate strings for drive, path, file
+  name, and file extension. ParseString is a String-derived class that
+  adds functions and operators that are useful in parsing functions.
+  The RegExp class uses the ParseString class.
+
+- Create strings from floating point numbers. Such strings are format-
+  ted using a format specifier as described in printf(). The format
+  string can be set by the SetFloatFormat() function or passed in the
+  constructor.
+
+- The Replace function can be used to replace a substring based on its
+  position in the string or based on its contents:
+
+  	String s1 = "This is an old substring";
+	s1.Replace(8, 16, "something else");
+  or
+	s1.Replace("an old substring", "something else");
+
+- Four new Find... functions allow greater flexibilty in locating sub-
+  strings.
+
+- A cast operator for char will return s[0].
+
+- A * operator will also return s[0] (such as char ch = *s1).
+
+- The inserter operator << can be used to chain appendages:
+
+	s1 << "The value of " << x.Name << " is " << x.Value;
+
+- The Justify() function now allows the user to disable trimming a
+  string to be justified:
+
+	s.Justify(CENTER, 80, CLIP|NOTRIM);
+
+  The default is CLIP|TRIM as before.
+
+- The Delete function now has a default count value of 1, so that
+  s1.Delete(10) will delete only the character at s1[10]. If you want
+  to delete from pos to the end-of-string, set count = 0 such as
+  s1.Delete(10, 0).
+
+- Internal changes have resulted in faster code.
+
+- The length of the string is now a data member.
+
+- Memory allocation is now controlled by two internal integers: strMin-
+  Length and strIncLength. strMinLength determines the minimum amount
+  of memory that is allocated for a string, and strIncLength specifies
+  the incremental amount of memory that a string will grow by. The
+  default values are 16 and 8, respectively. The amount of memory a
+  string has allocated is stored in bufferLen (bufferLen actually is
+  one byte larger for the NULL termination). Here are some examples:
+
+	string s1 = "Hello World";		// s1.bufferLen = 17
+	string s1 += ",how are you";		// s1.bufferLen = 25
+	string s2 = "String++ Version 3.0"	// s2.bufferLen = 25
+
+  The tradeoff here is size for speed. On average each string will
+  waste either strMinLength/2 bytes or strIncLength/2 bytes. However,
+  if you are doing a lot of manipulation, the extra space will speed up
+  string operations since less memory allocation is done. You can set
+  these variables by calling the appropriate functions:
+
+  SetMinLength(unsigned length)
+  SetIncLength(unsigned length)
+
+  If you set them both to 1 then the string class will behave like
+  Version 2.12 and prior. Remember that setting these variables will
+  affect all strings.
+
+- Support for obsolete naming conventions (from Version 1.x) has been
+  removed.
+
+- New functions:
+
+  FindFirst()		Find first occurance of a substring
+  FindNext()		Find next occurance of a substring
+  FindLast()		Find last occurance of a substring
+  FindPrev()		Find previous occurance of a substring
+  match()		Regular expression matching
+  Minimize()		Minimize bufferLen
+  Replace()		Replace a substring of s with another string
+  SetFloatFormat()      Set the floating point format specifier
+  SetIncLength()	Set the minimum incremental length
+  SetMinLength()	Set the minimum initial length
+  SetSize()		Set bufferLen to a particular size
+  operator char		Returns s[0]
+  operator *		Returns s[0]
+  operator <<		Chains appendages
+
+-----------------------------------------------------------------------
+
+Version 2.12
+
+- Fixed bug in the Copy() function. Copy() will allocate memory for the
+  char* and therefore should be passed an uninitialized pointer:
+
+  char *p;
+  s1.Copy(p);	// allocates memory for p & copies s1 to it
+
+- split() is now called with just the array name instead of an address
+  to the array:
+
+  string *array;
+  n = split(str1, &array, " ");		// Old way
+  n = split(str1, array, " ");		// New way
+
+  Memory for array is still allocated within the split function.
+
+- A cast operator has been added. This allows a string instance to be
+  passed where a char* is expected. Previously, you had to use the ()
+  operator or the ptr() function to return the char* contents of a
+  string:
+
+  string s = "Hello";
+  char p[6];
+
+  strcpy(p,s());	// old way
+  strcpy(p, s);		// new way
+
+  The cast operator returns a const char* just like the () operator.
+
+-----------------------------------------------------------------------
+
+Version 2.11
+
+- Fixed bug in int constructor.
+
+-----------------------------------------------------------------------
+
+Version 2.10
+
+- Derived class String from class string for those who prefer the capi-
+  talized spelling.
+
+- Minor documentation changes
+
+-----------------------------------------------------------------------
+
+Version 2.01
+
+- Minor bug fixes
+
+-----------------------------------------------------------------------
+
+Version 2.0
+
+- Added iostream support.
+
+- Enhanced [] operator can now assign individual characters.
+
+- Comparison functions are now implemented as inline.
+
+- New general functions:
+
+  Insert()	inserts text in str
+  Delete()      deletes a substring of str
+  Copy()        copies str to a non-const char*
+  Trim()	trims leading or trailing multiple chars from str.
+  Value()       returns the numeric value (int or long) of str.
+
+- Existing methods have been renamed to begin with an uppercase letter,
+  such as string::justify() -> string::Justify(). The older naming con-
+  ventions are still supported for backwards compatibility. Most member
+  methods now operate directly on the string itself instead of returning
+  a new string. For example, str1.Justify() will modify str1 instead of
+  creating a new string. C-style function names remain all lower-case
+  and return newly created strings, so str2 = justify(str1, LEFT, 80)
+  will not modify str1.
+
+- AWK functions are also implemented as member methods that directly
+  modify the string object. These versions begin with an uppercase.
+
+- Constructors and = operators added for int & long data types. New
+  function Value() returns the numeric value of a string.
+
+- The () operator continues to return a const char* to the string
+  object's data, but the ptr() method now returns a non-const char*.
+  Therefore, if you need to pass a string's contents to a C-style func-
+  tion that wants a non-const char*, use ptr():
+
+  Old way:
+
+        strupr((char *)s1());	// strupr() wants to modify s1 directly
+                                //   so s1 must be cast as non-const
+  New way:
+
+  	strupr(s1.ptr());       // s1.ptr() is now non-const
+
+  Returning a non-const char* completely strips the inherent protection
+  that the string class offers and can be very dangerous. Use this with
+  caution.
+
+-----------------------------------------------------------------------
+
+Version 1.1
+
+- Bug fixes, mostly memory leaks.
+
+- Rewrote several functions for improved efficiency.
+
+- Improved demo program.
+
+- gsub() is generalized with the inclusion of a num parameter.
+
+- New justify() function.
+
+- New operators * and *=.
+
+-----------------------------------------------------------------------
+
+Version 1.0
+
+- Initial release.
+
+-----------------------------------------------------------------------

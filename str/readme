@@ -1,0 +1,73 @@
+
+                         String++ Version 3.1
+
+                  Copyright (c)1994 by Carl Moreland
+                               04/13/94
+
+-----------------------------------------------------------------------
+    String++ is a string class for Borland C++ or TurboC++. The distri-
+buted files are:
+
+	str.h		header file for String++
+	str.cpp		source code for String++
+	str.doc		documentation file
+	str.his		revision history
+	demo.cpp	demo of string methods
+	regexp.*	regular expression class
+	filestr.*	FileString class
+	parsestr.*	ParseString class
+	readme		this file
+
+A demonstration of most of the string methods is contained in demo.cpp.
+To run the demo, simply compile and link str.cpp, regexp.cpp, and 
+demo.cpp.
+
+-----------------------------------------------------------------------
+This software may be distributed and used according to the following
+rules:
+
+- You may modify this software in any way you see fit and use it for
+  any purpose you wish, including use in software that is sold for pro-
+  fit.
+
+- All distributed copies of this software MUST be original and unmodi-
+  fied and include all files listed above. You may NOT distribute any 
+  of the source code as part of another program.
+
+- You may NOT charge any fee for this software, without written permis-
+  sion from the author, except for the case of electronic bulletin
+  boards which normally charge for connect time and for Public Domain/
+  Shareware/Freeware distributers which charge a nominal media and 
+  handling fee.
+
+- The author retains all rights to the source code and to the name
+  "String++".
+
+-----------------------------------------------------------------------
+If you find String++ useful, a $10 contribution would be greatly appre-
+ciated. Comments, suggestions, and bug reports are also welcomed. Send
+them to:
+
+	Carl Moreland
+	4314 Filmore Rd
+	Greensboro, NC 27409
+
+	Internet: carl.moreland@analog.com
+	CompuServe: 72137,2657
+
+For a faster response, CompuServe users should send questions, etc. to
+the Internet address listed. This can be done in CompuServe mail by
+using the address
+
+	INTERNET: carl.moreland@analog.com
+
+The latest version of this software can be found on CompuServe in the
+Borland C++ forum (GO BCPPDOS, Lib 6, strpp.zip) or on Internet in the
+Simtel20 archives (oak.oakland.edu or ftp.uu.net, strppXXX.zip).
+
+If you have an Internet address (which includes CompuServe members) 
+and you want a formatted PostScript version of str.doc, send me an 
+email message and I will send you the file. CompuServe members should 
+send the request to INTERNET:carl.moreland@analog.com using CompuServe 
+mail. Please do not leave the request on CompuServe.
+-----------------------------------------------------------------------

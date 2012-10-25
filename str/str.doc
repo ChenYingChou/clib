@@ -1,0 +1,1390 @@
+
+                           String++ Version 3.10
+
+                      Copyright 1994 by Carl Moreland
+                                 04/13/94
+
+---------------------------------------------------------------------------
+
+    String++ is a string class written for Borland/Turbo C++. It contains a
+variety  of  string processing functions such as Insert,  Delete,  Replace,
+Find,  Justify, and Trim, as well as  overloaded operators for  assignment,
+concatenation, and comparison.  For AWK programmers, there are standard AWK
+functions  such  as sub, substr, index, and split, as well as  support  for
+regular expressions in many functions.
+
+    Some  of  the ways that strings may be declared or initialized  are  as
+follows:
+
+	String	str;			// NULL string
+		str('H');		// single character
+		str("Hello World");	// char*
+		str(c, 5);		// make 5 copies of character c
+		str(p, 5);		// char* p, begin at p[5]
+		str(p, 5, 3);		// begin at p[5], use 3 chars
+		str(s);			// another String
+		str(s, 5);		// String s, begin at s[5]
+		str(s, 5, 3);		// begin at s[5], use 3 chars
+		str(45);		// convert an int to a string
+		str(1.23);		// convert a float to a string
+		str(1.23, "%6.2f");	// convert a float to a string
+					//   using a format specifier
+		str = 'H';		// single character
+		str = "Hello World";	// char*
+                str = 1.6e-19;		// any number
+		str = p;		// char* p
+		str = s;		// another string
+		str = x;		// any number
+
+The following operators are available:
+
+	=	assignment - see above
+	()	str() returns the char* of the string
+	char	cast operator, returns the first char of the string
+	char*	cast operator, returns the char* of the string
+	*	*str returns str[0]
+	[]	str[i] returns the ith character of str; [] can also assign
+		the ith character of a string.
+	+  +=	concatenates
+	<<	concatenates
+	*  *=	multiple duplicates
+	== !=	comparisons
+	<  >	comparisons
+	<= >=	comparisons
+
+Some binary operators are declared as friend functions. This allows them to
+accept char, char*, and String as valid arguments on either side of the op-
+erator. Therefore, each of these statements is valid:
+
+	s1 = "Hello" + s2;
+	s1 = s2 + "World";
+	s1 = "Hello" + s2 + "World";
+	if(s1 == "Hello World") ...
+	if("Hello World" == s1) ...
+
+However,
+
+	s1 = "Hello " + "World";
+
+is not legal because a String object MUST appear on one side of the  opera-
+tor.  A more flexible way to assign the contents of a string is to use  the
+<< operator:
+
+	char c;
+	String s1, s2;
+	...
+	int n = index(s1, c);
+
+	s2 << "The location of " << c << " in " << s1 << " is " << n;
+
+The << operator  is  overloaded to accept char, char*, String,  int,  long,
+float, and double.
+
+The  following functions are supported.  See the reference section of  this
+document for function syntax and examples.
+
+	Copy			Copy a string to a char*
+	Delete			Delete a substring
+	FindFirst		Find the first occurrence of a substring
+	FindLast		Find the last occurrence of a substring
+	FindNext		Find the next occurrence of a substring
+	FindPrev		Find the previous occurrence of a substring
+	gsub			Global substring substitution
+	Index, index		Position of a substring
+	Insert			Insert a substring
+	Justify			Justify the string
+	Left, left		Leftmost substring
+	Len			Length of the string
+	Length, length		Length of the string
+	match			Match a regular expression
+	Mid, mid		Middle substring
+	Minimize		Minimize the buffer space
+	ptr			Return the char* of a string
+	Replace			Replace a substring
+	Right			Rightmost substring
+	SetCaseSensitivity	Set case sensitivity for comparisons
+        SetCompare		Set the comparison function pointer
+	SetFloatFormat		Set the floating point format specifier
+	SetIncLength		Set the buffer increment length
+	SetMinLength		Set the buffer minimum length
+	SetSize			Set the buffer size
+	SetToLower		Set the toLower function pointer
+	SetToUpper		Set the toUpper function pointer
+	Split, split		Split a string on a field separator
+	Sub, sub		Leftmost substitution
+	SubStr, substr		Random substring
+	toLower, tolower	Case conversion
+	toUpper, toupper	Case conversion
+	Trim, trim		Remove outer whitespace
+	Value			Numeric value of a numeric string
+
+String Buffers
+--------------
+
+    The contents of a string is stored in a character array.  Although  the
+size of the array could be just large enough to hold the string,  the array
+would have to be reallocated if a single character is added to the  String.
+To improve speed,  this class utilizes a minimum string buffer size and  an
+incremental size.
+
+    The minimum buffer size is the minimum amount of memory that is  initi-
+ally allocated for the character array.  The default size is 16 characters.
+Each  newly created string will automatically have a buffer size  equal  to
+this  minimum size, plus one extra byte for the NULL terminator. Therfore
+
+	String s1;
+	String s2 = "Hello";
+
+will  both have 17 bytes of memory allocated even though not all  17  bytes
+are used.  If the strings are appended to then the memory does not have  to
+be reallocated provided that the new length does not exceed 17 bytes:
+
+	s1 = s2;
+	s2 += ", World";
+
+The  minimum buffer length is stored in the private  variable  strMinLength
+You can set this to a new value with the SetMinLength() function:
+
+	String::SetMinLength(24);
+
+This  example sets the minimum buffer length to 24 bytes (plus 1)  for  all
+subsequently created strings. Note that the String class is used in calling
+this function even though any String instance could be used.
+
+    A second variable is used in determining how a string buffer will grow.
+The  private  variable strIncLength specifies the minimum number  of  bytes
+that  is  added to the buffer when the string exceeds  the  current  buffer
+size.  The  default value is 8 bytes.  Whenever a string  needs  additional
+space,  it receives it in multiples of 8 bytes.  In the example  above,  s2
+contains "Hello, World". If we add some more:
+
+	s2 += ", How are you?;
+
+then  s2 will exceed 17 bytes and additional memory must be  allocated.  In
+this case,  s2 will need a total of 26 bytes (plus 1 for the NULL  termina-
+tor).  The original 17 bytes plus the incremental 8 bytes is not enough, so
+another incremental 8 bytes is added for a total of 33 bytes.  This  proce-
+dure also works for newly created strings that exceed strMinLength:
+
+	String s3 = "This is a very long string.";
+
+s3  requires 28 bytes, so again it will receive 33 bytes (17+8+8).  strInc-
+Length can be set using the SetIncLength() function:
+
+	String::SetIncLength(16);
+
+    The  reason for using minimum and incremental lengths is to reduce  the
+number  of memory allocations, which are time consuming.  The  drawback  is
+that each string will waste a small amount of memory;  for a moderate  size
+string  this  will  typically be strIncLength/2.  Making  strMinLength  and
+strIncLength larger will waste more memory but require fewer memory alloca-
+tions.  Setting them equal to 1 will waste no memory but each appendage op-
+eration will need to reallocate memory.  This is how older versions of this
+class worked (2.12 and prior).
+
+Temporary Strings
+-----------------
+
+    When using strings,  you should be aware that temporary string  objects
+are sometimes created and destroyed, and that they can degrade program per-
+formance. For example,
+
+	s1 = s2 + "World";
+
+creates a temporary string that is the combination of s2 and "World". It is
+this temporary string that is assigned to s1 via the = operator. The reason
+for  this is because the + operator is defined to accept two const  objects
+(in this case a String and a char*) and returns a newly created string. The
+= operator is defined to accept a String&, which in this case is the string
+that results from the + operation.  The compiler knows that this string  is
+temporary  and  will automatically delete it when the assignment to  s1  is
+done.
+
+    Functions that accept String objects as arguments can also accept  char
+and char* objects, as well as other data types that are supported by String
+constructors. For example,  even though the index() function is defined  to
+accept two String arguments, this is legal:
+
+	i = index(s1, "a");
+
+The "a" argument  will be converted to a String object by the compiler  be-
+cause there is a String constructor that is defined for char*. Like the op-
+erator example above, this String object is temporary and is destroyed when
+the function returns.
+
+    Based  on the above example,  is it necessary for the String  class  to
+overload  the various operators to accept data types that are already  sup-
+ported by constructors? The answer is no, but the overloaded operators will
+reduce  the number of temporary strings that are created and therefore  im-
+prove performance.  In the example above, if the + operator were  only  de-
+fined to accept two strings, then the "World" argument would cause the cre-
+ation  of a second temporary string.  Most of the string functions are  not
+overloaded  because they typically do not see the kind of repeated use  the
+operators get.  If there is a string function that will get heavy  repeated
+use  with non-string arguments (such as the index example above)  then  you
+might see some speed improvement by overloading the function.
+
+Regular Expressions
+-------------------
+
+    Regular expressions are text patterns that are used for  string  match-
+ing. Normally, strings are compared to other strings (or substrings) and we
+look for an absolute match. However, there are times when we want to test a
+string  in  a more general way.  For example, suppose we want to see  if  a 
+string contains any digits.  Using absolute string matching,  we would have
+to run 10 comparisons,  one for each digit.  Using regular expressions,  we
+can create a character class and make one comparison:
+
+	String s1;
+	Regexp re = "[0-9]";
+
+	if(s1 == re)
+	  do_something();
+
+In the above example, the regular expression contains "[0-9]". The brackets
+enclose  the character class 0-9 which matches any digit.  Therefore, if s1
+contains a digit then the comparison with re will be true.
+
+    Before a regular expression can be used it must first be declared.  For
+example, this will not work:
+
+	if(s1 == "[0-9]")
+	  do_something();
+
+because the == operator will compare s1 to the literal string "[0-9]". How-
+ever, this will work:
+
+	if(s1 == Regexp("[0-9]"))
+	  do_something();
+
+    Several string functions include support for regular expressions.  Like
+the other AWK functions included with the String class,  the match function
+returns  the position of the matching substring using C's zero-based  array
+offset, and -1 if the match failed. Because the ~ operator is unary in C++,
+it could not be overloaded to provide the same functionality as in AWK. In-
+stead,  the == operator and the != operator have been overloaded to use re-
+gular expressions.
+
+    For more information concerning the use of regular expressions, consult
+a text on Unix or the AWK language (such as _The AWK Programming Language_,
+by Aho, Kernighan, and Weinberger).
+
+Using the String Class
+----------------------
+
+    Before using the String class, you need to set it up for the version of
+Borland C++ that you are using. In 3.x, Borland used a class named "String"
+in  the Container Class Library.  Therefore, you cannot have another  class
+named String.  In 4.x,  Borland used an entirely new class named  "string",
+so  another string class would be illegal.  In str.h there are two  typedef
+statements:
+
+	typedef StrPP String
+	typedef StrPP string
+
+These  basically define alternate names for the class StrPP,  which is  re-
+ferred  to throughout this document as "the String class". If you are using
+BC++ 3.x comment out the String typedef,  and if you are using 4.x  comment
+out the string typedef.  If you want to derive your own custom class  named
+string or String, comment out the appropriate typedef, or both.
+
+    There  are  several ways to add the String class to your  program.  You
+could  simply copy all of the files to your project directory and  add  the
+cpp files to the project list, and #include "str.h" in any module that uses
+a string.  You could also compile the cpp files to object format and  place
+the  object  files  in  Borland's LIB directory and  the  header  files  in
+Borland's  H  directory.  Then add the obj files to the  project  list  and
+#include <str.h>.  Finally,  you could split the cpp files into  individual
+function  files and use them to create a more efficient lib file which  can
+be placed in Borland's LIB directory and added to the project list.  To use
+regular expressions you will also need to #include regexp.h in modules that
+use them.
+
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+
+Class Operators:
+
+---------------------------------------------------------------------------
+
+operator =
+----------
+
+Syntax:	String& operator=(char c);
+	String& operator=(char* p);
+	String& operator=(String& s);
+	String& operator=(int n);
+	String& operator=(unsigned int n);
+	String& operator=(long n);
+	String& operator=(unsigned long n);
+	String& operator=(float n);
+	String& operator=(double n);
+
+Assigns contents to the string. In the case of float and double, the string
+format is determined by the format specifier fpFormat,  which is a  private
+member of the String class.  It may be set by either a previous constructor
+call or by an explicit call to SetFloatFormat().
+
+---------------------------------------------------------------------------
+
+operator +
+----------
+
+Syntax:	String operator+(String& s1, char* s2);
+	String operator+(char* s1, String& s2);
+	String operator+(String& s1, String& s2);
+
+Creates a new string by concatenating s2 to s1.
+
+---------------------------------------------------------------------------
+
+operator +=
+-----------
+
+Syntax:	String& operator+=(char c);
+	String& operator+=(char* p);
+	String& operator+=(String& s);
+
+Concatenates the argument to the string.
+
+---------------------------------------------------------------------------
+
+operator <<
+-----------
+
+Syntax:	String& operator<<(char c);
+	String& operator<<(char* p);
+	String& operator<<(String& s);
+	String& operator<<(int n);
+	String& operator<<(unsigned int n);
+	String& operator<<(long n);
+	String& operator<<(unsigned long n);
+	String& operator<<(float n);
+	String& operator<<(double n);
+
+Concatenates the argument to the string.  In the case of float and  double,
+the string format is determined by the format specifier fpFormat, which  is
+a  private member of the String class.  It may be set by either a  previous
+constructor call or by an explicit call to SetFloatFormat().
+
+---------------------------------------------------------------------------
+
+operator *
+----------
+
+Syntax:	String operator*(String& s, int n);
+	String operator*(int n, String& s);
+
+Creates a new string with 'n' duplications of String 's'.
+
+---------------------------------------------------------------------------
+
+operator *=
+-----------
+
+Syntax:	String& operator*=(int n);
+
+Adds 'n'-1 duplications of the string to itself.
+
+---------------------------------------------------------------------------
+
+operator ==
+operator !=
+operator <
+operator >
+operator <=
+operator >=
+-----------
+
+Syntax:	int operator??(String& s1, String& s2);
+	int operator??(String& s1, char* s2);
+	int operator??(char* s1, String& s2);
+	int operator??(String& s1, char c);
+
+Compares s1 to s2 and returns 1 if the operation is true,  0 otherwise.  In
+the special case of char c, the operator compares s1[0] to c.
+
+---------------------------------------------------------------------------
+
+operator ()
+-----------
+
+Syntax:	const char* operator()();
+	const char* operator()(int pos);
+	String      operator()(int pos, int len);
+
+The  first  case returns the contents of the string (strPtr)  via  a  const
+char*. The second method returns strPtr+pos. The third method creates a new
+string using the substring beginning at position 'pos' with length 'len' of
+string *this.  The  first two methods are considered safe  ways  to  access
+strPtr  because  the const modifier protects strPtr from  modification.  In
+using  these methods to pass a char* representation of a string to a  func-
+tion, be aware that many functions expect a char*, not const char*. In this
+case, the safest thing to do is use the Copy() function.
+
+---------------------------------------------------------------------------
+
+operator char
+operator char*
+--------------
+
+Syntax:	operator const char();
+	operator const char*();
+
+These are cast operators that are automatically called when a String object
+is  passed where a char or char* is expected.  The const modifier  prevents
+the contents of the String object from being unintentionally modified.
+
+---------------------------------------------------------------------------
+
+operator *
+----------
+
+Syntax:	const char operator *();
+
+Returns the first character in the string.
+
+---------------------------------------------------------------------------
+
+operator []
+-----------
+
+Syntax:	char& operator [](int i);
+
+Returns the ith character in the string, or assigns the ith character.
+
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+
+Class Functions:
+
+---------------------------------------------------------------------------
+
+Copy
+----
+
+Syntax:	char* Copy(char *p);
+
+Copies the  string  contents to a non-const character pointer.  Copy() will
+allocate  the memory for the pointer - it is up to you to free (delete) it.
+Normally,  the contents of a string are extracted with the  () operator  or
+the  char* cast operator.  However, these return a const char* that must be
+cast to a non-const char* for some C-style functions (most Borland  library
+functions will accept const char*).  Although you could also use the  ptr()
+method to return a non-const char*, this is considered unsafe as it comple-
+tely strips the inherent protection that the String class offers.
+
+Example:
+
+	char *ptr;
+	String s1 = "lowercase";
+
+	strupr(s1());			// won't work - strupr() expects
+					//   a non-const char*
+	strupr((char*)s1());		// cast to char* - this works
+	s1.Copy(ptr);			// copy s1 to char *ptr
+	strupr(ptr);			// normal C-style
+
+See Also: ptr, operator char*, operator ()
+
+---------------------------------------------------------------------------
+
+Delete
+------
+
+Syntax:	String& Delete(int pos, int len = 1);
+
+Deletes a substring beginning at position 'pos' with length 'len'. If 'len'
+= 0, then the substring from 'pos' to the end of the string is deleted.
+
+Example:
+
+	String s1 = "This is a test";
+	s1.Delete(5, 3);		// s1 = "This a test"
+
+See Also: gsub, Replace, sub, Sub, trim, Trim
+
+---------------------------------------------------------------------------
+
+Find...
+-------
+
+Syntax:	int FindFirst(String& s);
+	int FindNext(void);
+	int FindLast(String& s);
+	int FindPrev(void);
+
+Finds the substring s in a string.  FindFirst() finds the first occurrence,
+and  FindNext()  finds subsequent occurrences.  FindLast() finds  the  last
+occurrence,  and FindPrev() finds preceding occurrences.  Note  that  Find-
+Next() and FindPrev() will continue to use the substring s from the initial
+call to FindFirst() or FindLast().
+
+Example:
+
+	String s1 = "This is a test";
+
+	i = s1.FindFirst(" ");
+	while(i != -1)
+	{
+	  s1.Delete(i, 1);
+	  i = s1.FindNext();
+	}				// s1 = "Thisisatest"
+
+See Also: index, Index, match
+
+---------------------------------------------------------------------------
+
+Index
+-----
+
+Syntax: int Index(String& t);
+	int index(Regexp& t);
+
+Returns  the position of 't' in the string if it exists,  or -1 if it  does
+not. 't' can be a string or a regular expression.
+
+Example:
+
+	int i;
+	String s1 = "d:\\prog\\str";
+
+	i = s1.Index(":");		// i = 1
+
+See Also: FindFirst, FindNext, FindLast, FindPrev, index, match
+
+---------------------------------------------------------------------------
+
+Insert
+------
+
+Syntax: String& Insert(int pos, String& s);
+
+Inserts substring 's' at position 'pos'.
+
+Example:
+
+	String s1 = "This a test";
+
+	s1.Insert(5, "is ");		// s1 = "This is a test"
+
+See Also: Delete, gsub, justify, Justify, Replace, sub, Sub, trim, Trim
+
+---------------------------------------------------------------------------
+
+Justify
+-------
+
+Syntax: String& Justify(int type, int len,
+                        int mode = String::CLIP|String::TRIM);
+
+Justifies the string by padding it with spaces until it is 'len' long.  The
+justification 'type' can be String::LEFT, String::CENTER, or String::RIGHT.
+If the string has any leading or trailing whitespaces (spaces or tabs) then
+they  are first removed if 'mode'|=String::TRIM.  If the string  is  longer
+than 'len' (after the optional removal of white spaces) then it is  clipped
+to len if 'mode'|=String::CLIP.
+
+Example:
+
+	String s1 = s2 = s3 = "Hello World";
+
+	s1.Justify(String::LEFT, 20);  	// s1 = "Hello World         "
+	s2.Justify(String::CENTER, 20);	// s2 = "    Hello World     "
+	s3.Justify(String::RIGHT, 20);	// s3 = "         Hello World"
+
+See Also: Insert, justify, trim, Trim
+
+---------------------------------------------------------------------------
+
+Left
+----
+
+Syntax: String& Left(int len);
+
+Reduces the string to the leftmost 'len' characters.
+
+Example:
+
+	String s1 = s2 = s3 = "This is a test";
+
+	s1.Left(4);			// s1 = "This"
+	s2.Mid(5, 4);			// s2 = "is a"
+	s3.Right(4);			// s3 = "test"
+
+See Also: left, mid, Mid, right, Right, substr, SubStr
+
+---------------------------------------------------------------------------
+
+Len, Length
+-----------
+
+Syntax: int Len(void)    const;
+	int Length(void) const;
+
+Returns the length of the string:
+
+Example:
+
+	int i;
+	String s1 = "Hello World";
+
+	i = s1.Length();		// i = 11
+
+See Also: length
+
+---------------------------------------------------------------------------
+
+Mid
+---
+
+Syntax: String& Mid(int pos, int len);
+
+Reduces the string to the substring beginning at position 'pos' with length
+'len'.
+
+Example:
+
+	String s1 = s2 = s3 = "This is a test";
+
+	s1.Left(4);			// s1 = "This"
+	s2.Mid(5, 4);			// s2 = "is a"
+	s3.Right(4);			// s3 = "test"
+
+See Also: left, Left, mid, right, Right, substr, SubStr
+
+---------------------------------------------------------------------------
+
+Minimize
+--------
+
+Syntax:	void Minimize(void);
+
+Minimizes the allocated buffer space for the string.  Normally, strings are
+allocated memory based on strMinLength and strIncLength,  which are the mi-
+nimum and incremental buffer lengths.  Therefore, a string could be alloca-
+ted more memory than it is using.
+
+Example:
+
+	String s1 = "Hello World";	// by default, s1 is allocated 17
+					//   bytes of memory
+	s1.Minimize();			// now s1 uses 12 bytes
+
+See Also: SetIncLength, SetMinLength, SetSize
+
+---------------------------------------------------------------------------
+
+ptr
+---
+
+Syntax:	char* ptr(void);
+
+Returns a non-const char* to the contents of the string. This is considered
+extremely  dangerous  because  it bypasses the protection  offered  by  the
+String class. However, there are some cases where a non-const char* must be
+used.  A  safer  mechanism for passing a non-const pointer is  to  use  the
+Copy() function to create a new char*.
+
+Example:
+
+	s1 = "lowercase";
+
+	strupr(s1());		// won't work - strupr() expects char*
+	strupr(s1.ptr());	// this works
+
+See Also: Copy, operator char*, operator()
+
+---------------------------------------------------------------------------
+
+Replace
+-------
+
+Syntax:	String& Replace(int pos, int len, String& to);
+	int     Replace(String& from, String& to, int count = 32767);
+	int     Replace(Regexp& from, String& to, int count = 32767);
+
+The  first  case  replaces the substring beginning at  position  'pos'  and
+length  'len' with String 'to'.  The other cases replace  substring  'from'
+with  String 'to' up to 'count' times and returns the number  of  substitu-
+tions. 'from' can be a string or a regular expression.
+
+Example:
+
+	int i;
+	String s1 = "d:\\prog\\str";
+
+	i = s1.Replace("\\", "/");	// i = 2
+					// s1 = "d:/prog/str"
+
+See Also: gsub, sub, Sub
+
+---------------------------------------------------------------------------
+
+Right
+-----
+
+Syntax: String& Right(int len);
+
+Reduces the string to the rightmost 'len' characters.
+
+Example:
+
+	String s1 = s2 = s3 = "This is a test";
+
+	s1.Left(4);			// s1 = "This"
+	s2.Mid(5, 4);			// s2 = "is a"
+	s3.Right(4);			// s3 = "test"
+
+See Also: left, Left, mid, Mid, right, substr, SubStr
+
+---------------------------------------------------------------------------
+
+SetCaseSensitivity
+------------------
+
+Syntax:	void SetCaseSensitivity(int cs);
+
+Sets the case sensitivity when comparing strings.  An argument of 1 (or  no
+argument) will make comparisons case sensitive.  An argument of 0 will make
+comparisons case insensitive.
+
+Example:
+
+	String s1 = "Hello World";
+        String s2 = "HELLO WORLD";
+
+	String::SetCaseSensitivity(0);	// turn off case sensitivity
+
+        if(s1 == s2)...			// this will be true
+
+See also: SetCompare
+
+---------------------------------------------------------------------------
+
+SetCompare
+----------
+
+Syntax:	void SetCompare(int (*fp)(const char*, const char*));
+
+The String class contains a static pointer to a function that performs  the
+string comparisons. SetCaseSensitivity(cs) will set the pointer to strcmp()
+(cs = 1) or to stricmp (cs = 0).  You can use SetCompare() to make it point
+to a custom comparison function. The function should have the form
+
+	int my_strcmp(const char*, const char*)
+
+Example:
+
+	String s1 = "Hello World";
+        String s2 = "HELLO WORLD";
+
+	String::SetCompare(my_strcmp);	// use a custom comparison function
+
+        if(s1 == s2)...			// maybe it's true, maybe it's not
+
+See also: SetCaseSensitivity
+
+---------------------------------------------------------------------------
+
+SetFloatFormat
+--------------
+
+Syntax:	void SetFloatFormat(char* format);
+
+Sets  the floating point format specifier fpFormat which determines  how  a
+floating point number will be converted to a string.  The default specifier
+is "%10.4f". Note that the specifier is a static member of the String class
+and therefore it will affect all strings.  SetFloatFormat() is also  static
+and can be called with or without a String instance. Consult the standard C
+function printf() for information concerning floating point format specifi-
+ers.
+
+Example:
+
+	String s1 = 1.23;			// s1 = "    1.2300"
+	String::SetFloatFormat("%1.2f");	// set fpFormat to "%1.2f"
+	s1 = 1.23;				// s1 = "1.23"
+
+---------------------------------------------------------------------------
+
+SetIncLength
+------------
+
+Syntax:	void SetIncLength(int len);
+
+Sets the buffer increment size to 'len'. Strings are allocated memory based
+on  strMinLength and strIncLength,  which are the minimum  and  incremental
+buffer lengths.  A newly created string will have a minimum buffer size  of
+strMinLength+1,  and strings that are assigned or appended to will grow in-
+crementally by strIncLength.  The default values are strMinLength = 16  and
+strIncLength = 8. Note that both variables are static members of the String
+class  and therefore they will affect all strings.  SetIncLength() is  also
+static and can be called with or without a String instance.
+
+Example:
+
+	String s1 = "Hello World";	// s1 is initially allocated 17
+					//   bytes of memory
+	s1 += ",how are you";		// buffer grows to 17+8 bytes
+	String::SetIncLength(16);	// now all Strings will grow
+					//   incrementally by 16 bytes
+
+See Also: Minimize, SetMinLength, SetSize
+
+---------------------------------------------------------------------------
+
+SetMinLength
+------------
+
+Syntax:	void SetMinLength(int len);
+
+Sets the minimum buffer size to 'len'.  Strings are allocated memory  based
+on  strMinLength and strIncLength,  which are the minimum  and  incremental
+buffer lengths.  A newly created string will have a minimum buffer size  of
+strMinLength+1,  and strings that are assigned or appended to will grow in-
+crementally by strIncLength.  The default values are strMinLength = 16  and
+strIncLength = 8. Note that both variables are static members of the String
+class  and therefore they will affect all strings.  SetMinLength() is  also
+static and can be called with or without a String instance.
+
+Example:
+
+	String s1 = "Hi";		// s1 is initially allocated 17
+					//   bytes of memory
+	String::SetMinLength(8);	// now all Strings will begin with
+					//   a minimum of 9 bytes
+
+See Also: Minimize, SetIncLength, SetSize
+
+---------------------------------------------------------------------------
+
+SetSize
+-------
+
+Syntax:	int SetSize(int len);
+
+Sets the string's buffer size to 'len'+1. If 'len' is less than the length
+of the string, then the buffer is simply minimized.
+
+Example:
+
+	String s1 = "Hi";		// s1 is initially allocated 17
+					//   bytes of memory
+	s1.SetSize(8);			// now s1 uses 9 bytes of memory
+
+See Also: Minimize, SetMinLength, SetIncLength
+
+---------------------------------------------------------------------------
+
+SetToLower
+----------
+
+Syntax:	void SetToLower(int (*fp)(int));
+
+The  String class  contains static pointers to the functions  that  perform
+case conversion.  You can use SetToLower() to make the strToLower  function
+pointer point to a custom tolower function.  The default is the  standard C
+library function tolower(). The function should have the form
+
+	int my_tolower(int)
+
+Example:
+
+        String s1 = "HELLO WORLD";
+
+	String::SetToLower(my_tolower);	// use a custom tolower function
+
+        s1.toLower
+
+See Also: SetToUpper, tolower, toLower, toupper, toUpper
+
+---------------------------------------------------------------------------
+
+SetToUpper
+----------
+
+Syntax:	void SetToUpper(int (*fp)(int));
+
+The  String class  contains static pointers to the functions  that  perform
+case conversion.  You can use SetToUpper() to make the strToUpper  function
+pointer point to a custom toupper function.  The default is the  standard C
+library function toupper(). The function should have the form
+
+	int my_toupper(int)
+
+Example:
+
+        String s1 = "HELLO WORLD";
+
+	String::SetToUpper(my_toupper);	// use a custom toupper function
+
+        s1.toUpper
+
+See Also: SetToLower, tolower, toLower, toupper, toUpper
+
+---------------------------------------------------------------------------
+
+Split
+-----
+
+Syntax: int Split(String*& a, String& fs);
+	int Split(String*& a, Regexp& fs);
+
+Splits the string into String array 'a' on field separator 'fs'.  Array 'a'
+is  normally declared as an uninitialized pointer in the  calling  function
+and a reference to the pointer is passed to Split().  Split() will then al-
+locate  memory for the correct array size and return the number of  fields.
+'fs' can be a string or a regular expression.  String *this remains unmodi-
+fied.
+
+Example:
+
+	int i;
+	String *array;
+	String s1 = "d:\\prog\\str";
+
+	i = s1.Split(array, "\\");	// i = 3
+					// array[0] = "d:"
+					// array[1] = "prog"
+					// array[2] = "str"
+
+See Also: split
+
+---------------------------------------------------------------------------
+
+Sub
+---
+
+Syntax: int Sub(String& from, String& to, int count = 32767);
+	int Sub(Regexp& from, String& to, int count = 32767);
+
+Substitutes String 'to' for each substring that is matched by 'from', up to
+'count'  times  and returns the number of substitutions.  'from' can  be  a
+string or a regular expression.
+
+Example:
+
+	int i;
+	String s1 = "d:\\prog\\str";
+
+	i = s1.Sub("\\", "/");		// i = 2
+					// s1 = "d:/prog/str"
+
+See Also: gsub, Replace, sub
+
+---------------------------------------------------------------------------
+
+SubStr
+------
+
+Syntax: String substr(int pos, int len = 32767);
+
+Creates a new string that is the substring of String *this beginning at po-
+sition 'pos' with length 'len'. String *this remains unmodified.
+
+Example:
+
+	String s1 = "Don't just stand there...";
+	String s1a;
+
+	s1a = s1.SubStr(11, 5);		// s1a = "stand"
+
+See Also: left, Left, mid, Mid, right, Right, substr
+
+---------------------------------------------------------------------------
+
+toLower
+-------
+
+Syntax: String& toLower(void);
+
+Converts the string to lower case, and also returns the converted string.
+
+Example:
+
+	String s1 = "LOWERCASE";
+
+	s1.toLower();			// s1 is now "lowercase"
+
+See Also: SetToLower, SetToUpper, toLower, toupper, toUpper
+
+---------------------------------------------------------------------------
+
+toUpper
+-------
+
+Syntax: String& toUpper(void);
+
+Converts the string to upper case, and also returns the converted string.
+
+Example:
+
+	String s1 = "uppercase";
+
+	s1.toUpper();			// s1 is now "UPPERCASE"
+
+See Also: SetToLower, SetToUpper, tolower, toLower, toupper
+
+---------------------------------------------------------------------------
+
+Trim
+----
+
+Syntax: String& Trim(int mode = String::CENTER,
+                      char ch = String::WHITESPACE);
+
+Trims leading or trailing characters from a string.  The trimmed  character
+defaults to String::WHITESPACE (spaces & tabs) and can be user-defined.
+
+Example:
+
+	String s1 = s2 = s3 = "    Spaces    ";
+
+	s1.Trim(String::LEFT); 		// s1 = "Spaces    "
+	s2.Trim(String::RIGHT);		// s2 = "    Spaces"
+	s3.Trim();			// s3 = "Spaces"
+
+See Also: trim, Delete
+
+---------------------------------------------------------------------------
+
+Value
+-----
+
+Syntax: int&           Value(int& n);
+	unsigned int&  Value(unsigned int& n);
+	long&          Value(long& n);
+	unsigned long& Value(unsigned long& n);
+	float&         Value(float& n);
+	double&        Value(double& n);
+
+Returns the value of a numeric string.
+
+Example:
+
+	int n1;
+	String s1 = "12345";
+
+	s1.Value(n1);			// n1 is now 12345
+
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+
+Awk-style Functions:
+
+Note: AWK  begins array indexing at 1, whereas C/C++ begins array  indexing
+      at 0.  Therefore, most of the implemented AWK functions return values
+      that correspond to C-style indexing.  An AWK function that might nor-
+      mally return a 0 as a failure indicator will return a -1 here.
+
+---------------------------------------------------------------------------
+
+gsub
+----
+
+Syntax: int gsub(String& from, String& to, String& s, int count = 32767);
+	int gsub(Regexp& from, String& to, String& s, int count = 32767);
+
+Substitutes  String 'to' for each substring in String s that is matched  by
+'from',  up to 'count' times.  Returns the number of  substitutions. 'from'
+can be a string or a regular expression.
+
+Example:
+
+	int i;
+	String s1 = "d:\\prog\\str";
+
+	i = gsub("\\", "/", s1);	// i = 2
+					// s1 = "d:/prog/str"
+
+See Also: Replace, sub, Sub
+
+---------------------------------------------------------------------------
+
+index
+-----
+
+Syntax: int index(String& s, String& t);
+	int index(String& s, Regexp& t);
+
+Returns the position of 't' in String s if it exists, or -1 if it does not.
+'t' can be a string or a regular expression.
+
+Example:
+
+	int i;
+	String s1 = "d:\\prog\\str";
+
+	i = index(s1, ":");		// i = 1
+
+See Also: FindFirst, FindNext, FindLast, FindPrev, Index
+
+---------------------------------------------------------------------------
+
+length
+------
+
+Syntax: int length(String& s);
+
+Returns the length of String s.
+
+Example:
+
+	int i;
+	String s1 = "Hello World";
+
+	i = length(s1);			// i = 11
+
+See Also: Len, Length
+
+---------------------------------------------------------------------------
+
+match
+-----
+
+Syntax: int match(String& s, Regexp re);
+
+Returns the position of the leftmost longest substring of s matched by  the
+regular  expression  re if it exists, or -1 if it does not.  Also sets  the
+global variables RSTART and RLENGTH. RSTART is the starting position of the
+matching substring and RLENGTH is the substring length.
+
+Example:
+
+	int i;
+	String s1 = "banana";
+	Regexp r1 = "a[a-z]*a"
+
+	i = match(s1, r1);		// matched substring is "anana",
+					//   so i=1, RSTART=1, RLENGTH=5
+
+See Also: index, Index, FindFirst, FindNext, FindLast, FindPrev
+
+---------------------------------------------------------------------------
+
+split
+-----
+
+Syntax: int split(String& s, String*& a, String& fs);
+	int split(String& s, String*& a, Regexp& fs);
+
+Splits String 's' into String array 'a' on field separator 'fs'.  Array 'a'
+is  normally declared as an uninitialized pointer in the  calling  function
+and a reference to the pointer is passed to split().  split() will then al-
+locate  memory for the correct array size and return the number of  fields.
+'fs' can be a string or a regular expression. String s remains unmodified.
+
+Example:
+
+	int i;
+	String *array;
+	String s1 = "d:\\prog\\str";
+
+	i = split(s1, array, "\\");	// i = 3
+					// array[0] = "d:"
+					// array[1] = "prog"
+					// array[2] = "str"
+
+See Also: Split
+
+---------------------------------------------------------------------------
+
+sub
+---
+
+Syntax: int sub(String& from, String& to, String& s);
+	int sub(Regexp& from, String& to, String& s);
+
+Substitutes  String 'to' for the leftmost substring of 's' that is  matched
+by 'from'.  Returns the number of substitutions (0 or 1). 'from' can  be  a
+string or a regular expression.
+
+Example:
+
+	int i;
+	String s1 = "d:\\prog\\str";
+
+	i = sub("\\", "/", s1);		// i = 1
+        				// s1 = "d:/prog\str"
+
+See Also: gsub, Replace, Sub
+
+---------------------------------------------------------------------------
+
+substr
+------
+
+Syntax: String substr(String& s, int pos, int len = 32767);
+
+Creates  a new string that is the substring of String s beginning at  posi-
+tion 'pos' with length 'len'. String s remains unmodified.
+
+Example:
+
+	String s1 = "Don't just stand there...";
+	String s1a;
+
+	s1a = substr(s1, 11, 5);	// s1a = "stand"
+
+See Also: left, Left, mid, Mid, right, Right, SubStr
+
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+
+C-Style Functions:
+
+---------------------------------------------------------------------------
+
+left
+----
+
+Syntax: String left(char* p, int len);
+
+Creates a new string that is the leftmost substring of p with length 'len'.
+p remains unmodified.
+
+Example:
+
+	char* p1 = "This is a test";
+	String s1a, s1b, s1c;
+
+	s1a = left(p1, 4);		// s1a = "This"
+	s1b = mid(p1, 5, 4);		// s1b = "is a"
+	s1c = right(p1, 4);		// s1c = "test"
+
+See Also: Left, mid, Mid, right, Right, substr, SubStr
+
+---------------------------------------------------------------------------
+
+justify
+-------
+
+Syntax:	String justify(char* p, int type, int len,
+                       int mode = String::CLIP|String::TRIM);
+
+Creates a new string from p and justifies it by padding it with spaces  un-
+til  it  is  'len' long.  The justification  'type'  can  be  String::LEFT,
+String::CENTER, or String::RIGHT.  If p had any leading or trailing  white-
+spaces  (spaces|tabs) then they are first removed if  'mode'|=String::TRIM.
+If the new string is longer than 'len' (after the optional removal of white
+spaces)  then it is clipped to len if 'mode'|=String::CLIP,  otherwise  the
+trimmed string is returned. p remains unmodified.
+
+Example:
+
+	char* p1 = "Hello World";
+	String s1a, s1b, s1c;
+
+	s1a = justify(p1, String::LEFT, 20);
+	s1b = justify(p1, String::CENTER, 20);
+	s1c = justify(p1, String::RIGHT, 20);
+					// s1a = "Hello World         "
+					// s1b = "    Hello World     "
+					// s1c = "         Hello World"
+
+See Also: Justify, trim, Trim
+
+---------------------------------------------------------------------------
+
+mid
+---
+
+Syntax: String mid(char* p, int pos, int len);
+
+Creates a new string that is the substring of p beginning at position 'pos'
+with length 'len'. p remains unmodified.
+
+Example:
+
+	char* p1 = "This is a test";
+	String s1a, s1b, s1c;
+
+	s1a = left(p1, 4);		// s1a = "This"
+	s1b = mid(p1, 5, 4);		// s1b = "is a"
+	s1c = right(p1, 4);		// s1c = "test"
+
+See Also: left, Left, Mid, right, Right, substr, SubStr
+
+---------------------------------------------------------------------------
+
+right
+-----
+
+Syntax: String right(char* p, int len);
+
+Creates  a  new  string that is the rightmost substring of  p  with  length
+'len'. p remains unmodified.
+
+Example:
+
+	char* p1 = "This is a test";
+	String s1a, s1b, s1c;
+
+	s1a = left(p1, 4);		// s1a = "This"
+	s1b = mid(p1, 5, 4);		// s1b = "is a"
+	s1c = right(p1, 4);		// s1c = "test"
+
+See Also: left, Left, mid, Mid, Right, substr, SubStr
+
+---------------------------------------------------------------------------
+
+tolower
+-------
+
+Syntax: String tolower(String& s);
+
+Creates a lowercase version of String s. String s remains unmodified.
+
+Example:
+
+	String s1 = "LOWERCASE";
+	String s1a;
+
+	s1a = tolower(s1);		// s1a = "lowercase"
+
+See Also: SetToLower, SetToUpper, toLower, toupper, toUpper
+
+---------------------------------------------------------------------------
+
+toupper
+-------
+
+Syntax: String toupper(String& s);
+
+Creates an uppercase version of String s. String s remains unmodified.
+
+Example:
+
+	String s1 = "uppercase";
+	String s1a;
+
+	s1a = toupper(s1);		// s1a = "UPPERCASE"
+
+See Also: SetToLower, SetToUpper, tolower, toLower, toUpper
+
+---------------------------------------------------------------------------
+
+trim
+----
+
+Syntax: String trim(char* p, int mode = String::CENTER,
+                             char ch = String::WHITESPACE);
+
+Creates  a new string from p with leading and/or trailing characters  trim-
+med.  The trimmed character 'ch' defaults to  String::WHITESPACE  (spaces &
+tabs) and can be user-defined.  The trim 'mode' defaults to  String::CENTER
+and can also be String::RIGHT or String::LEFT. p remains unmodified.
+
+Example:
+
+	char* p1 = "    Spaces    ";
+	String s1a, s1b, s1c;
+
+	s1a = trim(p1, String::LEFT);	// s1a = "Spaces    "
+	s1b = trim(p1, String::RIGHT);	// s1b = "    Spaces"
+	s1c = trim(p1);			// s1c = "Spaces"
+
+See Also: Delete, justify, Justify, Trim
+
+---------------------------------------------------------------------------
