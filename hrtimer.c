@@ -51,35 +51,21 @@
 	#pragma aux _readtimer_ = \
 		"pushf                " \
 		"cli                  " \
-		"mov  al,00Ah         " \
-		"out  020h,al         " \
-		"mov  al,00h          " \
-		"out  043h,al         " \
-		"in   al,020h         " \
-		"mov  ch,al           " \
-		"in   al,040h         " \
-		"mov  bl,al           " \
-		"in   al,040h         " \
-		"mov  bh,al           " \
-		"not  bx              " \
-		"in   al,021h         " \
-		"mov  cl,al           " \
-		"mov  al,0FFh         " \
-		"out  021h,al         " \
-		"mov  al,cl           " \
-		"out  021h,al         " \
-		"mov  ax,ds:[046Ch]   " \
+		"mov     ax,040h      " \
+		"push    es           " \
+		"mov     es,ax        " \
+		"mov     ax,es:[06Ch] " \
+		"pop     es           " \
+		"shl     eax,16       " \
+		"mov     al,00h       " \
+		"out     043h,al      " \
+		"in      al,040h      " \
+		"mov     ah,al        " \
+		"in      al,040h      " \
 		"popf                 " \
-		"test ch,001h         " \
-		"jz   done            " \
-		"or   bh,bh           " \
-		"jnz  done            " \
-		"inc  ax              " \
-	    "done:                    " \
-		"shl  eax,16          " \
-		"mov  ax,bx           " \
-		value [eax]		\
-		modify [ebx ecx]	;
+		"xchg    ah,al        " \
+		"not     ax           " \
+		value [eax]		;
 
 	unsigned long _elapsedtime_ ( unsigned long, unsigned long ) ;
 	#pragma aux _elapsedtime_ = \
@@ -116,39 +102,21 @@
 
 	unsigned long _readtimer_ ( void ) ;
 	#pragma aux _readtimer_ = \
+		"mov     ax,040h      " \
+		"mov     es,ax        " \
 		"pushf                " \
 		"cli                  " \
-		"mov  dx,020h         " \
-		"mov  al,00Ah         " \
-		"out  dx,al           " \
-		"mov  al,00h          " \
-		"out  043h,al         " \
-		"in   al,dx           " \
-		"mov  ch,al           " \
-		"in   al,040h         " \
-		"mov  bl,al           " \
-		"in   al,040h         " \
-		"mov  bh,al           " \
-		"not  bx              " \
-		"in   al,021h         " \
-		"mov  cl,al           " \
-		"mov  al,00FFh        " \
-		"out  021h,al         " \
-		"mov  ax,040h         " \
-		"mov  es,ax           " \
-		"mov  dx,es:[06Ch]    " \
-		"mov  al,cl           " \
-		"out  021h,al         " \
+		"mov     dx,es:[06ch] " \
+		"mov     al,00h       " \
+		"out     043h,al      " \
+		"in      al,040h      " \
+		"mov     ah,al        " \
+		"in      al,040h      " \
 		"popf                 " \
-		"test ch,001h         " \
-		"jz   done            " \
-		"or   bh,bh           " \
-		"jnz  done            " \
-		"inc  dx              " \
-	    "done:                    " \
-		"mov ax,bx            " \
+		"xchg    ah,al        " \
+		"not     ax           " \
 		value [dx ax]		\
-		modify [bx cx es]	;
+		modify [es]		;
 
 	unsigned long _elapsedtime_ ( unsigned long, unsigned long ) ;
 	#pragma aux _elapsedtime_ = \
@@ -261,75 +229,44 @@ unsigned long readtimer ( void )
 	register unsigned long result ;
 	asm("   pushf
 		cli
-		movb	$0x0A,%%al
-		outb	%%al,$0x20
-		movb	$0x00,%%al
-		outb	%%al,$0x43
-		inb	$0x20,%%al
-		movb	%%al,%%ch
-		inb	$0x40,%%al
-		movb	%%al,%%bl
-		inb	$0x40,%%al
-		movb	%%al,%%bh
-		notw	%%bx
-		inb	$0x21,%%al
-		movb	%%al,%%cl
-		movb	$0xff,%%al
-		outb	%%al,$0x21
-		movb	%%cl,%%al
-		outb	%%al,$0x21
+
 		pushw	%%es
 		movw	%1,%%es
 		movl	$0x046c,%%eax
 		movw	%%es:(%%eax),%%ax
 		popw	%%es
-		popf
-		testb	$0x01,%%ch
-		jz	0f
-		orb	%%bh,%%bh
-		jnz	0f
-		incw	%%ax
-	    0:
 		shll	$16,%%eax
-		movw	%%bx,%%ax	"
+
+		movb	$0x00,%%al
+		outb	%%al,$0x43
+		inb	$0x40,%%al
+		movb	%%al,%%ah
+		inb	$0x40,%%al
+
+		popf
+
+		xchgb	%%al,%%ah
+		notw	%%ax
+	"
 	: "=a" (result)
 	: "m" (_dos_ds)
-	: "eax", "ebx", "ecx" ) ;
+	: "eax" ) ;
 	return result ;
 	}
 #else	/* Borland C */
-	asm	pushf		/* Save flags		  */
-	asm	cli		/* Disable interrupts	  */
-	asm	mov  dx,020h	/* Address PIC ocw3	  */
-	asm	mov  al,00Ah	/* Ask to read irr	  */
-	asm	out  dx,al
-	asm	mov  al,00h	/* Latch timer 0	  */
-	asm	out  043h,al
-	asm	in   al,dx	/* Read irr		  */
-	asm	mov  di,ax	/* Save it in DI	  */
-	asm	in   al,040h	/* Counter --> bx	  */
-	asm	mov  bl,al	/* LSB in BL		  */
-	asm	in   al,040h
-	asm	mov  bh,al	/* MSB in BH		  */
-	asm	not  bx 	/* Need ascending counter */
-	asm	in   al,021h	/* Read PIC imr 	  */
-	asm	mov  si,ax	/* Save it in SI	  */
-	asm	mov  al,00FFh	/* Mask all interrupts	  */
-	asm	out  021h,al
-	asm	mov  ax,040h	/* read low word of time  */
-	asm	mov  es,ax	/* from BIOS data area	  */
-	asm	mov  dx,es:[06Ch]
-	asm	mov  ax,si	/* Restore imr from SI	  */
-	asm	out  021h,al
-	asm	popf		/* Restore flags	  */
-	asm	mov  ax,di	/* Retrieve old irr	  */
-	asm	test al,001h	/* Counter hit 0?	  */
-	asm	jz   done	/* Jump if not		  */
-	asm	cmp  bx,0FFh	/* Counter > 0x0FF?	  */
-	asm	ja   done	/* Done if so		  */
-	asm	inc  dx 	/* Else count int req.	  */
-	    done:;
-	asm	mov ax,bx	/* set function result	  */
+	asm	mov	ax,040h	/* read low word of time  */
+	asm	mov	es,ax	/* from BIOS data area	  */
+	asm	pushf
+	asm	cli
+	asm	mov	dx,es:[06Ch]
+	asm	mov	al,00h	/* Latch timer 0	  */
+	asm	out	043h,al
+	asm	in	al,040h	/* Counter: LSB,MSB 	  */
+	asm	mov	ah,al	/* LSB in AH		  */
+	asm	in	al,040h
+	asm	popf
+	asm	xchg	ah,al	/* MSB in AL -> (MSB,LSB) */
+	asm	not	ax 	/* Need ascending counter */
 #endif
 }
 
@@ -389,8 +326,8 @@ asm	adc	dx,0
 
 void delay ( unsigned milliseconds )
 {
-	unsigned long	start = readtimer()	;
-	unsigned long	stop, curr, elapsed;
+	unsigned long	start = readtimer();
+	unsigned long	stop, curr, last, elapsed;
 
 /* ...	stop = (unsigned long)milliseconds * TimerResolution_1000 +	*/
 /* ...	       ( ((unsigned long)milliseconds * 11906) >> 16 ) ;	*/
@@ -424,15 +361,17 @@ asm	mov	word ptr stop+2,dx
 #endif
 
 	//while ( readtimer() - start < stop ) ;
+	while ((curr=readtimer()) < start) {
+		start = curr;
+	}
 
-	curr = readtimer();
-	stop -= (3*(curr-start)) / 2;
+	stop -= 3 * (curr - start) / 2;
 	while ((elapsed=curr-start) < stop) {
 		if (stop - elapsed > 50000L) os_idle();
+		last = curr;
 		curr = readtimer();
 		if (curr < start) {
-			curr = readtimer();
-			if (curr < start) curr = start;
+			curr = last;
 		}
 	}
 }

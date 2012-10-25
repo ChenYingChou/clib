@@ -72,9 +72,35 @@ extern "C" {
     #define CMOS_MONTH		    0x08
     #define CMOS_YEAR		    0x09
     #define CMOS_STATUSA	    0x0A
+    /*
+	Bit 7 = Update in progress (0 = Date and time can be read, 1 = Time update in progress)
+	Bits 6-4 = Time frequency divider (010 = 32.768KHz)
+	Bits 3-0 = Rate selection frequency (0110 = 1.024KHz square wave frequency)
+		2^(16-N)Hz -> 1111=2Hz, 1101=4Hz ... 0110=1024Hz ...
+    */
     #define CMOS_STATUSB	    0x0B
+    /*
+	Bit 7 = Clock update cycle (0 = Update normally, 1 = Abort update in progress)
+	Bit 6 = Periodic interrupt (0 = Disable interrupt (default), 1 = Enable interrupt)
+	Bit 5 = Alarm interrupt (0 = Disable interrupt (default), 1 = Enable interrupt)
+	Bit 4 = Update ended interrupt (0 = Disable interrupt (default), 1 = Enable interrupt)
+	Bit 3 = Status register A square wave frequency (0 = Disable square wave (default), 1 = Enable square wave)
+	Bit 2 = 24 hour clock (0 = 24 hour mode (default), 1 = 12 hour mode)
+	Bit 1 = Daylight savings time (0 = Disable daylight savings (default), 1 = Enable daylight savings)
+    */
     #define CMOS_STATUSC	    0x0C
+    /* Read only flags indicating system status conditions
+	Bit 7 = IRQF flag
+	Bit 6 = PF flag
+	Bit 5 = AF flag
+	Bit 4 UF flag
+	Bits 3-0 = Reserved
+    */
     #define CMOS_STATUSD	    0x0D
+    /* Valid CMOS RAM flag on bit 7 (battery condition flag)
+	Bit 7 = Valid CMOS RAM flag (0 = CMOS battery dead, 1 = CMOS battery power good)
+	Bit 6-0 = Reserved
+    */
     #define CMOS_HUNDREDYEAR	    0x32
 
     /* BIOS config ports */
