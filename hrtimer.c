@@ -362,7 +362,7 @@ asm	mov	word ptr stop+2,dx
 #endif
 
 	//while ( readtimer() - start < stop ) ;
-	while ((curr=readtimer()) < start) {
+	while ((curr=readtimer()) < start && (unsigned)(curr>>16) == (unsigned)(start>>16)) {
 		start = curr;
 	}
 
@@ -371,7 +371,7 @@ asm	mov	word ptr stop+2,dx
 		if (stop - elapsed > 50000L) os_idle();
 		last = curr;
 		curr = readtimer();
-		if (curr < start) {
+		if (curr < start && (unsigned)(curr>>16) == (unsigned)(start>>16)) {
 			curr = last;
 		}
 	}
