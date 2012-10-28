@@ -102,6 +102,7 @@
 
 	unsigned long _readtimer_ ( void ) ;
 	#pragma aux _readtimer_ = \
+		"push    es           " \
 		"mov     ax,040h      " \
 		"mov     es,ax        " \
 		"pushf                " \
@@ -113,10 +114,10 @@
 		"mov     ah,al        " \
 		"in      al,040h      " \
 		"popf                 " \
+		"pop     es           " \
 		"xchg    ah,al        " \
 		"not     ax           " \
-		value [dx ax]		\
-		modify [es]		;
+		value [dx ax]		;
 
 	unsigned long _elapsedtime_ ( unsigned long, unsigned long ) ;
 	#pragma aux _elapsedtime_ = \
