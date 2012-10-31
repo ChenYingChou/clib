@@ -50,6 +50,11 @@ enum	TaskPrio  { LOW_PRIORITY=11, MID_PRIORITY=5000, HIGH_PRIORITY=10000 } ;
 extern	Task		_task[] 					;
 extern	Task		*_curr_task					;
 extern	Task		*_next_task					;
+
+#if defined(__WATCOMC__) && !defined(__386__)
+extern	unsigned	_task_stack_size				;
+#endif
+
 #if !defined(_TASK_MAIN_)
 extern	volatile int	_timer_seconds					;
 extern	volatile int	_kbd_reboot					;

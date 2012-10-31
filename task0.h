@@ -11,16 +11,12 @@
 extern "C" {
 #endif
 /******************************************************************************/
-#define CODE_SMALL		0
-#define CODE_LARGE		1
-#define CODE_PROTECTED		2
-
-#if defined(__386__)
-    #define CODE_TYPE		CODE_PROTECTED
+#if defined(__386__) || defined(__DJGPP__)
+    #define CODE_PROTECTED	3
 #elif defined(__MEDIUM__) || defined(__LARGE__) || defined(__HUGE__)
-    #define CODE_TYPE		CODE_LARGE
+    #define CODE_LARGE		2
 #else
-    #define CODE_TYPE		CODE_SMALL
+    #define CODE_SMALL		1
 #endif
 
 #if defined(__DJGPP__)
@@ -150,34 +146,45 @@ extern "C" {
 		    value [sp]		;
 
 	int RESTORE_FRAME ( void ) ;
-	#pragma aux RESTORE_FRAME =\
+	#if defined(CODE_LARGE)
+	    #pragma aux RESTORE_FRAME =\
+		    "mov    sp,bp"      \
+		    "pop    bp"         \
+		    "dec    bp"         ;
+	#else
+	    #pragma aux RESTORE_FRAME =\
 		    "mov    sp,bp"      \
 		    "pop    bp"         ;
+	#endif
 
+	/* In WATCOM C's DOS mode, SS always equals to DGROUP */
 	void SET_STACK ( int xSS, int xSP ) ;
 	#pragma aux SET_STACK =\
-		    "mov    ss,ax"      \
+		 /* "mov    ss,ax" */   \
 		    "mov    sp,dx"      \
 		    parm [ax] [dx]	;
 
 	void RESUME0 ( void ) ;
-	#pragma aux RESUME0 = "ret" ;
+	#if defined(CODE_LARGE)
+	    #pragma aux RESUME0 = "retf" ;
+	#else
+	    #pragma aux RESUME0 = "ret" ;
+	#endif
 
 	void RESUME ( void ) ;
 	#pragma aux RESUME = "iret" ;
 
-      #if CODE_TYPE == CODE_LARGE
 	void PUSH_FUNC ( int (*func)() ) ;
-	#pragma aux PUSH_FUNC =\
+	#if defined(CODE_LARGE)
+	    #pragma aux PUSH_FUNC =\
 		    "push   dx"         \
 		    "push   ax"         \
 		    parm [dx ax]	;
-      #else
-	void PUSH_FUNC ( int (*func)() ) ;
-	#pragma aux PUSH_FUNC =\
+	#else
+	    #pragma aux PUSH_FUNC =\
 		    "push   ax"         \
 		    parm [ax]		;
-      #endif
+	#endif
     #endif
 
     #define GET_STACK(xSS,xSP)		xSS=get_SS() , xSP=get_SP()
@@ -189,7 +196,7 @@ extern "C" {
     #define SET_STACK(xSS,xSP)		_SS=xSS , _SP=xSP
     #define GET_STACK(xSS,xSP)		xSS=_SS , xSP=_SP
     #define PUSH(x)			asm { push x }
-  #if CODE_TYPE == CODE_LARGE
+  #if defined(CODE_LARGE)
     #define RESUME0()			asm { retf }
     #define PUSH_FUNC(f)		_AX=FP_SEG(task_finish) ; PUSH(ax) ;\
 					_AX=FP_OFF(task_finish) ; PUSH(ax) ;

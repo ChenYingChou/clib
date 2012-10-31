@@ -23,10 +23,10 @@ ASSERTFILE(__FILE__)
 #define MAX_QUEUES		4	/* assume max. queues for one task */
 #define MAX_QNODES		(MAX_TASKS*MAX_QUEUES)
 
-#if CODE_TYPE == CODE_PROTECTED
-#define MIN_STACKS		8192
+#if defined(CODE_PROTECTED)
+#define DEFAULT_STACK		4096
 #else
-#define MIN_STACKS		1024
+#define DEFAULT_STACK		1024
 #endif
 
 GLOBAL	Task		_task[MAX_TASKS]	;
@@ -43,6 +43,17 @@ static	TQnode		*_qFree 		; /* only link by *->next  */
 static	TQueue		_qCPU			;
 
 static	unsigned	exitSS, exitSP		;
+
+#if defined(__WATCOMC__) && !defined(__386__)
+    extern unsigned int	_STACKLOW;			/* SS:offset */
+    GLOBAL unsigned int	_task_stack_size = 8*1024;
+    static unsigned int	_task_stack;			/* SS:offset */
+    #define ALLOC_STACK	alloc_stack
+    #define FREE_STACK	free_stack
+#else
+    #define ALLOC_STACK	malloc
+    #define FREE_STACK	free
+#endif
 
 #if defined(__WATCOMC__)
     static void interrupt FAR task_switch ( void ) ;
@@ -131,6 +142,111 @@ static void check_list ( void )
 		while ( in_key() != 27 ) ;
 	}
 }
+#endif
+/******************************************************************************/
+#if defined(__WATCOMC__) && !defined(__386__)
+
+static unsigned int * get_stack_ptr ( unsigned int stack )
+{
+    #if defined(__MEDIUM__) || defined(__SMALL__) || defined(__TINY__)
+	return (unsigned int *)(stack);
+    #else
+	return (unsigned int *)MK_FP(get_SS(),stack);
+    #endif
+}
+
+static unsigned int * get_stack_offset_ptr ( unsigned int offset )
+{
+	return get_stack_ptr(_task_stack+offset);
+}
+
+static unsigned long inused_mark ( unsigned int size )
+{
+	return size | 0xcccc0000LU;
+}
+
+static unsigned long unused_mark ( unsigned int size )
+{
+	return size | 0xcdcd0000LU;
+}
+
+static int is_stack_inused ( unsigned int stack )
+{
+	unsigned int *p = get_stack_ptr(stack);
+	if (p[1] == 0xccccU) return 1;		// in used
+	TASK_ASSERT(p[1] == 0xcdcdU && p[0] <= _task_stack_size,"stack corrupted");
+	return 0;	// not in used
+}
+
+static int is_stack_offset_inused ( unsigned int offset )
+{
+	return is_stack_inused(_task_stack+offset);
+}
+
+static void * alloc_stack ( unsigned int size )
+{
+	unsigned offset = 0;
+	unsigned currSize;
+	unsigned int *p;
+	int inUsed;
+
+	size = (size+255) & ~255;
+	TASK_ASSERT(size-1 < _task_stack_size,"task alloc_stack: invalid required stack size");
+	for ( ; ; ) {
+		TASK_ASSERT(offset < _task_stack_size,"task alloc_stack: stack full");
+
+		inUsed = is_stack_offset_inused(offset);
+		p = get_stack_offset_ptr(offset);
+		currSize = *p;
+
+		if (!inUsed && currSize >= size) {
+			currSize -= size;
+			if (currSize > 0) {
+				// split block: [unused:currSize] [inused:size]
+				*p = currSize;
+				offset += currSize;
+				p = get_stack_offset_ptr(offset);
+				*(unsigned long *)p = inused_mark(size);
+			}
+			return p;
+		}
+
+		offset += currSize;
+	}
+}
+
+static void free_stack ( void *stack )
+{
+	unsigned int *p = get_stack_offset_ptr(0);
+	unsigned int offset = (char *)stack - (char *)p;
+	TASK_ASSERT(is_stack_offset_inused(offset),"task free_stack: stack not in used");
+	*(unsigned long *)stack = unused_mark(*(unsigned int *)stack);
+
+	offset = 0;
+	while (offset < _task_stack_size) {
+		unsigned int currSize;
+		unsigned int nextOffset;
+		p = get_stack_offset_ptr(offset);
+		currSize = *p;
+		nextOffset = offset + currSize;
+		if (!is_stack_offset_inused(offset) && nextOffset < _task_stack_size) {
+			unsigned int *p1 = get_stack_offset_ptr(nextOffset);
+			unsigned int nextSize = *p1;
+			if (!is_stack_offset_inused(nextOffset)) {
+				/* merge with next block and recheck current block */
+				*p = currSize + nextSize;
+			} else {
+				/* skip current & next blocks */
+				offset = nextOffset + nextSize;
+			}
+		} else {
+			/* skip current block */
+			offset = nextOffset;
+		}
+	}
+	TASK_ASSERT(offset==_task_stack_size,"task stack corrupted");
+}
+
 #endif
 /******************************************************************************/
 
@@ -395,7 +511,7 @@ static void task0 ( int nth )	/* nth == 0 --> task[0] */
 				t->tLink = NULL ;
 				t->status = TASK_FREE ;
 				if ( t->STACK ) {
-					free(t->STACK) ;
+					FREE_STACK(t->STACK) ;
 					t->STACK = NULL ;
 				}
 			} else if ( t->status & TASK_ALIVE ) {
@@ -453,7 +569,7 @@ static void task_free0 ( void ) 	/* end of task */
 
 /******************************************************************************/
 
-#if defined(__BORLANDC__) && CODE_TYPE == CODE_SMALL
+#if defined(__BORLANDC__) && defined(CODE_SMALL)
 
 #include <malloc.h>
 
@@ -483,18 +599,19 @@ static	int	xSS[4]	;
 	n = task_get_free() ;
 	if ( n < 0 ) return -1 ;
 
-	l = stackSize & ~1 ;
+	l = stackSize;
 	if ( l < 0 )
 		l = -l ;		/* not check stack size if minus */
-	else if ( l < MIN_STACKS )
-		l = MIN_STACKS ;
+	else if ( l < DEFAULT_STACK )
+		l = DEFAULT_STACK ;
+	l = (l+127) & ~127 ;
 
-#if defined(__BORLANDC__) && CODE_TYPE == CODE_SMALL
+#if defined(__BORLANDC__) && defined(CODE_SMALL)
 	if ( stackSize < 0 )
 		stk = (int*)TopMalloc(l) ;
 	else
 #endif
-	stk = (int*)malloc(l) ;
+	stk = (int*)ALLOC_STACK(l) ;
 	if ( stk == NULL ) return -1 ;
 
 	t = &_task[n] ;
@@ -505,7 +622,7 @@ static	int	xSS[4]	;
 	strncpy(t->name,name,l>=sizeof(t->name)?sizeof(t->name)-1:l) ;
 
 	*--stk = n ;		/* parameter on stack */
-#if CODE_TYPE == CODE_LARGE
+#if defined(CODE_LARGE)
 	*--stk = FP_SEG(task_free0) ;
 #endif
 	*--stk = FP_OFF(task_free0) ;
@@ -513,7 +630,7 @@ static	int	xSS[4]	;
 #if defined(__WATCOMC__)
 	*--stk = get_FLAGS() ;
 	*--stk = FP_SEG(entry) ;
-#elif CODE_TYPE == CODE_LARGE
+#elif defined(CODE_LARGE)
 	*--stk = FP_SEG(entry) ;
 #endif
 	*--stk = FP_OFF(entry) ;
@@ -593,6 +710,17 @@ int task_init ( void )
 
 #if defined(__WATCOMC__)
 	_heapgrow() ;
+    #if !defined(__386__)
+	{
+		unsigned long *p;
+		_task_stack_size = (_task_stack_size+255) & ~255;
+		TASK_ASSERT(stackavail() >= _task_stack_size+2048,"task_init: not enough stack size");
+		_task_stack = (_STACKLOW+15) & ~15;	
+		//_STACKLOW += _task_stack_size;
+	    	p = (unsigned long*)get_stack_ptr(_task_stack);
+		*p = unused_mark(_task_stack_size);
+	}
+    #endif
 #endif
 	{
 		TQnode	*qn	;
@@ -618,7 +746,7 @@ int task_init ( void )
 	/* task0: small stack size & lowest priority */
 #if defined(DEBUG) && defined(CHECK_LIST)
 	return task_create("$",0,1,task0,NULL) ; /* default stack size for debug */
-#elif CODE_TYPE == CODE_PROTECT
+#elif defined(CODE_PROTECT)
 	return task_create("$",-1024,1,task0,NULL) ;    /* 1K stack size */
 #else
 	return task_create("$",-512,1,task0,NULL) ;     /* 0.5K stack size */
@@ -628,7 +756,7 @@ int task_init ( void )
 
 static int task_finish ( void )
 {
-	if ( _task[0].STACK ) free(_task[0].STACK) ;
+	if ( _task[0].STACK ) FREE_STACK(_task[0].STACK) ;
 
 	task_finish0() ;
 
@@ -650,10 +778,13 @@ static int task_finish ( void )
 #endif
 int task_start ( void )
 {
-	if ( _curr_task == 0 ) {	/* first time */
 #if defined(__WATCOMC__)
+	if ( (int)_curr_task == 0 ) {
 		RESTORE_FRAME() ;	/* #pragma aux task_start FRAME */
+#else
+	if ( _curr_task == 0 ) {
 #endif
+		/* first time */
 		PUSH_FUNC(task_finish) ;
 		SAVE_CONTEXT() ;
 		GET_STACK(exitSS,exitSP) ;
@@ -762,7 +893,7 @@ static int timer_init ( void )
 	_qTIMER = tqueue_new(timer_wakeup,timer_finish) ;
 	if ( _qTIMER == NULL ) return -1 ;
 
-#if CODE_TYPE == CODE_PROTECTED
+#if defined(CODE_PROTECTED)
 	_lock_data(_qTIMER,sizeof(TQueue)) ;
 	LOCK_VARIABLE(_timer_seconds) ;
 #endif
@@ -905,7 +1036,7 @@ static int kbd_init ( void )
 	_qKBD = tqueue_new(kbd_wakeup,kbd_finish) ;
 	if ( _qKBD == NULL ) return -1 ;
 
-#if CODE_TYPE == CODE_PROTECTED
+#if defined(CODE_PROTECTED)
 	_lock_data(_qKBD,sizeof(TQueue)) ;
 	LOCK_VARIABLE(_kbd_reboot) ;
 	LOCK_VARIABLE(_kbd_break) ;

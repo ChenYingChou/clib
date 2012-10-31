@@ -70,7 +70,7 @@ static void tComm_init ( COMM *sio )
 	t = tqueue_new(tComm_wakeup,tComm_finish) ;
 	TASK_ASSERT(t,"TaskComm_init: memory not enough") ;
 
-#if CODE_TYPE == CODE_PROTECTED
+#if defined(CODE_PROTECTED)
 	_lock_data(t,sizeof(TQueue)) ;
 #endif
 
