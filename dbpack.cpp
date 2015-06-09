@@ -86,7 +86,7 @@ int DBF::pack ( )
 	_recCount = (wpos - _headSize) / recSize() ;
 
 	if ( flush() == DB_FAILURE ) return DB_FAILURE ;
-#if defined(UNIX)
+#if defined(UNIX) || defined(__DJGPP__)
 	ftruncate(_fd,wpos) ;
 #else
 	chsize(_fd,wpos) ;

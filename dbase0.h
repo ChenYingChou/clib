@@ -16,7 +16,7 @@
 #define UINT			unsigned
 #endif
 
-#if defined(MSDOS) || defined(__MSDOS__)
+#if (defined(MSDOS) || defined(__MSDOS__)) && !(defined(__DJGPP__) || defined(UNIX))
 	#include <dos.h>
 	#include <io.h>
 	#include <share.h>
@@ -59,7 +59,7 @@
 	#define CLOSE(fd)		::close(fd)
 	#define READ(fd,buf,sz) 	::read(fd,buf,sz)
 	#define WRITE(fd,buf,sz)	::write(fd,buf,sz)
-    #if defined(FreeBSD)
+    #if defined(FreeBSD) || defined(__DJGPP__)
 	#define FLUSH(fd)		fsync(fd)
     #else
 	#define FLUSH(fd)		fdatasync(fd)
