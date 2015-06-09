@@ -348,7 +348,7 @@ int DBF::field ( const char *name )
 	int	nth	;
 
 	for ( nth = 0 ; nth < fieldCount() ; nth++ ) {
-#if defined(GNUC)
+#if defined(__GNUC__)
 		if ( strcasecmp(name,_field[nth].name) == 0 )
 #else
 		if ( stricmp(name,_field[nth].name) == 0 )

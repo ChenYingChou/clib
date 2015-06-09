@@ -10,13 +10,11 @@
 
 #undef	UNIX
 #undef	LLONG
-#undef	GNUC
 #if defined(linux) || defined(__APPLE__) || defined(__FreeBSD__)
 	// Linux GNU C++
 	#include <stdint.h>
 	#define	UNIX		1
 	#define	LLONG		1
-	#define	GNUC		1
     #if defined(__APPLE__) || defined(__FreeBSD__)
 	#define	FreeBSD		1
     #endif
@@ -24,7 +22,6 @@
 	// WIN/DOS GNU C++
 	#include <stdint.h>
 	#define	LLONG		1
-	#define	GNUC		1
 #elif defined(__386__)
 	// WATCOM C++/386
     #ifndef __int8_t_defined
