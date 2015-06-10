@@ -54,8 +54,8 @@
 #else
 	#include <sys/stat.h>
 
-	#define OPEN(file)		::open(file,O_RDWR)
-	#define CREAT(file)		::open(file,O_RDWR|O_CREAT,S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP)
+	#define OPEN(file)		::open(file,O_RDWR|O_BINARY)
+	#define CREAT(file)		::open(file,O_RDWR|O_CREAT|O_BINARY,S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP)
 	#define CLOSE(fd)		::close(fd)
 	#define READ(fd,buf,sz) 	::read(fd,buf,sz)
 	#define WRITE(fd,buf,sz)	::write(fd,buf,sz)
